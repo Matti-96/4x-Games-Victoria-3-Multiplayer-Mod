@@ -159,6 +159,10 @@
  gm_actions.39.a:0 "Punish China"
  gm_actions.39.b:0 "Opium War Outcome Correction"
  gm_actions.39.c:0 "Give China 'The Heavenly Kingdom' Journal entry"
+
+ gm_actions.40.a:0 "Remove Modifier"
+ gm_actions.40.b:0 "Cancel action"
+ gm_actions.40.c:0 "Remove Expedition Budget Modifier"
  
  ###Infamy
  gm_actions.2.d:0 "Decide if you want negative or positive infamy changes."

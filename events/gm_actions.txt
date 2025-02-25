@@ -232,6 +232,15 @@ gm_actions.1 = {
 			popup = yes
 		}
 	}
+
+	option = {
+		name = gm_actions.40.a
+		trigger_event = {
+			id = gm_actions.40
+			days = 0
+			popup = yes
+		}
+	}
 	
 	#Radicals/Loyalists
 
@@ -1075,8 +1084,16 @@ gm_actions.31 = {
 			remove_modifier = gm_paraguay
 			remove_variable = actionee
 		}
-	}	
-
+	}
+	# Remove the Expedition Budget modifier if it is stuck permanently
+	option = {
+		name = gm_action.31.e
+		remove_global_variable = GM_taking_action
+		scope:recipient = {
+			remove_modifier = modifier_large_expedition_cost
+			remove_variable = actionee
+		}
+	}
 }
 
 gm_actions.32 = {
@@ -1880,6 +1897,53 @@ gm_actions.39 = {
 			add_journal_entry = {
 				type = je_heavenly_kingdom_main
 			}
+		}
+	}
+}
+
+gm_actions.40 = {
+	type = country_event
+	placement = ROOT
+	title = gm_actions.40.a
+
+	event_image = {
+		video = "unspecific_signed_contract"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+	
+	trigger = {
+		#triggered by gm_actions.1
+	}
+
+	immediate = {
+		random_country = {
+			limit = {
+				has_variable = actionee
+			}
+			save_scope_as = recipient
+		}
+	}
+	
+	option = {
+		name = gm_actions.40.b
+		default_option = yes
+		remove_global_variable = GM_taking_action
+		scope:recipient = {
+			remove_variable = actionee
+		}
+	}
+	# Remove the Expedition Budget modifier if it is stuck permanently
+	option = {
+		name = gm_action.40.c
+		remove_global_variable = GM_taking_action
+		scope:recipient = {
+			remove_modifier = modifier_large_expedition_cost
+			remove_variable = actionee
 		}
 	}
 }

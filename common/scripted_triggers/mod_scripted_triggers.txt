@@ -93,3 +93,13 @@
 		}		
 	}			
 }
+
+# Generel Strikes
+# state scope
+state_has_strike_modifier_trigger = {
+	OR = {
+		has_modifier = industrial_strike_modifier
+		has_modifier = mining_strike_modifier
+		has_modifier = industrial_strike_modifier
+	}
+}
