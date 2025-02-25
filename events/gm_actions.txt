@@ -1939,7 +1939,7 @@ gm_actions.40 = {
 	}
 	# Remove the Expedition Budget modifier if it is stuck permanently
 	option = {
-		name = gm_action.40.c
+		name = gm_actions.40.c
 		remove_global_variable = GM_taking_action
 		scope:recipient = {
 			remove_modifier = modifier_large_expedition_cost
