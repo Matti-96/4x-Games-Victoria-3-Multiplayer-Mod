@@ -87,4 +87,19 @@ BAV = { # Bavaria
 			}
 		}
 	}	
+	flag_definition = {
+		coa = SGF_communist
+		subject_canton = SGF_communist
+		priority = 1501
+		trigger = { 
+			coa_def_communist_flag_trigger = yes
+			exists = scope:actor
+			scope:actor ?= {
+				owns_entire_state_region = STATE_BAVARIA
+				owns_entire_state_region = STATE_FRANCONIA
+				owns_entire_state_region = STATE_WURTTEMBERG
+				owns_entire_state_region = STATE_BADEN
+			}
+		}
+	}	
 }
