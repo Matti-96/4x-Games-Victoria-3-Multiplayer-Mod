@@ -49,3 +49,88 @@ concrete_dockyards = {
 		}		
 	}
 }
+
+napoleonic_warfare = {
+	# Unlocks Mobile Artillery PM in Barracks
+	era = era_1
+	texture = "gfx/interface/icons/invention_icons/napoleonic_warfare.dds"
+	category = military
+	
+	unlocking_technologies = {
+		line_infantry
+		artillery
+	}
+
+	modifier = {
+		country_military_tech_spread_mult = 0.1			# +10% tech spread for military technologies
+	}
+	
+	ai_weight = {
+		value = 1.5 # Important tech in general
+		
+		if = {
+			limit = { has_journal_entry = je_sick_man_army }
+			add = 100
+		}
+	}
+}
+
+general_staff = {
+	# Unlocks Skirmish Infantry PM in Barracks / Conscription Centers
+	era = era_2
+	texture = "gfx/interface/icons/invention_icons/general_staff.dds"
+	category = military
+	
+	unlocking_technologies = {	
+		army_reserves
+	}
+
+	modifier = {
+		country_military_tech_spread_mult = 0.2			# +20% tech spread for military technologies
+	}
+	
+	ai_weight = {
+		value = 2 # Important tech in general
+	}
+}
+
+military_statistics = {
+	era = era_3
+	texture = "gfx/interface/icons/invention_icons/military_statistics.dds"
+	category = military
+	
+	modifier = {
+		military_formation_organization_gain_mult = 0.2
+		country_military_tech_spread_mult = 0.3				# +30% tech spread for military technologies
+	}
+	
+	unlocking_technologies = {	
+		electric_telegraph
+		general_staff
+	}
+	
+	ai_weight = {
+		value = 1
+	}
+}
+
+wargaming = {
+	# Unlocks Siege Artillery PM in Barracks
+	# Reduces Morale loss
+	era = era_4
+	texture = "gfx/interface/icons/invention_icons/wargaming.dds"
+	category = military
+
+	modifier = {
+		unit_army_offense_mult = 0.1
+		country_military_tech_spread_mult = 0.4			# +40% tech spread for military technologies
+	}
+	
+	unlocking_technologies = {
+		military_statistics
+	}
+	
+	ai_weight = {
+		value = 1
+	}
+}

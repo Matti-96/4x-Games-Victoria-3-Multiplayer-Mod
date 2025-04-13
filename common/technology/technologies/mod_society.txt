@@ -181,3 +181,90 @@ great_war_diplomacy = {
 		value = 1
 	}
 }
+
+empiricism = {
+	# Unlocks Total Separation - Church and State Law
+	era = era_1
+	texture = "gfx/interface/icons/invention_icons/empiricism.dds"
+	category = society
+	
+	modifier = {
+		country_influence_mult = 0.1
+		country_diplomatic_play_maneuvers_add = 10
+		country_institution_schools_max_investment_add = 1
+		state_education_access_wealth_add = 0.005
+		country_society_tech_spread_mult = 0.1 # +10% tech spread for society technologies
+	}
+	
+	unlocking_technologies = {
+		academia
+	}
+	
+	ai_weight = {
+		value = 1.5 # Important in general
+	}
+}
+
+dialectics = {
+	# Unlocks Philosophy Department PM in Universities
+	
+	era = era_2
+	texture = "gfx/interface/icons/invention_icons/dialectics.dds"
+	category = society
+	
+	modifier = {
+		country_institution_schools_max_investment_add = 1
+		country_society_tech_spread_mult = 0.2 # +20% tech spread for society technologies
+	}
+	
+	unlocking_technologies = {
+		empiricism
+	}
+	
+	ai_weight = {
+		value = 1
+	}
+}
+
+philosophical_pragmatism = {
+	era = era_3
+	texture = "gfx/interface/icons/invention_icons/philosophical_pragmatism.dds"
+	category = society
+	
+	modifier = {
+		country_influence_mult = 0.1
+		country_diplomatic_play_maneuvers_add = 10
+		state_bureaucracy_population_base_cost_factor_mult = -0.05
+		country_society_tech_spread_mult = 0.3 # +30% tech spread for society technologies
+	}
+	
+	unlocking_technologies = {
+		psychiatry
+	}
+	
+	ai_weight = {
+		value = 1
+	}
+}
+
+psychoanalysis = {
+	# Should provide additional methods for dealing with negative psychological character traits
+	era = era_4
+	texture = "gfx/interface/icons/invention_icons/psychoanalysis.dds"
+	category = society
+	
+	modifier = {
+		country_influence_mult = 0.1
+		country_diplomatic_play_maneuvers_add = 10
+		state_bureaucracy_population_base_cost_factor_mult = -0.05
+		country_society_tech_spread_mult = 0.4 # +40% tech spread for society technologies
+	}
+	
+	unlocking_technologies = {
+		philosophical_pragmatism
+	}
+	
+	ai_weight = {
+		value = 1
+	}
+}

@@ -101,7 +101,7 @@ country_authority_per_subject = {
 country_literacy_rate = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
 	country_weekly_innovation_max_add = 150
-	country_tech_spread_add = 150
+	country_tech_spread_add = 75
 }
 
 excess_innovation = {
