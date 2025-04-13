@@ -1,4 +1,11 @@
 ﻿on_monthly_pulse_country = {
+	on_actions = {
+		mod_canals_tolls
+		mod_infamy_punishments
+	}
+}
+
+mod_canals_tolls = {
 	effect = {
 		# If the country has the modifier, remove it first
 		# This is to ensure that the modifier is reapplied with the new value
@@ -43,7 +50,6 @@
 					prosperity >= 100
 				}
 			}
-			remove_modifier = { name = mod_panama_canal_toll }
 			add_modifier = {
 				name = mod_panama_canal_toll
 				months = 1
@@ -57,20 +63,38 @@
 				}
 			}
 		}
+	}
+}
 
+mod_infamy_punishments = {
+	effect = {
 		# Punishments for infamy levels
 		# Higher levels of infamy causes loan interest to increase
 		if = {
 			limit = { infamy = infamy_threshold:infamous }
-			country_loan_interest_rate_add = 0.025	# 2.5% interest rate increase
+			add_modifier = mod_infamy_infamous_punishment
 		}
+		else_if = {
+			limit = { NOT = { infamy = infamy_threshold:infamous } }
+			remove_modifier = mod_infamy_infamous_punishment
+		}
+
 		if = {
 			limit = { infamy = infamy_threshold:notorious }
-			country_loan_interest_rate_add = 0.075	# 7.5% interest rate increase
+			add_modifier = mod_infamy_notorious_punishment
 		}
+		else_if = {
+			limit = { NOT = { infamy = infamy_threshold:notorious } }
+			remove_modifier = mod_infamy_notorious_punishment
+		}
+
 		if = {
 			limit = { infamy = infamy_threshold:pariah }
-			country_loan_interest_rate_add = 0.20	# 20% interest rate increase
+			add_modifier = mod_infamy_pariah_punishment
+		}
+		else_if = {
+			limit = { NOT = { infamy = infamy_threshold:pariah } }
+			remove_modifier = mod_infamy_pariah_punishment
 		}
 	}
 }

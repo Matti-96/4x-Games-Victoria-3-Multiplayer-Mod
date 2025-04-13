@@ -201,7 +201,7 @@ building_explosives_factory = {
 
 building_military_shipyards = {
 	building_group = bg_military_shipyards
-	icon = "gfx/interface/icons/building_icons/building_naval_yards.dds"
+	icon = "gfx/interface/icons/building_icons/military_shipyards.dds"
 	city_type = port
 	
 	ai_nationalization_desire = 0.5 # AI generally does not want to privatize military goods industries

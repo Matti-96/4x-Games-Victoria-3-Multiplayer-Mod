@@ -501,9 +501,6 @@ company_suez_company = {
 	
 	prosperity_modifier = {
 		country_trade_route_competitiveness_mult = 0.25
-		custom_tooltip = {
-			text = mod_suez_company_prosperity_tooltip
-		}
 	}
 	
 	ai_weight = {
@@ -548,9 +545,6 @@ company_panama_company = {
 	
 	prosperity_modifier = {
 		country_trade_route_competitiveness_mult = 0.25
-		custom_tooltip = {
-			text = mod_panama_company_prosperity_tooltip
-		}
 	}
 	
 	ai_weight = {

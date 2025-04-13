@@ -144,3 +144,18 @@ mod_panama_canal_toll = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
 	country_tax_income_add = 1
 }
+
+mod_infamy_infamous_punishment = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
+	country_loan_interest_rate_add = 0.025	# 2.5% interest rate increase
+}
+
+mod_infamy_notorious_punishment = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
+	country_loan_interest_rate_add = 0.075	# 7.5% interest rate increase
+}
+
+mod_infamy_pariah_punishment = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
+	country_loan_interest_rate_add = 0.20	# 20% interest rate increase
+}

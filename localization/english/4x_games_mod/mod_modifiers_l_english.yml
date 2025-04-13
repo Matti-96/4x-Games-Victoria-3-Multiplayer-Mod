@@ -22,9 +22,16 @@
  mod_i_did_not_diplo: "Did not do the required diplo"
 
  mod_suez_canal_toll:0 "Suez Canal Toll Income"
- mod_suez_canal_toll_desc:0 "Income from the Suez Canal tolls, equals 0.015% of the Global GDP of the world"
- mod_suez_company_prosperity_tooltip: "Owner of the Suez Canal Company will receive a toll income worth 0.015% of the Global GDP of the world."
+ mod_suez_canal_toll_desc:0 "Income from the Suez Canal tolls, equals 0.015% of the Global GDP of the world."
 
  mod_panama_canal_toll:0 "Panama Canal Toll Income"
- mod_panama_canal_toll_desc:0 "Income from the Panama Canal tolls, equals 0.015% of the Global GDP of the world"
- mod_panama_company_prosperity_tooltip: "Owner of the Panama Canal Company will receive a toll income worth 0.015% of the Global GDP of the world."
+ mod_panama_canal_toll_desc:0 "Income from the Panama Canal tolls, equals 0.015% of the Global GDP of the world."
+
+ mod_infamy_infamous_punishment:0 "Infamous Penalty - Increased Interest Rate"
+ mod_infamy_infamous_punishment_desc:0 "The Infamous Penalty is a punishment for being Infamous. It increases the interest rate of all loans by 2.5%."
+
+ mod_infamy_notorious_punishment:0 "Notorious Penalty - Increased Interest Rate"
+ mod_infamy_notorious_punishment_desc:0 "The Notorious Penalty is a punishment for being Notorious. It increases the interest rate of all loans by 7.5%."
+
+ mod_infamy_pariah_punishment:0 "Pariah Penalty - Increased Interest Rate"
+ mod_infamy_pariah_punishment_desc:0 "The Pariah Penalty is a punishment for being a Pariah. It increases the interest rate of all loans by 20%."

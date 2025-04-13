@@ -1,0 +1,1 @@
+﻿# Empty file to prevent errors about duplicated events

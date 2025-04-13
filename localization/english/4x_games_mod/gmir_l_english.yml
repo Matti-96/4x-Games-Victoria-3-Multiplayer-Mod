@@ -1,14 +1,12 @@
 ﻿l_english:
+ # Building names
+ building_war_machine_industry: "Automotive Industry"
+
  # Production methods
- pmg_base_building_automotive_industry: "Automobiles"
-
  pmg_automotive_aeroplanes: "Aeroplanes"
  pmg_automotive_tanks: "Tanks"
  pmg_base_building_automotive_industry: "Automobiles"
-
  pmg_automotive_shiftwork: "Shift Work"
- pmg_automotive_aeroplanes: "Aeroplanes"
- pmg_automotive_tanks: "Tanks"
 
  pmg_arms_tools_demob: "Demobilised Tool Production"
  pmg_arti_tools_demob: "Demobilised Tool Production"
@@ -19,14 +17,6 @@
  pmg_mil_shipyards_shiftwork: "Shift Work"
 
 # Production methods
- pm_no_aeroplanes: "No Aeroplane Production"
- pm_limited_aeroplanes: "Limited Aeroplane Production"
- pm_extensive_aeroplanes: "Extensive Aeroplane Production"
-
- pm_no_tanks: "No Tank Production"
- pm_limited_tanks: "Limited Tank Production"
- pm_extensive_tanks: "Extensive Tank Production"
-
  pm_gear_transmissions: "Early Gear Transmissions"
  pm_automobiles: "Automobiles"
  pm_pneumatic_tyres: "Pneumatic Tyres"
@@ -117,6 +107,9 @@
  pm_mil_shipyards_triple_shifts_wooden: "Triple Shifts"
  pm_mil_shipyards_triple_shifts: "Triple Shifts"
  pm_mil_shipyards_triple_shifts_arc_weld: "Triple Shifts"
+
+ pm_cropdusting: "Crop Dusting"
+ pm_cropdusting_rice: "Crop Dusting"
  
 # Alerts
  alert_MIR_war_demob_arms_name: "At War with Demobilised Arms Industries"
