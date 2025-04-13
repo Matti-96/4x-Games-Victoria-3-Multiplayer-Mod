@@ -1,5 +1,4 @@
-﻿# Toll Modifier for Suez and Panama Canals
-on_monthly_pulse_country = {
+﻿on_monthly_pulse_country = {
 	effect = {
 		# If the country has the modifier, remove it first
 		# This is to ensure that the modifier is reapplied with the new value
@@ -57,6 +56,21 @@ on_monthly_pulse_country = {
 					min = 100000
 				}
 			}
+		}
+
+		# Punishments for infamy levels
+		# Higher levels of infamy causes loan interest to increase
+		if = {
+			limit = { infamy = infamy_threshold:infamous }
+			country_loan_interest_rate_add = 0.025	# 2.5% interest rate increase
+		}
+		if = {
+			limit = { infamy = infamy_threshold:notorious }
+			country_loan_interest_rate_add = 0.075	# 7.5% interest rate increase
+		}
+		if = {
+			limit = { infamy = infamy_threshold:pariah }
+			country_loan_interest_rate_add = 0.20	# 20% interest rate increase
 		}
 	}
 }
