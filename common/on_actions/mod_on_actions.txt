@@ -1,0 +1,62 @@
+﻿# Toll Modifier for Suez and Panama Canals
+on_monthly_pulse_country = {
+	effect = {
+		# If the country has the modifier, remove it first
+		# This is to ensure that the modifier is reapplied with the new value
+		if = {
+			limit = { has_modifier = mod_suez_canal_toll }
+			remove_modifier = mod_suez_canal_toll
+		}
+		if = {
+			limit = { has_modifier = mod_panama_canal_toll }
+			remove_modifier = mod_panama_canal_toll
+		}
+		# Check if the country has the Suez or Panama Canal and apply the toll modifier accordingly
+		# The toll is based on the global GDP and the prosperity of the company owning the canal
+		if = {
+			limit = {
+				has_building = building_suez_canal
+				has_company = company_type:company_suez_company
+				any_company = {
+					type = company_type:company_suez_company
+					prosperity >= 100
+				}
+			}
+			add_modifier = {
+				name = mod_suez_canal_toll
+				months = 1
+				multiplier = {
+					value = global_gdp
+					divide = 10000
+					multiply = 0.075
+					round = yes
+					multiply = 10
+					min = 100000
+				}
+			}
+		}
+		if = {
+			limit = { 
+				has_building = building_panama_canal
+				has_company = company_type:company_panama_company
+				any_company = {
+					type = company_type:company_panama_company
+					prosperity >= 100
+				}
+			}
+			remove_modifier = { name = mod_panama_canal_toll }
+			add_modifier = {
+				name = mod_panama_canal_toll
+				months = 1
+				multiplier = {
+					value = global_gdp
+					divide = 10000
+					multiply = 0.075
+					round = yes
+					multiply = 10
+					min = 100000
+				}
+			}
+		}
+	}
+}
