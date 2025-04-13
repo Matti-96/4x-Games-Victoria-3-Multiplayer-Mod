@@ -47,3 +47,10 @@ NGraphics = {
 	ROUTE_PAVED_ROAD_TECH = "paved_roads"
 	ROUTE_PAVED_ROAD_MIN_INFRASTRUCTURE = 250.0
 }
+
+NWar = {
+    DEVASTATION_MAX = 100.0
+    DEVASTATION_INCREASE_RATE = 0.02 # Per day, scales with level of occupation
+    DEVASTATION_DECAY_RATE = -0.1 # Per day, when there are no occupations
+    DEVASTATION_FROM_BATTLES = 1.0 # For each battle
+}
