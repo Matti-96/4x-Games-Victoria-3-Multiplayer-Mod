@@ -139,6 +139,15 @@ grant_leadership_to_agitator = {
 			scope:actor ?= { has_law = law_type:law_womens_suffrage }
 		}
 		custom_tooltip = {
+			text = grant_leadership_corn_laws
+			NAND = {
+				has_role = agitator
+				is_interest_group_type = ig_landowners
+				has_ideology = ideology:ideology_market_liberal
+				root.owner ?= { has_journal_entry = je_corn_laws }
+			}
+		}
+		custom_tooltip = {
 			text = grant_leadership_must_be_pressured_ig
 			political_movement ?= {
 				any_influenced_interest_group = {
