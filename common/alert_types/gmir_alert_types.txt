@@ -1,0 +1,263 @@
+﻿# Small Arms
+MIR_war_demob_arms = {
+	script_context = player_country
+	texture = "gfx/interface/icons/alert_icons/too_little_arms.dds"
+
+	valid = {
+		is_at_war = yes
+		any_scope_building = {
+			is_building_type = building_arms_industry
+			level > 0
+		}
+		any_scope_state = {
+			OR = {
+				is_production_method_active = { building_type = building_arms_industry production_method = pm_extensive_tools_a_i }
+				is_production_method_active = { building_type = building_arms_industry production_method = pm_moderate_tools_a_i }
+				is_production_method_active = { building_type = building_arms_industry production_method = pm_extensive_tools_a_s }
+				is_production_method_active = { building_type = building_arms_industry production_method = pm_moderate_tools_a_s }
+				is_production_method_active = { building_type = building_arms_industry production_method = pm_extensive_tools_a_r }
+				is_production_method_active = { building_type = building_arms_industry production_method = pm_moderate_tools_a_r }
+			}
+		}
+	}
+	
+	open_panel = building_browser|production_methods
+	type = alert
+	color = yellow
+}
+
+MIR_peace_mob_arms = {
+	script_context = player_country
+	texture = "gfx/interface/icons/alert_icons/too_much_arms.dds"
+
+	valid = {
+		is_at_war = no
+		any_scope_building = {
+			is_building_type = building_arms_industry
+			level > 0
+		}
+		any_scope_state = {
+			OR = {
+				is_production_method_active = { building_type = building_arms_industry production_method = pm_ui_safety_a }
+				is_production_method_active = { building_type = building_arms_industry production_method = pm_no_tools_a }
+				is_production_method_active = { building_type = building_arms_industry production_method = pm_limited_tools_a_i }
+				is_production_method_active = { building_type = building_arms_industry production_method = pm_limited_tools_a_s }
+				is_production_method_active = { building_type = building_arms_industry production_method = pm_limited_tools_a_r }
+			}
+		}
+	}
+	
+	open_panel = building_browser|production_methods
+	type = alert
+	color = yellow
+}
+
+# Artillery
+MIR_war_demob_arty = {
+	script_context = player_country
+	texture = "gfx/interface/icons/alert_icons/too_little_arty.dds"
+
+	valid = {
+		is_at_war = yes
+		any_scope_building = {
+			is_building_type = building_artillery_foundries
+			level > 0
+		}
+		any_scope_state = {
+			OR = {
+				is_production_method_active = { building_type = building_artillery_foundries production_method = pm_extensive_tools_t_i }
+				is_production_method_active = { building_type = building_artillery_foundries production_method = pm_moderate_tools_t_i }
+				is_production_method_active = { building_type = building_artillery_foundries production_method = pm_extensive_tools_t_s }
+				is_production_method_active = { building_type = building_artillery_foundries production_method = pm_moderate_tools_t_s }
+				is_production_method_active = { building_type = building_artillery_foundries production_method = pm_extensive_tools_t_r }
+				is_production_method_active = { building_type = building_artillery_foundries production_method = pm_moderate_tools_t_r }
+			}
+		}
+	}
+	
+	open_panel = building_browser|production_methods
+	type = alert
+	color = yellow
+}
+
+MIR_peace_mob_arty = {
+	script_context = player_country
+	texture = "gfx/interface/icons/alert_icons/too_much_arty.dds"
+
+	valid = {
+		is_at_war = no
+		any_scope_building = {
+			is_building_type = building_artillery_foundries
+			level > 0
+		}
+		any_scope_state = {
+			OR = {
+				is_production_method_active = { building_type = building_artillery_foundries production_method = pm_ui_safety_b }
+				is_production_method_active = { building_type = building_artillery_foundries production_method = pm_no_tools_t }
+				is_production_method_active = { building_type = building_artillery_foundries production_method = pm_limited_tools_t_i }
+				is_production_method_active = { building_type = building_artillery_foundries production_method = pm_limited_tools_t_s }
+				is_production_method_active = { building_type = building_artillery_foundries production_method = pm_limited_tools_t_r }
+			}
+		}
+	}
+	
+	open_panel = building_browser|production_methods
+	type = alert
+	color = yellow
+}
+
+# Ammunition
+MIR_war_demob_ammo = {
+	script_context = player_country
+	texture = "gfx/interface/icons/alert_icons/too_little_ammo.dds"
+
+	valid = {
+		is_at_war = yes
+		any_scope_building = {
+			is_building_type = building_munition_plants
+			level > 0
+		}
+		any_scope_state = {
+			OR = {
+				is_production_method_active = { building_type = building_munition_plants production_method = pm_extensive_ammo_le }
+				is_production_method_active = { building_type = building_munition_plants production_method = pm_moderate_ammo_le }
+				is_production_method_active = { building_type = building_munition_plants production_method = pm_extensive_ammo_ni }
+				is_production_method_active = { building_type = building_munition_plants production_method = pm_moderate_ammo_ni }
+				is_production_method_active = { building_type = building_munition_plants production_method = pm_extensive_ammo_dy }
+				is_production_method_active = { building_type = building_munition_plants production_method = pm_moderate_ammo_dy }
+				is_production_method_active = { building_type = building_munition_plants production_method = pm_extensive_ammo_br }
+				is_production_method_active = { building_type = building_munition_plants production_method = pm_moderate_ammo_br }
+			}
+		}
+	}
+	
+	open_panel = building_browser|production_methods
+	type = alert
+	color = yellow
+}
+
+MIR_peace_mob_ammo = {
+	script_context = player_country
+	texture = "gfx/interface/icons/alert_icons/too_much_ammo.dds"
+
+	valid = {
+		is_at_war = no
+		any_scope_building = {
+			is_building_type = building_munition_plants
+			level > 0
+		}
+		any_scope_state = {
+			OR = {
+				is_production_method_active = { building_type = building_munition_plants production_method = pm_ui_safety_b }
+				is_production_method_active = { building_type = building_munition_plants production_method = pm_no_self_explosives }
+				is_production_method_active = { building_type = building_munition_plants production_method = pm_limited_ammo_le }
+				is_production_method_active = { building_type = building_munition_plants production_method = pm_limited_ammo_ni }
+				is_production_method_active = { building_type = building_munition_plants production_method = pm_limited_ammo_dy }
+				is_production_method_active = { building_type = building_munition_plants production_method = pm_limited_ammo_br }
+			}
+		}
+	}
+	
+	open_panel = building_browser|production_methods
+	type = alert
+	color = yellow
+}
+
+
+# Planes
+MIR_war_demob_planes = {
+	script_context = player_country
+	texture = "gfx/interface/icons/alert_icons/too_little_planes.dds"
+
+	valid = {
+		is_at_war = yes
+		has_technology_researched = military_aviation
+		any_scope_building = {
+			is_building_type = building_war_machine_industry
+			level > 0
+		}
+		any_scope_state = {
+			OR = {
+				is_production_method_active = { building_type = building_war_machine_industry production_method = pm_no_aeroplanes }
+				is_production_method_active = { building_type = building_war_machine_industry production_method = pm_limited_aeroplanes }
+			}
+		}
+	}
+	
+	open_panel = building_browser|production_methods
+	type = alert
+	color = yellow
+}
+
+MIR_peace_mob_planes = {
+	script_context = player_country
+	texture = "gfx/interface/icons/alert_icons/too_much_planes.dds"
+
+	valid = {
+		is_at_war = no
+		has_technology_researched = military_aviation
+		any_scope_building = {
+			is_building_type = building_war_machine_industry
+			level > 0
+		}
+		any_scope_state = {
+			OR = {
+				is_production_method_active = { building_type = building_war_machine_industry production_method = pm_extensive_aeroplanes }
+				is_production_method_active = { building_type = building_war_machine_industry production_method = pm_overtime_aeroplanes }
+			}
+		}
+	}
+	
+	open_panel = building_browser|production_methods
+	type = alert
+	color = yellow
+}
+
+# Tanks
+MIR_war_demob_tanks = {
+	script_context = player_country
+	texture = "gfx/interface/icons/alert_icons/too_little_tanks.dds"
+
+	valid = {
+		is_at_war = yes
+		has_technology_researched = mobile_armor
+		any_scope_building = {
+			is_building_type = building_war_machine_industry
+			level > 0
+		}
+		any_scope_state = {
+			OR = {
+				is_production_method_active = { building_type = building_war_machine_industry production_method = pm_no_tanks }
+				is_production_method_active = { building_type = building_war_machine_industry production_method = pm_limited_tanks }
+			}
+		}
+	}
+	
+	open_panel = building_browser|production_methods
+	type = alert
+	color = yellow
+}
+
+MIR_peace_mob_tanks = {
+	script_context = player_country
+	texture = "gfx/interface/icons/alert_icons/too_much_tanks.dds"
+
+	valid = {
+		is_at_war = no
+		has_technology_researched = mobile_armor
+		any_scope_building = {
+			is_building_type = building_war_machine_industry
+			level > 0
+		}
+		any_scope_state = {
+			OR = {
+				is_production_method_active = { building_type = building_war_machine_industry production_method = pm_extensive_tanks }
+				is_production_method_active = { building_type = building_war_machine_industry production_method = pm_overtime_tanks }
+			}
+		}
+	}
+	
+	open_panel = building_browser|production_methods
+	type = alert
+	color = yellow
+}

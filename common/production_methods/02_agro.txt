@@ -220,35 +220,35 @@ pm_tractors = {
 	}
 }
 
-pm_compression_ignition_tractors = {
-	texture = "gfx/interface/icons/production_method_icons/compression_ignition_tractors.dds"
-
-	state_modifiers = {
-		workforce_scaled = {
-			state_pollution_generation_add = 20
-		}
-	}
-
-	unlocking_technologies = {
-		compression_ignition
-	}
-
-	building_modifiers = {
-		workforce_scaled = {
-			# input goods								
-			goods_input_oil_add = 2
-			goods_input_engines_add = 1
-		}
-
-		level_scaled = {
-			building_employment_laborers_add = -2500
-		}
-	}
-
-	timed_modifiers = {
-		modifier_recently_adjusted_secondary_PM
-	}
-}
+#pm_compression_ignition_tractors = {
+#	texture = "gfx/interface/icons/production_method_icons/compression_ignition_tractors.dds"
+#
+#	state_modifiers = {
+#		workforce_scaled = {
+#			state_pollution_generation_add = 20
+#		}
+#	}
+#
+#	unlocking_technologies = {
+#		compression_ignition
+#	}
+#
+#	building_modifiers = {
+#		workforce_scaled = {
+#			# input goods								
+#			goods_input_oil_add = 2
+#			goods_input_engines_add = 1
+#		}
+#
+#		level_scaled = {
+#			building_employment_laborers_add = -2500
+#		}
+#	}
+#
+#	timed_modifiers = {
+#		modifier_recently_adjusted_secondary_PM
+#	}
+#}
 
 pm_citrus_orchards = {
 	texture = "gfx/interface/icons/production_method_icons/orchards.dds"
