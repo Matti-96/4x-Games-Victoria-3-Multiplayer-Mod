@@ -16,6 +16,8 @@ NDiplomacy = {
 }
 
 NEconomy = {
+	MIN_CONSTRUCTION_EFFICIENCY = 0.15					# Was 0.05 		-	Construction efficiency cannot go below this amount
+	
 	AUTO_DOWNSIZE_BUILDING_MONTHS_TO_WAIT = 3			# After a building decides to start auto-downsizing, wait this many months before actually starting to downsize, in case conditions change
 
 	REINVESTMENT_EFFICIENCY_MAX = 1.0					# Was 3.0		-	 Maximum conversion of reinvestment to investment pool
