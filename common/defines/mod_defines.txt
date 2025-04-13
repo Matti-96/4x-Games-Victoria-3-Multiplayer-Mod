@@ -16,7 +16,10 @@ NDiplomacy = {
 }
 
 NEconomy = {
-	AUTO_DOWNSIZE_BUILDING_MONTHS_TO_WAIT = 3							# After a building decides to start auto-downsizing, wait this many months before actually starting to downsize, in case conditions change
+	AUTO_DOWNSIZE_BUILDING_MONTHS_TO_WAIT = 3			# After a building decides to start auto-downsizing, wait this many months before actually starting to downsize, in case conditions change
+
+	REINVESTMENT_EFFICIENCY_MAX = 1.0					# Was 3.0		-	 Maximum conversion of reinvestment to investment pool
+	REINVESTMENT_BASE_EFFICIENCY_THRESHOLD = 25000000	# Was 50000000	-	 Below this amount of GDP, increase reinvestment multiplier on a linear scale up to REINVESTMENT_EFFICIENCY_MAX at 0
 
 	BUILDING_TIMED_MODIFIER_WEEKS = 104				# Duration of a timed modifier which is applied after switching a production method
 	

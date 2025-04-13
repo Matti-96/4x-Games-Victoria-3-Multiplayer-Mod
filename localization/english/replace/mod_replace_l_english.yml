@@ -3,4 +3,8 @@
  TOOLTIP_LOCKED_PRINCIPLE_SLOT_4_DURING_FORMATION: "Available when your [concept_power_bloc_rank] is #v ##3#! or better or you have at least #v 10 #! [Concept('concept_power_bloc_member', '$concept_power_bloc_members_short$')]"
  TRIGGER_STATE_POPULATION:0 "Total population in the state is $COMPARATOR$ #v $NUM|K$#!"
 
- PAUSED_BY_UNPAUSE_ANYONE:0 "DO NOT UNPAUSE THE GAME!\nDO NOT CLICK ON ANYTHING THAT WOULD CHANGE THE GAMESTATE WHILE THE GAME IS PAUSED!"
+ TOGGLE_PAUSE_NOT_HOST_OR_LOCAL:0 "#N Only host is allowed to toggle pause#!"
+ PAUSED_BY_PLAYER_MP:0 "Paused by #v [TimeKeeper.GetPausedBy]#!\n DO NOT UNPAUSE THE GAME!\nDO NOT CLICK ON ANYTHING!"
+ PAUSED_BY_UNPAUSE_ONLY_ME:0 "Only you can unpause the game for [TimeKeeper.GetTimeAnyoneUnpause] more seconds"
+ PAUSED_BY_UNPAUSE_ONLY_PAUSED_BY:0 "Only #v [TimeKeeper.GetPausedBy]#! can unpause for [TimeKeeper.GetTimeAnyoneUnpause] more seconds/nDO NOT UNPAUSE THE GAME UNLESS YOU ARE A MODERATOR!\nDO NOT CLICK ON ANYTHING!"
+ PAUSED_BY_UNPAUSE_ANYONE:0 "DO NOT UNPAUSE THE GAME!\nDO NOT CLICK ON ANYTHING!\nONLY A MODERATOR IS ALLOWED TO UNPAUSE THE GAME!"

@@ -1,9 +1,0 @@
-﻿state_mortality_wealth_mult = {
-	decimals=2 # Was 1
-	color=bad
-	percent=yes
-	game_data={
-		ai_value=0
-	}
-}
-

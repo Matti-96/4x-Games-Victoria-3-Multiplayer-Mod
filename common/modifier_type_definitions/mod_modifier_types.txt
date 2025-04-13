@@ -14,3 +14,11 @@ country_authority_mult={
 		ai_value=20
 	}
 }
+
+country_authority_per_subject_add={
+	decimals=2
+	color=good
+	game_data={
+		ai_value=0
+	}
+}
