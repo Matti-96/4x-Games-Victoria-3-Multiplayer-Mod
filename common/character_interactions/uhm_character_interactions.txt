@@ -1046,7 +1046,7 @@ retire_commander = {
 					value = root.popularity
 					divide = 100
 					add = 1
-					min = 1
+					min = 3
 					multiply = root.commander_rank
 					round = 1
 				}
