@@ -42,3 +42,8 @@ NPops = {
 	MIGRATION_MIN_STATE_POPS = 50000											# A state with less population than this will not get emigration. # Was 20000
 	MIGRATION_STATE_POPULATION_THRESHOLD = 250000								# States with less pops than this have reduced market emigration numbers to avoid total depopulation. # Was 100000
 }
+
+NGraphics = {
+	ROUTE_PAVED_ROAD_TECH = "paved_roads"
+	ROUTE_PAVED_ROAD_MIN_INFRASTRUCTURE = 250.0
+}
