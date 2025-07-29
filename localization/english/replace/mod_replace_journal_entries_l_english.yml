@@ -1,0 +1,4 @@
+﻿l_english:
+############################################################
+# Warlord China Journal Entry
+  je_warlord_china_special_tooltip_deplete: "The following conditions will #bold deplete#! the #bold Progress Bar#!:\n• Losing the #BOLD Opium Wars#!\n• Failing to stop the appearance of the #BOLD Heavenly Kingdom#!\n• Failing to retake the #BOLD Heavenly Kingdom#!\n• Failing the #BOLD Boxer Rebellion#!\n• Going into debt and taking any [concept_loans]\n• One country having either a #BOLD Foreign Investment Agreement#! with Qing or #BOLD Foreign Investment Rights#! in Qing\n• Having a [concept_civil_war]\n• Becoming a [concept_subject] under another country\n• Abolishing the [GetLawType('law_monarchy').GetName]"

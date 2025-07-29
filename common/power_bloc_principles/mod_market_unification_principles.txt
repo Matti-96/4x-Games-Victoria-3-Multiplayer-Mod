@@ -1,0 +1,81 @@
+﻿############################################################
+# Market Unification Principles - Foreign Investment principles have been merged into this group
+principle_market_unification_1 = {
+	icon = "gfx/interface/icons/principles_icons/market_unification.dds"
+	background = "gfx/interface/icons/principles_icons/principle_tier_1.dds"
+
+	visible = {
+		has_dlc_feature = power_bloc_features
+	}
+
+	member_modifier = {
+		# This modifier is just here to generate a tooltip. It doesn't actually do anything on its own
+		country_higher_leverage_from_economic_dependence_bool = yes
+	}
+
+	power_bloc_modifier = {
+		# Members cannot enable Embargos with each other
+		power_bloc_disallow_embargo_bool = yes
+	}
+
+	ai_weight = {
+		value = 200 # Generally a good group for a PB to have
+
+		if = {
+			limit = { has_strategy = ai_strategy_economic_imperialism }
+			multiply = 2.0
+		}
+	}
+}
+
+principle_market_unification_2 = {
+	icon = "gfx/interface/icons/principles_icons/market_unification.dds"
+	background = "gfx/interface/icons/principles_icons/principle_tier_2.dds"
+
+	# Members can always invest in power bloc coutries of lower rank
+	# Does not generate a tooltip, so a dummy modifier is required to show this effect
+	allows_foreign_investment_in_lower_rank = yes
+	
+	member_modifier = {
+		# This modifier is just here to generate a tooltip. It doesn't actually do anything on its own
+		country_higher_leverage_from_economic_dependence_bool = yes
+	}
+
+	power_bloc_modifier = {
+		# Members cannot enable Embargos with each other
+		power_bloc_disallow_embargo_bool = yes
+	}
+
+	ai_weight = {
+		value = 1000 # AI prefers upgrading groups it has already picked to unlocking new ones
+	}
+}
+
+principle_market_unification_3 = {
+	icon = "gfx/interface/icons/principles_icons/market_unification.dds"
+	background = "gfx/interface/icons/principles_icons/principle_tier_3.dds"
+
+	# Members can always invest in power bloc coutries of lower rank
+	# Does not generate a tooltip, so a dummy modifier is required to show this effect
+	allows_foreign_investment_in_lower_rank = yes
+
+	member_modifier = {
+		# Modifiers from previous level(s)
+		state_infrastructure_mult = 0.1
+
+		# More convoy going to the market owner
+		country_convoy_contribution_to_market_owner_add = 0.2
+	}
+
+	power_bloc_modifier = {
+		# This modifier has no effects and is only here to generate a tooltip
+		power_bloc_allow_foreign_investment_lower_rank_bool = yes
+
+		# Increased trade advantage between power bloc members
+		power_bloc_trade_advantage_add = 20
+	}
+
+	ai_weight = {
+		value = 1000 # AI prefers upgrading groups it has already picked to unlocking new ones
+	}
+}

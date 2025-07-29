@@ -41,6 +41,7 @@ mobilization_option_rifling = {
 	}
 
 	upkeep_modifier = {
+		goods_input_small_arms_add = 1
 	}
 
 	unit_modifier = {
@@ -99,6 +100,7 @@ mobilization_option_repeaters = {
 
 	upkeep_modifier = {
 		goods_input_small_arms_add = 1
+		goods_input_ammunition_add = 1
 	}
 
 	unit_modifier = {
@@ -157,7 +159,7 @@ mobilization_option_bolt_action_rifles = {
 
 	upkeep_modifier = {
 		goods_input_small_arms_add = 2
-		goods_input_ammunition_add = 1
+		goods_input_ammunition_add = 2
 	}
 
 	unit_modifier = {

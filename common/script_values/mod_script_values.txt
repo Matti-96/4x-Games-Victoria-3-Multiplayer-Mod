@@ -1,0 +1,98 @@
+﻿############################################################
+# Apply infamy for liberating a country
+liberate_country_infamy_baseline = {
+	scope:target_vassal = {
+		every_scope_state = {
+			add = {
+				add = state_population 
+				divide = define:NDiplomacy|WAR_GOAL_INFAMY_POPULATION_SCALING_FACTOR
+				multiply = define:NDiplomacy|WAR_GOAL_INFAMY_POPULATION_SCALING_MULTIPLIER
+				multiply = {
+					add = 1
+					if = {
+						limit = {
+							is_incorporated = no
+						}
+						add = define:NDiplomacy|WAR_GOAL_INFAMY_UNINCORPORATED_FACTOR
+					}
+				}
+				min = 0.1
+				max = define:NDiplomacy|WAR_GOAL_INFAMY_POPULATION_SCALING_MULTIPLIER_MAX_PER_STATE
+			}
+			max = define:NDiplomacy|WAR_GOAL_INFAMY_POPULATION_SCALING_MULTIPLIER_MAX_TOTAL
+		}
+	}
+}
+
+############################################################
+# GDP Ownership Display
+gdp_ownership_by_other_count = {
+	every_country = {
+		limit = { this != prev }
+		save_temporary_scope_as = t
+		if = {
+			limit = { "scope:t.gdp_ownership_ratio(prev)" > 0 }
+			add = 1
+		}
+	}
+}
+
+gdp_ownership_by_self = {
+	value = "this.gdp_ownership_ratio(this)"
+}
+
+gdp_ownership_by_other = {
+	value = 1
+	subtract = gdp_ownership_by_self
+}
+
+gdp_ownership_of_other_count = {
+	every_country = {
+		limit = { this != prev }
+		save_temporary_scope_as = t
+		if = {
+			limit = { "prev.gdp_ownership_ratio(scope:t)" > 0 }
+			add = 1
+		}
+	}
+}
+
+# Requires: scope:_1 & scope:_2
+gdp_ownership_ratio_value = {
+	value = "scope:_2.gdp_ownership_ratio(scope:_1)"
+}
+
+gdp_ownership_self_level = {
+	value = this.country_has_building_levels
+}
+
+gdp_ownership_of_other = {
+	every_country = {
+		limit = { this != prev }
+		save_temporary_scope_as = t
+		if = {
+			limit = { "scope:t.gdp_ownership_ratio(prev)" > 0 }
+			add = {
+				value = scope:t.gdp
+				multiply = "scope:t.gdp_ownership_ratio(prev)"
+			}
+		}
+	}
+	divide = gdp
+}
+
+############################################################
+# Game Master Modifiers
+game_master_modifier_prestige_duration = {
+	value = global_var:game_master_action_prestige_duration
+}
+
+game_master_modifier_authority_duration = {
+	value = global_var:game_master_action_authority_duration
+}
+
+game_master_modifier_influence_duration = {
+	value = global_var:game_master_action_influence_duration
+}
+
+############################################################

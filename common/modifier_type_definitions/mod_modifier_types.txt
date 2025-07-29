@@ -1,23 +1,25 @@
-﻿power_bloc_mandate_progress_per_major_power_member_add={
-	decimals=1
+﻿power_bloc_synergize_laws_bool={
+	color = good
+	boolean = yes
+}
+
+country_can_impose_same_lawgroup_trade_policy_in_power_bloc_bool = {
+	color = good
+	boolean=yes
+}
+
+country_authority_per_subject_add={
+	decimals=2
 	color=good
 	game_data={
 		ai_value=0
 	}
 }
 
-country_authority_mult={
-	decimals=1
-	color=good
+country_shopkeepers_pol_str_mult={
+	decimals=0
+	color=neutral
 	percent=yes
-	game_data={
-		ai_value=20
-	}
-}
-
-country_authority_per_subject_add={
-	decimals=2
-	color=good
 	game_data={
 		ai_value=0
 	}

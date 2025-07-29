@@ -1,6 +1,0 @@
-﻿l_english:
- gm_player:0 "Become Game Master"
- gm_player_desc:0 "If you pick this and are not a Game Master/Host, you will be banned from this game and future games"
- GM_Self_Action:0 "GM Self-Action"
- GM_Self_Action_desc:0 "Use Game Master Powers on yourself."
- 

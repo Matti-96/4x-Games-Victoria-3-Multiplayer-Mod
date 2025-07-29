@@ -1,596 +1,373 @@
-#######################
-### Integrated Mods ###
-#######################
-- Sustainable Resource Buildings Expansion (SRBE) - https://steamcommunity.com/sharedfiles/filedetails/?id=3324172660
-- 1.8.6 Unofficial Hotfix Mod (UHM) - https://steamcommunity.com/sharedfiles/filedetails/?id=3274932837
-- Ultra Historical Demography (UHD) - https://steamcommunity.com/sharedfiles/filedetails/?id=3041693269
-- Lump Sum Transfer (LST) - https://steamcommunity.com/sharedfiles/filedetails/?id=3245710931
+﻿# 4x Games Victoria 3 Multiplayer Mod - V3
+
+# Integrated Mods:
 - GDP Ownership Display - https://steamcommunity.com/sharedfiles/filedetails/?id=3290552216
-- GDP Plotline Plus - https://steamcommunity.com/sharedfiles/filedetails/?id=3190466673
-- PDXRP Updated GM Tool - https://steamcommunity.com/sharedfiles/filedetails/?id=3369619242
-- Global Stats (GDP and POP) - https://steamcommunity.com/sharedfiles/filedetails/?id=3312478537
-- Great Game For Sandbox - https://steamcommunity.com/sharedfiles/filedetails/?id=3274667739
+- Join Ongoing Wars - https://steamcommunity.com/sharedfiles/filedetails/?id=3015811655
+- War is Politics - https://steamcommunity.com/sharedfiles/filedetails/?id=3124519140
+- Improved Company list - https://steamcommunity.com/sharedfiles/filedetails/?id=3527702083
 
-#######################
-### Building Groups ###
-#######################
-- Building Group Ports:
-    - Economy of Scale enabled
-- SRBE buildings added
+# Character Interactions
+- The Interest Group opinion penalty for firing generals/admirals has been tripled for each general/admiral rank
 
-#################
-### Buildings ###
-#################
-- Mod New Buildings:
-    - Coal Liquefaction Plant added
-- Reworked Vanilla Buildings:
-    - Port:
-        - Building Group changed from Public Infrastructure to Port
-        - Can no longer be downsized/deleted
-- SRBE New Buildings:
-    - Coal Mining Center
-    - Iron Metallurgical Center
-    - Lead Metallurgical Center
-    - Sulfur Mining Center
-    - Oit Exploration Center
-    - Oceanic Fishery Port
-    - Composite Wood Factory
-    - Synthetics Rubber Plants
-- UHM:
-    - AI UK Indian subjects now build more plantations if they have the British Dictate Plantations Journal Entry
+# Combat Unit
+- The upkeep goods cost for all naval units that use the Ironclads good hase been tripled
+- All land units within their respective groups can be upgraded to any other land unit within the same group
+- All naval units within their respective groups can be upgraded to any other naval unit within the same group
 
-##############################
-### Character Interactions ###
-##############################
-- UHM:
-    - Moderate characters who are exhiled should now adopt a more interesting ideology
+# Country Formations
+- The major formable countries (Germany, Italy, Scandinavia, Federation of the Andes) requires that the country forming it must either be a power bloc leader or not in a power bloc
+- The major formable countries (Germany, Italy, Scandinavia, Federation of the Andes) can only be formed by countries that are a Major Power or Great Power
 
-###########################
-### Character Templates ###
-###########################
-- Sweden:
-    - Oscar Bernadotte
-        - Culture changed from French to Swedish
+# Country Rank
+- All country ranks have had their migration attraction modifier buffs/debuffs removed
 
-#########################
-### Combat Unit Types ###
-#########################
-- All infantry unit types can be upgaded into any other infantry combat unit types
-- All artillery unit types can be upgraded into any other artillery combat unit types
-- All cavalry unit types can be upgraded into any other cavalry combat unit types
-- All light ship unit types can be upgraded into any other light ship combat unit types
-- All flagship unit types can be upgraded into any other flagship combat unit types
-- All support ship unit types can be upgraded into any other support ship combat unit types
+# Decisions
+- As part of the new unincorporate state mechanic, there is an unincorporate state decision that appears as part of the new mechanic. More details can be found in the new game mechanics section of the changelog
+- A game master decision has been added to allow for one of the players (a moderator) to become the game master of the campaign. The game master will be able to give/take money from a country's treasury, give/take a country infamy, give a buff/debuff to a country's prestige/authority/influence with a base increase modifier or a multiplier modifier. More details can be found in the new game mechanics section of the changelog
 
-#################
-### Companies ###
-#################
-- Reworked Vanilla Companies:
-    - Egyptian National Railways:
-        - Land Trade Capacity increased from 10 to 100
-    - São Paulo Railway Co. Ltd:
-        - Land Trade Capacity increased from 10 to 100
-    - Căile Ferate Române:
-        - Land Trade Capacity increased from 15 to 150
-    - Də Afḡān Nasājī Šerkat:
-        - Land Trade Capacity increased from 5 to 50
-    - Turkish Petroleum Company:
-        - Land Trade Capacity increased from 5 to 50
-    - United Construction Company:
-        - Construction throughput reduced from 20% to 5%
-    - Imperial Tobacco Corporation of Persia, Limited
-        - Now requires the country to have any of the following primary cultures:
-            - Persian
-            - English
-            - Scottish
-    - Nam Định Textile Factory:
-        - Now requires the country to have any of the following primary cultures:
-            - Vietnamese
-    Sunhwaguk:
-        - Now requires the country to have any of the following primary cultures:
-            - Korean
-    Kaiping Mining Company:
-        - Now requires the country to have any of the following primary cultures:
-            - Han
-            - Manchu
+# Decrees
+- An unincorporate state decree has been added to allow for the unincorporation of a state. This is part of the new unincorporate state mechanic. More details can be found in the new game mechanics section of the changelog
 
-#####################
-### Country Ranks ###
-#####################
-- All migration attraction buffs and debuffs removed from all country ranks
-- Prestige average threshold for Major Powers reduced from 2.5 down to 2
+# Defines
+- The maximum number of autosaves has been increased from 5 to 12 to allow for more autosaves in multiplayer games
+- The diplomatic play abandon support relations impact has been decreased from 50 to 20 to make it easier to abandon support for relations in multiplayer games
+- The default war goal has been changed back to money transfer instead of humiliation
+- The migration minimum state pops has been increased from 20,000 to 50,000 to increase the number of pops a state can have before they can start emigrating away in multiplayer games
+- The migration state population threshold has been increased from 100,000 to 250,000 to increase the number of pops a state can have with reduced emigration in multiplayer games
+- The reinvestment efficiency maximum has been decreased from 3.0 to 2.0 to reduce the effectiveness of reinvestment of small countries in multiplayer games
+- The reinvestment base efficiency threshold has been decreased from 50,000,000 to 7,500,000 to reduce the effectiveness of reinvestment of small countries in multiplayer games
+- The military formation weekly maximum unit upgrades for army has been decreased from 0.1 to 0.02 to reduce the rate of unit upgrades in multiplayer games, meaning it should take 50 weeks to fully upgrade an army instead of 10 weeks
+- The military formation weekly maximum unit upgrades for fleet has been decreased from 0.05 to 0.01 to reduce the rate of unit upgrades in multiplayer games, meaning it should take 100 weeks to fully upgrade a fleet instead of 20 weeks
+- The devastation increase rate has been decreased from 0.1 to 0.02 to make daily occupation of a state less devastating, scaling with level of occupation
+- The devastation from battles has been increased from 0.1 to 1.0 to make each battle ten times more devastating to the state, so a battle that would normally cause 0.1 devastation will now cause 1.0 devastation
+- The law enactment law commitment effect has been removed so players cannot use the law commitment to enact laws faster in multiplayer games
 
-#################
-### Decisions ###
-#################
-- Game Master (GM) system added
-- Moderator funny decision added for Switzerland to RP Swiss Bank
+# Diplomatic Actions
+- When a country joins a Sovereign Empire type power bloc, they will automatically become a subject of the power bloc leader; either as a tributary or protectorate depending on whether the country is recognized or unrecognized
+- A game master diplomatic action has been added as part of the game master game mechanic. More details can be found in the new game mechanics section of the changelog
+- Countries will now be able to intervene in an ongoing war that they are not a participant in, provided they meet the following conditions:
+	- They are not a decentralized country
+	- The war is not a revolutionary or secessionist war
+	- The country is allowed to do independent diplomatic actions
+	- The country is not a war with the country whose side they want to join on
+	- The country can reach the country whose side they want to join on, by either of the following methods:
+		- Have direct access via bordering them
+		- Have access through an ally who is also at war with the country whose side they want to join on
+		- Have access through a subject
+		- Have access through an enemy third party
+	- Have diplomatic relations with the country whose side they want to join on
+	- Have cordial or higher relations with the country whose side they want to join on
+- A new diplomatic action has been added to allow a country to turn a newly released subject into a personal union, provided the country is a monarchy and the subject was just released by the overlord. More information can be found in the new game mechanics section of the changelog
+- Rivalries can only be formed between countries of either equal rank or against a country of a higher rank. Recognized countries can not rival unrecognized countries, and unrecognized countries can not rival recognized countries
 
-###############
-### Decrees ###
-###############
-- Game Master (GM) system added
+# Diplomatic Plays
+- The Humiliation war goal can only be used on countries that a country officially rivals
 
-###############
-### Defines ###
-###############
-- NGame:
-    - Number of autosaves increased from 5 to 12
-- NDiplomacy:
-    - Abandon support relations impact reduced from 50 to 0
-    - Diplomatic Pact cost multiplier from infamy doubled
-        - Infamous level of infamy: 50% increase
-        - Notorious level of infamy: 100% increase
-        - Pariah level of infamy: 200% increase
-    - Diplomatic play opening phase ends at 31 days, up from 21 days
-    - Diplomatic play closing phase starts at 90 days, up from 80 days
-- NEconomy:
-    - Maximum Trade Route level increased to 250
-    - Trade route economy of scale Cap increased to 61
-    - Auto downsize building months to wait decreased from 12 down to 3
-    - Building timed modifier weeks increased from 52 to 104
-    - Trade route auto increase employment threshold decreased from 0.9 to 0.5
-    - Trade route auto increase very low productivity threshold decreased from 3 to 2.9
-    - Trade route auto increase low productivity threshold decreased from 6 to 3
-    - Trade route auto increase high productivity threshold decreased from 10 to 3.1
-    - Trade route auto reduction employment threshold decreased from 0.75 to 0.1
-- NMilitary:
-    - Army unit upgrade rate decreased from 10% to 2% (Takes 1 year to upgrade all units in an army)
-    - Fleet unit upgrade rate decreased from 5% to 1% (Takes 2 years to upgrade all units in a fleet)
-    - General travel auto reassign instantly increased from 15 to 120
-- NPops:
-    - Migration pull from available arable land employment increased from 0.5 to 0.75
-    - Migration pull from available arable land employment cap increased from 30 to 60
-    - Birth rate and mortality rate have been modified to be more in line with the UHD mod
-        - Birthrate slightly increases until 10 SoL, to allow for historical massive population growth during industrial revolution
-        - High plateau but with both birthrate and mortality decreasing between 10 SoL and 14 SoL
-        - Slow decrease until stabilization at 20 SoL
-    - High pop modifier now applies to states with 500000 pops and more, raised from 100000 pops and more
-    - States with less than 50000 pops will not get emigration, raised from 20000 pops
-    - States with less than 250000 pops have reduced market emigration numbers to avoid total depopulation, raised from 100000 pops
+# Game Mechanics
+- Game Master:
+	- The game master can give/take money from a country's treasury, give/take a country infamy, give a buff/debuff to a country's prestige/authority/influence with a base increase modifier or a multiplier modifier. This is done by using the game master decision, and then using the game master diplomatic action on a country to perform a game master action or they can use a decision to perform a game master action on themselves
+- Ideological Union Synergize Laws:
+	- When a country is a non-leader member of an Ideological Union power bloc, their laws will be synergized with the laws of the power bloc leader over time if any of their laws of the following law groups is different:
+		- Governance Principles
+		- Distribution of Power
+		- Economic System
+		- Land Reform
+		- Free Speech
+		- Slavery
+	- The synergization is tracked in a journal entry, which starts a weekly process where there is a 4% weekly chance that the law synergization for that law group will progress by one step. Each step will have a -1 governmant legitimacy penalty, which increases by 1 for each step that the law synergization progresses.
+	- When the synergization reaches the final step, 12, the law will be changed in the non-leader power bloc member to match the law of the power bloc leader, and the journal entry will be completed, with a final -12 government legitimacy penalty will be applied to the country that will decay over 10 years
+- Liberating Countries:
+	- When the liberating country war goal is used successfully on a country, an event will appear that gives the country an infamy penalty for liberating the country
+- Personal Union:
+	- Countries can turn a newly released subject into a personal union, provided the country is a monarchy and that the action is done within 14 days of the subject being released. This is done by using the Personal Union diplomatic action on the newly released subject
+- Unincorporate States:
+	- To unincorporate an incorporated state, a country must use the Unincorporate State decree on the state that they want to unincorporate. This will enable an Unincorporate State decision to trigger an event, where the country will be given a final choice on whether to unincorporate the state or not
 
-##########################
-### Diplomatic Actions ###
-##########################
-- All diplomatic actions between players have no relations requirement
-- Rivalries can be established between the following power ranks:
-    - Great Powers can rival:
-        - Great Powers
-        - Major Powers
-        - Unrecognized Major Powers
-    - Major Powers can rival:
-        - Great Powers
-        - Major Powers
-        - Unrecognized Major Powers
-        - Minor Powers
-    - Minor Powers can rival:
-        - Major Powers
-        - Minor Powers
-        - Insignificant Powers
-    - Insignificant Powers can rival:
-        - Minor Powers
-        - Insignificant Powers
-    Unrecognized Major Powers can rival:
-        - Great Powers
-        - Major Powers
-        - Unrecognized Major Powers
-        - Unrecognized Regional Powers
-    - Unrecognized Regional Powers can rival:
-        - Major Powers
-        - Unrecognized Major Powers
-        - Unrecognized Regional Powers
-        - Unrecognized Powers
-    - Unrecognized Powers can rival:
-        - Unrecognized Regional Powers
-        - Unrecognized Powers
+# Ideologies
+- The Landowners interest group now strongly approves of the traditionalism economic system, and disapproves or strongly disapproves of all other economic systems
+- The Traditionalism ideology now strongly approves of the traditionalism economic system, and disapproves or strongly disapproves of all other economic systems
 
-########################
-### Diplomatic Plays ###
-########################
-- All diplomatic plays & actions between players have no relations requirement when starting them. Relation requirements still apply in joining an active diplomatic play
-- AI no longer erroneously desires to reduce the autonomy of charter companies
-- States can be traded between players while at war (Note: Players exploiting this will be punished)
+# Interest Groups
+- The War is Politics mod which has gives opinion and intrest group modifiers in response to certain actions has been integrated into the mod
 
-###############
-### History ###
-###############
-- Countries:
-    - Hudson Bay Company:
-        - Now starts with Extraction Economy economic system law due to being Chartered Company subject type
-- Power Blocs:
-    - Russia:
-        - Core power bloc principle changed from Vassalisation Level 1 to Exploitation of Members Level 1
-        - Second starting power bloc principle changed from Defensive Co-Operation Level 1 to Food Standardization Level 1 
-    - Austria:
-        - Second starting power bloc principle changed from Defensive Co-Operation Level 1 to Police Coordination Level 1
-    - Ottomans:
-        - Second starting power bloc principle changed from External Trade Level 1 to Transportation Infrastructure Level 1
+# Journal Entries
+- The Meiji Economy journal entry now allows any Japan player only need to have 70% of their states to have a railway, instead of needing to have more than 70% states to have a railway
+- The Great Game content is now available in the multiplayer game
+- Qing giving a country foreign investment rights or signing a mutual foreign investment agreement with any country  will remove a fragile unity point from Qing in their Fragile Unity journal entry
+- The Populating the Americas journal entry has had it's scripted button modifier. More details can be found in the scripted button section of the changelog
+- Lobbies now have a timeout of 10 years instead of 5 years to allow for more time to complete the journal entry
+- The Synergize Laws journal entry for Ideological Union power bloc members that have differing laws from the Power Bloc leader keeps track and runs the synergize law mechanic. More details can be found in the new game mechanics section of the changelog
 
-##################
-### Ideologies ###
-##################
-- Modified Vanilla Ideology:
-    - Scholar Gentry Ideology:
-        - Opinions on the economic system law group has been added
-            - Agrarianism = Approve
-            - Industy Banned = Disapprove
-            - Traditionalism = Strongly Approve
-            - Interventionism = Neutral
-            - Co-Operative Ownership = Strongly Disapprove
-            - Laissez-Faire = Strongly Disapprove
-            - Command Economy = Strongly Disapprove
-            - Extraction Economy = Disapprove
+# Laws
+- The Multicultural law can only be enacted by countries that have the Anarchy law
+- The Single Party State law can only be enacted by countries that don't have the Protected Speech law
+- Religious Schools can now expand the schools institution to level 5
+- Public Schools increase the bureaucracy cost of the schools institution by 40%
+- The Protected Speech law can not be enacted by countries that have the Single Party State law
+- Charitable Health Systems can now expand the health system institution to level 5
+- Public Health Insurance is now unlocked by researching the Central Planning (Tier 4) society technology
+- Public Health Insurance increases the bureaucracy cost of the health system institution by 40%
+- The Guaranteed Liberties law can only be enacted by countries that have the Protected Speech law
+- The Worker Protections law can not be enacted by countries that have the Laissez-Faire law
+- The Wage Subsidies law can not be enacted by countries that have the Laissez-Faire law
+- The Old Age Pension law can not be enacted by countries that have the Laissez-Faire law
 
-#######################
-### Journal Entries ###
-#######################
-- Meiji Economy Journal Entry:
-    - Complete requirement now requires having 70% or more states with railways built, not more than 70% of states with railways
-- Warlord China:
-    - China having either having a foreign investment agreement or granting foreign investment rights will change the fragile china counter by 1
-- Great Game:
-    - Great Game journal entries and content are now playable in sandbox mode for multiplayer
-    - Won't fail if UK or Russia disband their power bloc. Only if they drop below Great Power rank or any other vanilla fail conditions
-- Purveyor of Progress (India Railway):
-    - Jounral entry criteria now matches what is said in the tooltip
--
-- Opium Wars:
-    - Opium Wars journal entries were allowed to be completed in the wrong order, which could cause Qing to not fail the journal entries even though they should
-- Americas Migration (Central, South, American West):
-    - Protectorates are now also allowed to use the journal entry
-- Lobby Demands:
-    - Time limit increased from 5 years to 10 years
-- German Unification:
-    - 30 year timer added to the Schleswig-Holstein journal entry
-    - Negative prestige modifier for failing the Schleswig-Holstein journal entry added (-15% prestige for 10 years)
-- SRBE Journal Entries:
-    - Added journal entries for all SRBE buildings
+# Mobilization Options
+- The new Main Guns mobilization option group has been added, which unlocks a new mobilization option for each of the rifling military technologies, which provides a bonus to infantry unit offense and defense
 
-############
-### Laws ###
-############
-- Health System:
-    - Private Health Insurance:
-        - State mortality from wealth modifier added (UHD)
-    - Public Health Insurance:
-        - State mortality from wealth modifier added (UHD)
-
-####################
-### Miscellanous ###
-####################
-- AI UK no longer erroneously hates Indian Democracy
-- Insurrections and Secessions now get disbanded when they literal 0 support
-- Money can now be sent between countries with exact amounts, to the nearest £1000 (LST)
-
-###################################
-### Mobilization Options Groups ###
-###################################
-- Added option for rifles used to make use of military techs, called Main Rifles
-
-############################
-### Mobilization Options ###
-############################
-- Main Rifles added:
-    - Rifles: +5 offense, +5 defense
-    - Repeaters: +10 offense, +10 defense, +1 small arms upkeep
-    - Bolt-Action: +15 offense, +15 defense, +2 small arms & +1 ammunition upkeep
-- Chemical Weapons reworked:
-    - Unit kill rate bonus increased from 50% to 100%
-    - +200% devastation has been added
-
-###########################
-### Political Movements ###
-###########################
-- Communist movements no longer incorrectly prefers states with high urbanization
-
-##################
-### Power Bloc ###
-##################
-- Power Bloc mandate generation changed. New values are:
-    - Great Power: +10
-    - Major Power: +4
-    - Unrecognized Major Power: +2
-    - Minor Power: +1
-    - Unrecognized Regional Power: +0.5
-- Principle Slots:
-    - 3rd slot can be unlocked by having either:
-        - Power bloc is 5th or higher in the power bloc ranking
-        - Power bloc has 5 or more members
-    - 4th slot can be unlocked by having either:
-        - Power bloc is 3rd or higher in the power bloc ranking
-        - Power bloc has 10 or more members
-    - 3rd and 4th power slots will be removed if power bloc doesn't meet either of the requirements (if it works as expected)
-
-#############################
-### Power Bloc Identities ###
-#############################
-- Trade Leagues:
-    - Bloc Members:
-        - Bloc members cannot embargo each other
-        - Increased leverage from economic dependence
-    - Bloc Members (Not Bloc Leader):
-        +20% convoy contribution to power bloc leader
-        -20% Influence
-    - Bloc Leader:
-        - Has foreign investment rights in power bloc members of lower power rank
-        - Can enforce a change in the trade policy law of power bloc members
-        - +10% Influence
-        - +10% Trade route volume
-- Soverign Empires:
-    - Bloc Members (Not Bloc Leader):
-        - Will become the Bloc Leader's subject upon joining the Power Bloc
-    - Bloc Leader:
-        - New members will become their subject upon joining the Power Bloc
+# Power Bloc Identities
+- Sovereign Empires:
+	- All member power bloc members will automatically become subjects of the power bloc leader, either as a tributary or protectorate depending on whether the country is recognized or unrecognized
+	- Power bloc leader ability to use decrees in their subjects is now built-in into the power bloc identity
+- Trade League:
+	- Bloc members cannot embargo each other
+	- Power bloc members have higher leverage from economic dependence
+	- Power bloc leader can impose the same trade policy on all power bloc member
+	- Power bloc leader has foreign investment rights in all power bloc members of lower rank than themselves
+	- Power bloc leader gets a 10% bonus to trade advantage on the world market
+	- Power bloc leader gets a 10% bonus to influence
+	- Non-leader power bloc members get a 20% reduction to their influence
+- Military Treaty Organization:
+	- Power bloc leader gets +50% experience gain for army and navy units
+	- Power bloc leader gets a 10% reduction to military goods cost
+	- Non-leader power bloc members get +25% experience gain for army and navy units
+	- Non-leader power bloc members have a 5% increase to military goods cost
+- Religious Power Bloc:
+	- Power bloc leader has increased clergymen investment pool efficiency from 25% to 50%
+	- Power bloc leader can impose the same law from the Church and State law group on all power bloc members
+	- Non-leader power bloc members have a 25% clergymen investment pool efficiency
 - Ideological Union:
-    - Bloc Leader:
-        - Can enforce a change in the economic system law of power bloc members
-        - Can enforce a change to the land reform law of power bloc members
-        - Can enforce a change to the free speech law of power bloc members
-        - Can enforce a change to the slavery law of power bloc members
-- Military Treaty:
-    - Bloc Leader:
-        - Can enforce a change in the army model law of power bloc members
-        - +50% weekly unit experience gain for armies and navies
-        - -10% Military Goods cost
-    - Bloc Members (Not Bloc Leader):
-        - +25% weekly unit experience gain for armies and navies
-        - -5% Military Goods cost
-- Religious Convocation:
-    - Bloc Leader:
-        - Can enforce a change to the church and state law of power bloc members
-        - Clergymen have +50% investment pool contribution efficiency
-    - Bloc Members (Not Bloc Leader):
-        - Clergymen have +25% investment pool contribution efficiency
+	- Law Synergization mechanic has been added, where the laws of the non-leader power bloc members will be synergized with the laws of the power bloc leader over time after either joining the power bloc or after the power bloc leader enacts a new law in one of the six main law groups:
+		- Governance Principles
+		- Distribution of Power
+		- Economic System
+		- Land Reform
+		- Free Speech
+		- Slavery
 
-#############################
-### Power Bloc Principles ###
-#############################
-- Restrictions:
-    - External Trade is restricted to Trade Leagues only
-    - Internal Trade is restricted to Trade Leagues only
-    - Vassalization is restricted to Soverign Empires only
-    - Exploitation of Members is restricted to Soverign Empires only
-    - Creative Legislature is restricted to Ideological Unions only
-    - Ideological Truth is restricted to Ideological Unions only
-    - Defensive Co-operation is restricted to Military Treaties only
-    - Aggressive Co-ordination is restricted to Military Treaties only
-    - Sacred Civics is restricted to Religious Convocations only
-    - Divine Economics is restricted to Religious Convocations only
-    - Soverign Empires can only take either Vassalization or Exploitation of Members, not both
+# Power Bloc Principles
+- Advanced Research Principles:
+	- Tier 1:
+		- School institution change speed increased by 25%
+		- School institution cost reduced by 10%
+		- Disallow the No Schools law
+		- Power bloc leader can impose the same education system law on all power bloc members
+	- Tier 2:
+		- School institution change speed increased by 40% in total
+		- School institution cost reduced by 25% in total
+		- Disallow the No Schools law
+		- Power bloc leader can impose the same education system law on all power bloc members
+		- School institution gives +1% education access per institution level
+	- Tier 3:
+		- School institution change speed increased by 50% in total
+		- School institution cost reduced by 50% in total
+		- Disallow the No Schools law
+		- Power bloc leader can impose the same education system law on all power bloc members
+		- School institution gives +3% education access per institution level in total
+- Aggressive Coordination Principles:
+	- Tier 1:
+		- War goal maneuver cost reduced by 30% in total
+	- Tier 2:
+		- War goal maneuver cost reduced by 30% in toal
+		- War exhaustion from casualties reduced by 15%
+	- Tier 3:
+		- War goal maneuver cost reduced by 30% in total
+		- War exhaustion from casualties reduced by 15% in total
+		- Countries forced to join diplomatic plays of members, other countries are not happy about this threat
+		- Infamy generation increased by 15%
+		- Military technology spread bonus increased by 10%
+		- +5% unit offense
+- Competition Laws Principles:
+	- Tier 1:
+		- Power bloc members can always invest in power bloc countries of lower rank
+	- Tier 2:
+		- Power bloc members can always invest in power bloc countries of lower rank
+		- 15% Shopkeepers Investment Pool Efficiency for power bloc members
+		- Monopolies are banned for power bloc members
+		- +15% Shopkeepers Political Strength for power bloc members
+	- Tier 3:
+		- Power bloc members can always invest in power bloc countries of lower rank
+		- 15% Shopkeepers Investment Pool Efficiency for power bloc members in total
+		- Monopolies are banned for power bloc members
+		- +15% Shopkeepers Political Strength for power bloc members in total
+		- Power bloc leader gets an extra company slot
+		- Power bloc leader companies get a -10% company throughput debuff
+		- Non-leader power bloc members companies get a -5% company throughput debuff
+		- Power bloc members get one less free company charter
+- Defensive Cooperation Principles:
+	- Tier 1:
+		- Power bloc members cannot declare war on each other
+	- Tier 2:
+		- Power bloc members cannot declare war on each other
+		- +10% Unit Defense
+		- Swaying members to join your side costs 50% less maneuvers if the inviting country is on the target's side
+		- Power bloc leader can impose the same law from the Army Model law group on all power bloc members
+	- Tier 3:
+		- Power bloc members cannot declare war on each other
+		- +10% Unit Defense in total
+		- Swaying members to join your side costs 50% less maneuvers
+		- Countries forced to join defensive plays against members
+		- Power bloc leader can impose the same law from the Army Model law group on all power bloc members
+- Economic Imperialism Principles:
+	- Tier 1:
+		- Non-leader power bloc members cannot nationalize buildings
+		- -5 power bloc cohesion to the power bloc
+	- Tier 2:
+		- Non-leader power bloc members cannot nationalize buildings
+		- Non-leader power bloc members must privatize all buildings that can currently be privatized
+		- -10% Manufacturing throughput for non-leader power bloc members
+		- +10% Throughput for plantations, mines, fishing, whaling, and logging for non-leader power bloc members
+		- -10 power bloc cohesion to the power bloc
+	- Tier 3:
+		- Non-leader power bloc members cannot nationalize buildings
+		- Non-leader power bloc members must privatize all buildings that can currently be privatized
+		- -10% Manufacturing throughput for non-leader power bloc members in total
+		- +10% Throughput for plantations, mines, fishing, whaling, and logging for non-leader power bloc members in total
+		- +10% Manufacturing throughput for the power bloc leader
+		- -15 power bloc cohension to the power bloc
+- Exploitation of Members Principles:
+	- Tier 1:
+		- Power bloc leader gets +10% country authority
+		- Non-leader power bloc members get -20% country authority
+		- -5 power bloc cohesion to the power bloc
+	- Tier 2:
+		- Power bloc leader gets +20% country authority
+		- Power bloc leader gets +20% country influence
+		- Non-leader power bloc members get -20% country authority
+		- Non-leader power bloc members get -20% country influence
+		- -10 power bloc cohesion to the power bloc
+	- Tier 3:
+		- Power bloc leader gets +30% country authority
+		- Power bloc leader gets +20% country influence
+		- Non-leader power bloc members get -20% country authority in total
+		- Non-leader power bloc members get -20% country influence in total
+		- -15 power bloc cohesion to the power bloc
+		- +5% income transfer from subjects to overlord
+- External Trade Principles:
+	- Tier 1:
+		- +25% state trade capacity
+	- Tier 2:
+		- +25% state trade capacity in total
+		- Unlocks a PM that grants Trade Centers Influence (Influential Trade Centers)
+	- Tier 3:
+		- +25% state trade capacity in total
+		- Unlocks a PM that grants Trade Centers Influence (Influential Trade Centers)
+		- No trade advantage loss from having a lack of interest in a region of the world
+- Food Standardization Principles:
+	- Tier 1:
+		- +10% Agriculture throughput for power bloc members
+	- Tier 2:
+		- +10% Agriculture throughput for power bloc members in total
+		- Unlocks a PM for Food Industries (Efficient Vacuum Canning)
+	- Tier 3:
+		- +10% Agriculture throughput for power bloc members in total
+		- Unlocks a PM for Food Industries (Efficient Vacuum Canning)
+		- -5% mortality for power bloc members
+- Ideological Truth Principles:
+	- Tier 1:
+		- Agitators in non-government interest groups have 33% lower popularity for power bloc members
+		- Intrest group bolster and suppression costs reduced by 25% for power bloc members
+	- Tier 2:
+		- Agitators in non-government interest groups have 33% lower popularity for power bloc members in total
+		- Intrest group bolster and suppression costs reduced by 30% for power bloc members in total
+		- Reduces ideological coherence penalty for interest groups in the same party by 20%
+	- Tier 3:
+		- Agitators in non-government interest groups have 33% lower popularity for power bloc members in total
+		- Intrest group bolster and suppression costs reduced by 40% for power bloc members in total
+		- Reduces ideological coherence penalty for interest groups in the same party by 20% in total
+		- Minimum government legitimacy for power bloc members is 25
+- Internal Trade Principles:
+	- Tier 1:
+		- +10% state infrastructure for power bloc members
+	- Tier 2:
+		- +10% state infrastructure for power bloc members in total
+		- -5% Loan Interest Rate for power bloc members
+	- Tier 3:
+		- +10% state infrastructure for power bloc members in total
+		- -5% Loan Interest Rate for power bloc members in total
+		- +10% Government Building Throughput for power bloc members
+		- +10 power bloc cohesion to the power bloc
+- Market Unification Principles:
+	- Tier 1:
+		- Power bloc members have higher leverage from economic dependence
+		- Power bloc members cannot embargo each other
+	- Tier 2:
+		- Power bloc members have higher leverage from economic dependence in total
+		- Power bloc members cannot embargo each other
+		- Power bloc members can always invest in power bloc countries of lower rank
+	- Tier 3:
+		- Power bloc members have higher leverage from economic dependence in total
+		- Power bloc members cannot embargo each other
+		- Power bloc members can always invest in power bloc countries of lower rank
+		- Power bloc members get a 20 trade advantage bonus when trading with each other
+		- Power bloc members contribute 20% of their convoys to the market owner
+- Military Industry Principles:
+	- Tier 1:
+		- +10% throughput for automotive industry, arms industry, artillery foundries, and military shipyards for power bloc members
+	- Tier 2:
+		- +10% throughput for automotive industry, arms industry, artillery foundries, and military shipyards for power bloc members in total
+		- -10% military goods cost for power bloc members
+	- Tier 3:
+		- +10% throughput for automotive industry, arms industry, artillery foundries, and military shipyards for power bloc members in total
+		- -10% military goods cost for power bloc members in total
+		- Supply routes use 33% less convoys for power bloc members
+		- Balloon Reconnaissance mobilization unlocked for power bloc members
+- Transportation Infrastructure Principles:
+	- Tier 1:
+		- +10 Building Economy of Scale Level Cap for power bloc members
+	- Tier 2:
+		- +10 Building Economy of Scale Level Cap for power bloc members in total
+		- +20% Port Throughput for power bloc members in total
+	- Tier 3:
+		- +10 Building Economy of Scale Level Cap for power bloc members in total
+		- +20% Port Throughput for power bloc members in total
+		- Improved Railways Production Methods unlocked for power bloc members
+- Vassalization Principles:
+	- Tier 1:
+		- Each subject a overlord has gives them +1% authority
+	- Tier 2:
+		- Each subject a overlord has gives them +2% authority in total
+		- Subjects pay 25% more income to their overlord
+	- Tier 3:
+		- Each subject a overlord has gives them +3% authority in total
+		- Subjects pay 25% more income to their overlord
+- Freedom of Movement Principle:
+	- Removed from the game
 
-- Foreign Investments:
-    - Has been removed
-    - Been merged into the Market Unification principle
+# Production Methods
+- Production methods that use the transportation good are hidden until the transportation good is available in the state
 
-- Market Unification:
-    - Level 1:
-        - Bloc members cannot embargo each other
-        - Increased leverage from economic dependence
-    - Level 2:
-        - Foreign investment rights in power bloc members of lower power rank
-    - Level 3:
-        - Power Bloc becomes a customs union
+# Scripted Buttons
+- The African Colonial Administrations can no longer be formed by the AI
+- Population the Americas:
+	- If the country has either the state religion or state atheism law, the targetted country must be of the same religion as the country using the scripted button
+	- If the country has the freedom of conscience law, the targetted country must be of the same religious group as the country using the scripted button
+	- If the country has the total separation law, there are no religion requirements for the targetted country
+	- Total population of the targetted country must be at least 3,000,000 or higher
+	- The targetted country must have at least one incorporated state that is in Europe
+	- The cost for using the scripted button has been changed to the following:
+		- -25% influence
+		- -10% authority
+		- 0.025% of GDP
 
-- Advanced Research:
-    - Level 1:
-        - +25% institution size change speed for education institution
-        - -10% bureaucracy cost of education institution
-        - Cannot have the No Schools law
-        - Bloc Leader can enforce a change in the education system law of power bloc members
-    - Level 2:
-        - +15% institution size change speed for research institution (+40$ total)
-        - -15% bureaucracy cost of education institution (-25% total)
-        - +1% education access per institution level
-    - Level 3:
-        - +10% institution size change speed for research institution (+50% total)
-        - -25% bureaucracy cost of education institution (-50% total)
-        - +2% education access per institution level (+3% total education access per institution level)
+# Technology Spread
+- The technology spread from excess innovation has been significantly reduced from 0.2 (20%) to 0.02 (2%), to reduce the effect of spamming universities for unrealistic technological progression in low literacy rate countries
+- This has been replaced with a set of technology spread modifiers for each technology tree, that are applied to a country once it has researched all of the technologies in an era in each technology tree
+- These modifiers are as follows:
+	- Era 1 Complate: 10% technology spread bonus
+	- Era 2 Complete: 20% technology spread bonus (total = 30% technology spread bonus)
+	- Era 3 Complete: 30% technology spread bonus (total = 60% technology spread bonus)
+	- Era 4 Complete: 40% technology spread bonus (total = 100% technology spread bonus)
 
-- Food Standardization:
-    - Level 1:
-        - +10% Agriculture throughput
-    - Level 2:
-        - Unlocks production method "Efficient Vacuum Canning Practices" for Food Industries
-    - Level 3:
-        - -5% Pop mortality
-
-- Construction:
-    - Level 1:
-        - -50% infrastructure usage for construction sectors
-    - Level 2:
-        - +5% state construction efficiency
-    - Level 3:
-        - United Construction Conglomerate comany unlocked
-            - +5% construction efficiency (down fom +20%)
-
-- Freedom of Movement:
-    - Level 1:
-        - +20% Migration Quota
-    - Level 2:
-        - Migration allowed within Power Bloc
-    - Level 3:
-        - +50% Mass Migration attraction
-
-- Vassalization:
-    - Level 1:
-        - +2% authority added per subject (changed from +25 authority per allowed subject type)
-    - Level 2:
-        - +1% authority added per subject (+3% total)
-        - Power Bloc Leader gets +25% subject income transfer modifier
-    - Level 3
-        - +1% authority added per subject (+4% total)
-        - Power Bloc Leader can enact decrees in subjects
-
-- Exploitation of Members:
-    - Level 1:
-        - +20% Power Bloc Leader authority
-        - -20% Bloc Member (Not Leader) authority
-        - -5 Power Bloc Cohesion
-    - Level 2:
-        - -5 Power Bloc Cohesion (-10 total)
-        - +20% Power Bloc Leader Influence
-        - -20% Bloc Member (Not Leader) Influence
-        - +10% Power Bloc Leader authority (+30% total)
-    - Level 3:
-        - -10 Power Bloc Cohesion (-20 total)
-        - +10% Power Bloc Leader Authority (+40% total)
-        - 5% income transfer from Power Bloc Members to Power Bloc Leader
-    
-- External Trade:
-    - Level 2:
-        - Influential Trade Center PM:
-            - Influence per level reduced from 2 down to 1
-            - Migration attraction bonus removed
-
-- Militarized Industry:
-    - Level 2:
-        - Miltarg goods cost reduced from -15% down to -10%
-
-- Sacred Civics:
-    - Level 1:
-        - Higher diplomatic proposal acceptance for countries with same religion
-        - -5% morale loss
-        - +5% morale recovery
-    - Level 2:
-        - Reduced liberty desire for subjects with same religion
-
-- Divine Economics:
-    - Level 2:
-        - New Ownership PM (Clergy Oversight) is now used by requirement in Financial Districts and Manor Houses
-
-- Transportation Infrastructure:
-    - Level 1:
-        - +33% state infrastructure from population
-        - +33% maximum state infrastructure from population
-    - Level 2:
-        - +250 land trade capacity
-    - Level 3:
-        - Unlocks the Joint Steam Trains PM for Railways
-        - Unlocks the Joint Electric Trains for Railways
-        - Unlocks the Joint Diesel Trains for Railways
-
-- Defense Co-operation:
-    - Level 2:
-        - +10% unit defense
-
-################################
-### Production Method Groups ###
-################################
-- Coal-Liquefaction Plant:
-    - Coal to Oil PMs added (Level 1, Level 2, Level 3, Level 4, Level 5)
-    - Oil to Rubber PMs added (Level 1, Level 2, Level 3, Level 4, Level 5)
-
-##########################
-### Production Methods ###
-##########################
-- Added timed modifiers for PM Changes:
-    - Change in primary PM grants a decaying -20% throughput
-	- Change in secondary PM grants a decaying -10% throughput
-- Added production methods for Coal-Liquefaction Plant
-    - Coal to Oil: 5 Coal --> 1 Oil
-    - Oil to Rubber: 5 Oil --> 1 Rubber
-- Convoys supplied by Ports have been increased:
-    - Anchorages:
-	    - Amount of Convoys increased from 20 to 50
-    - Industrial Ports:
-	    - Amount of Convoys increased from 175 to 250
-    - Modern Ports:
-        - Amount of Convoys increased from 200 to 400
-- Influence provided by Power Block Principle External Trade II & III reduced from 2 down to 1
-- Production methods that use Transportation as an input good are blocked until the building has access to Transportation
-- External Trade Principle Levels 2 & 3 Trade Center PM now has clerks working. Was 0 clerks per trade center level, now 250 clerks per trade center level (UHM)
-
-########################
-### Scripted Buttons ###
-########################
-- Americas Migration Button Cost:
-    Target Countries:
-        - Power Rank requirement removed
-        - Number of states requirement removed
-        - Target state needs to have 250000 state population or higher
-        - Target state needs to be in a country that has a total population of 3 million or greater
-    Cost of Use:
-        - -25% influence cost
-        - -10% authority cost
-        - Weekly cost of £ equal to 0.025% of GDP, rounded to nearest 100
-
-
-########################
-### Scripted Effects ###
-########################
-- UHM:
-    - Diplomatic Pact Opportunity system for investment rights/agreement fixed
-
-########################
-### Static Modifiers ###
-########################
-- Base Government Dividends efficiency increased by 10%, from 25% to 35%
-- Recently adjusted primary production method timed modifier added
-- Recently adjusted secondary production method timed modifier added
-- Tech spread from literacy doubled, from 75 at 100% literacy to 150 at 100% literacy
-- Excess innovation into tech spread reduced from 20% down to 2%
-    - Before change, 20% of excess innovation would be added to tech spread
-    - After change, 2% of excess innovation would be added to tech spread
-- India Company Rule modifier:
-    - Industrialist IG Political Strength increased from 200% bonus to 300% bonus
-
-####################
-### Technologies ###
-####################
-- Production:
-    - Synthetic Strategic Resources:
-        - Era 5
-        - Unlocks Coal-Liquefaction Plant
-        - Unlocks the Coal --> Oil Production Methods
-        - Unlocks the Oil --> Rubber Production Methods
-
+# Technologies
 - Society:
-    - Pan-Nationalism:
-        - Added Identification Documents as an unlocking technology requirement
-    - Great War Diplomacy:
-        - Era 5
-        - Adds 1375 maneuvers to diplomatic plays
-        - Reduces war exhaustion from casualties by 65%
-    - Medical Degrees:
-        - -0.0005% morality per level of wealth
-    - Pharmaceuticals:
-        - -0.0005% morality per level of wealth
-    - Antibiotics:
-        - 0.001% morality per level of wealth
-    - Urbanization:
-        - Land trade capacity increased from 50 to 200
-    - Urban Planning:
-        - Land trade capacity increased from 10 to 150
-    - Modern Sewerage:
-        - Land trade capacity increased from 10 to 150
-    - Steel-Frame Buildings:
-        - Land trade capacity increased from 10 to 150
-    - Elevator:
-        - Land trade capacity increased from 10 to 150
-    - Paved Roads:
-        - Land trade capacity increased from 20 to 200
+	- Pan-Nationalisms is now unlocked by Identification Documents
+	- Great War Diplomacy is a new Era 5 technology that provides 1375 diplomatic play maneuvers to allow for an in-game Great War to be fought with the required high level of stakes.
 
-- Military:
-    - Gantry Cranes:
-        - Now increases the max level of ports by 8 instead of 4
-    - Concrete Dockyards:
-        - Now increases the max level of ports by 10 instead of 4
-
-###########
-### GUI ###
-###########
-- GDP Graph:
-    - Size increased from 280 x 100 to 1400 x 500
-- GDP Ownership:
-    - UI and tooltip can show how much of a country's economy is owned by foreign investors
-    - UI and tooltip can show how much foreign investment a country has in other countries
-- Global GDP and POP Stats:
-    - Country's percentage of global GDP and POP added to the country's GDP and population tooltip
-
-##############
-### Events ###
-##############
-- Paris Commune:
-    - Truce length reduced from 24 months (2 years) down 2 months
-- Krakatoa:
-    - Krakatoa no longer kills Asia
+# Treaty Articles
+- Alliance:
+	- Alliances can only be formed between recognized countries or between unrecognized countries
+- Take on Debt:
+	- Treaties no longer block the ability to transfer money when a Take on Debt treaty article is included in the treaty
+- Military Assistance:
+	- Military Assistance treaty articles now give both countries a 10% military tech spread instead of just the country that is receiving the military assistance

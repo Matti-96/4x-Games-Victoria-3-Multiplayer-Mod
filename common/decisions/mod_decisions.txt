@@ -1,27 +1,63 @@
-﻿# For moderator controlled Switzerland only
-#moderator_controlled_switzerland_decision = {
-#	is_shown = {
-#		exists = c:SWI
-#		this = c:SWI
-#		NOT = { has_variable = moderator_controlled_switzerland_decision_taken }
-#		is_ai = no
-#	}
-#
-#	possible = {
-#		this = c:SWI
-#		hidden_trigger = { NOT = { has_variable = moderator_controlled_switzerland_decision_taken } }
-#		is_ai = no
-#	}
-#	
-#	when_taken = {
-#		trigger_event = { 
-#			id = moderator_event.1
-#			days = 0
-#			popup = yes
-#		}
-#	}
-#
-#	ai_chance = {
-#		base = 0
-#	}
-#}
+﻿############################################################
+# Unincorporate State Decision
+unincorporate_state_decision = {
+	is_shown = {
+		is_player = yes
+		any_state = {
+			owner = ROOT
+			is_incorporated = yes
+			has_decree = unincorporate_state_decree
+		}
+	}
+
+	when_taken = {
+		trigger_event = {
+			id = unincorporate_state_event.1
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+############################################################
+# Game Master Decision
+game_master_decision = {
+	is_shown = {
+		NOT = { has_global_variable = game_master_decision_taken }
+		is_player = yes
+	}
+
+	when_taken = {
+		set_global_variable = { name = game_master_decision_taken }
+		add_modifier = { name = game_master_modifier }
+
+	}
+}
+
+game_master_self_action_decision = {
+	is_shown = {
+		has_modifier = game_master_modifier
+		NOT = { has_global_variable = game_master_taking_action }
+		is_player = yes
+	}
+
+	when_taken = {
+		set_global_variable = {
+			name = game_master_taking_action
+			days = 31
+		}
+		set_variable = {
+			name = game_master_action_target
+			days = 95
+		}
+		trigger_event = {
+			id = game_master_events.1
+			days = 0
+			popup = yes
+		}
+		every_country = {
+			limit = { is_player = yes }
+			post_notification = game_master_self_action_notification
+		}
+	}
+}

@@ -1,0 +1,8 @@
+﻿l_english:
+############################################################
+# Add Wargoals During War Game Rules
+  rule_ai_wargoals_allowed_or_nah:0 "AI-Added Wargoals"
+  setting_ai_wargoals_allowed:0 "Allowed"
+  setting_ai_wargoals_allowed_desc:0 "The AI is allowed to add wargoals during wars"
+  setting_ai_wargoals_blocked:0 "Not Allowed"
+  setting_ai_wargoals_blocked_desc:0 "The AI will not add wargoals during wars"

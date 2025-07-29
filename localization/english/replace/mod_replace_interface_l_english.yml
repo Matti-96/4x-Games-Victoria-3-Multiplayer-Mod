@@ -1,0 +1,7 @@
+﻿l_english:
+############################################################
+# Principle Slot Unlocks
+  TOOLTIP_LOCKED_PRINCIPLE_SLOT_3_DURING_FORMATION: "Available when your [concept_power_bloc_rank] is #v ##5#! or better, or you have at least #v 5#! [Concept('concept_power_bloc_member', '$concept_power_bloc_members_short$')]"
+  TOOLTIP_LOCKED_PRINCIPLE_SLOT_4_DURING_FORMATION: "Available when your [concept_power_bloc_rank] is #v ##3#! or better, or you have at least #v 10#! [Concept('concept_power_bloc_member', '$concept_power_bloc_members_short$')]"
+
+############################################################

@@ -1,58 +1,33 @@
 ﻿NGame = {
-	MAX_NUMBER_OF_AUTOSAVES = 16
+	MAX_NUMBER_OF_AUTOSAVES = 12	# Increased from 5 to 12 to allow for more autosaves in multiplayer games. 
 }
 
 NDiplomacy = {
-	DIPLOMATIC_PLAY_ABANDON_SUPPORT_RELATIONS_IMPACT = 0
+	DIPLOMATIC_PLAY_ABANDON_SUPPORT_RELATIONS_IMPACT = 20	# Decreased from 50 to 20 to make it easier to abandon support for relations in multiplayer games.
 
-	# Doubled to 50%
-	DIPLOMATIC_PACT_COST_MULT_FROM_INFAMOUS = 0.50		# Maintenance cost of a pact is increased by this when at Infamous level of infamy
-	# Doubled to 100%
-	DIPLOMATIC_PACT_COST_MULT_FROM_NOTORIOUS = 1.00		# Maintenance cost of a pact is increased by this when at Notorious level of infamy
-	# Doubled to 200%
-	DIPLOMATIC_PACT_COST_MULT_FROM_PARIAH = 2.00		# Maintenance cost of a pact is increased by this when at Pariah level of infamy
-
-	DIPLOMATIC_DEMAND_PENDING_APPROVAL_DAYS = 30  # Number of days before a demand is auto-declined and a diplomatic play starts
-}
-
-NEconomy = {
-	MIN_CONSTRUCTION_EFFICIENCY = 0.15					# Was 0.05 		-	Construction efficiency cannot go below this amount
-	
-	AUTO_DOWNSIZE_BUILDING_MONTHS_TO_WAIT = 3			# After a building decides to start auto-downsizing, wait this many months before actually starting to downsize, in case conditions change
-
-	REINVESTMENT_EFFICIENCY_MAX = 1.0					# Was 3.0		-	 Maximum conversion of reinvestment to investment pool
-	REINVESTMENT_BASE_EFFICIENCY_THRESHOLD = 25000000	# Was 50000000	-	 Below this amount of GDP, increase reinvestment multiplier on a linear scale up to REINVESTMENT_EFFICIENCY_MAX at 0
-
-	BUILDING_TIMED_MODIFIER_WEEKS = 104				# Duration of a timed modifier which is applied after switching a production method
-	
-	TRADE_ROUTE_MAX_LEVEL = 250						# Maximum level of a trade route
-	TRADE_ROUTE_ECONOMY_OF_SCALE_MAX_LEVEL = 61		# After this level, trade route economy of scale no longer increases the amount per level
-}
-
-NMilitary = {
-	MILITARY_FORMATION_WEEKLY_MAX_UNIT_UPGRADES_ARMY = 0.02		# Each week a mobilized army can upgrade this (0.0-1.0) fraction of its total number of units. # Was 0.1 = 10 weeks to upgrade all units # Now 0.02 = 50 weeks (1 year) to upgrade all units
-	MILITARY_FORMATION_WEEKLY_MAX_UNIT_UPGRADES_FLEET = 0.01	# Each week a mobilized fleet can upgrade this (0.0-1.0) fraction of its total number of units. # Was 0.05 = 20 weeks to upgrade all units # Now 0.01 = 100 weeks (2 years) to upgrade all units
-
-	GENERAL_TRAVEL_AUTO_REASSIGN_INSTANTLY = 120		# If General is being auto reassigned (front destruction for example) and travel time is below this number of days make them travel instantly # Was 15 = 15 days
-
+	DEFAULT_WAR_GOAL_IS_HUMILIATION = false # If this is false, default war goal is instead money transfer
 }
 
 NPops = {
-	# Migration Pull
-	MIGRATION_PULL_FROM_AVAILABLE_ARABLE_LAND_EMPLOYMENT = 0.75					# Migration pull is increased by for each 10k available subsistence jobs
-	MIGRATION_PULL_FROM_AVAILABLE_ARABLE_LAND_EMPLOYMENT_MAX = 60				# Migration pull from available subsistence jobs cannot exceed this
-	MIGRATION_MIN_STATE_POPS = 50000											# A state with less population than this will not get emigration. # Was 20000
-	MIGRATION_STATE_POPULATION_THRESHOLD = 250000								# States with less pops than this have reduced market emigration numbers to avoid total depopulation. # Was 100000
+	MIGRATION_MIN_STATE_POPS = 50000	# Increased from 20000 to 50000 to increase the number of pops a state can have before they can start emigrating away in multiplayer games.
+	MIGRATION_STATE_POPULATION_THRESHOLD = 250000	# Increased from 100000 to 250000 to increase the number of pops a state can have with reduced emigration in multiplayer games.
 }
 
-NGraphics = {
-	ROUTE_PAVED_ROAD_TECH = "paved_roads"
-	ROUTE_PAVED_ROAD_MIN_INFRASTRUCTURE = 250.0
+NEconomy = {
+	REINVESTMENT_EFFICIENCY_MAX = 2.0	# Decreased from 3.0 to 2.0 to reduce the effectiveness of reinvestment of small countries in multiplayer games.
+	REINVESTMENT_BASE_EFFICIENCY_THRESHOLD = 7500000	# Decreased from 50000000 to 7500000 to reduce the effectiveness of reinvestment of small countries in multiplayer games.
+}
+
+NMilitary = {
+	MILITARY_FORMATION_WEEKLY_MAX_UNIT_UPGRADES_ARMY = 0.02		# Decreased from 0.1 to 0.02 to reduce the rate of unit upgrades in multiplayer games. Should take 50 weeks to fully upgrade an army
+	MILITARY_FORMATION_WEEKLY_MAX_UNIT_UPGRADES_FLEET = 0.01	# Decreased from 0.05 to 0.01 to reduce the rate of unit upgrades in multiplayer games. Should take 100 weeks to fully upgrade a fleet
 }
 
 NWar = {
-    DEVASTATION_MAX = 100.0
-    DEVASTATION_INCREASE_RATE = 0.02 # Per day, scales with level of occupation
-    DEVASTATION_DECAY_RATE = -0.1 # Per day, when there are no occupations
-    DEVASTATION_FROM_BATTLES = 1.0 # For each battle
+	DEVASTATION_INCREASE_RATE = 0.02	# Was 0.1; makes daily occupation of a state less devastating, scales with level of occupation
+	DEVASTATION_FROM_BATTLES = 1 # Was 0.1; makes each battle x10 more devastating to the state, so a battle that would normally cause 0.1 devastation will now cause 1.0 devastation.
+}
+
+NPolitics = {
+	LAW_ENACTMENT_LAW_COMMITMENT_EFFECT = 0.0001		# Was 0.05; removed the effect so players cannot use the law commitment to enact laws faster in multiplayer games.
 }

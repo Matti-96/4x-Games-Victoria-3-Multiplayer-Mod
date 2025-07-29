@@ -1,0 +1,41 @@
+﻿turn_new_subject_into_personal_union = {
+	groups = {
+		general
+	}
+
+	requires_approval = no
+	show_confirmation_box = yes
+
+	selectable = {
+		has_variable = just_released_country_as_subject
+	}
+
+	potential = {
+		has_variable = just_released_country_as_subject
+		has_law = law_type:law_monarchy
+
+		scope:target_country = {
+			has_variable = just_released_as_subject_by_overlord
+			is_subject_of = ROOT
+		}
+	}
+
+	possible = {
+		has_variable = just_released_country_as_subject
+
+		scope:target_country = {
+			has_variable = just_released_as_subject_by_overlord
+			is_subject_of = ROOT
+		}
+	}
+
+	accept_effect = {
+		custom_tooltip = {
+			text = turn_new_subject_into_personal_union.tt
+			create_diplomatic_pact = {
+				country = scope:target_country
+				type = personal_union
+			}
+		}
+	}
+}

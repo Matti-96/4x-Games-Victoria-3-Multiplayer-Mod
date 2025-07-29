@@ -1,105 +1,83 @@
-﻿countries_are_valid_rivals = {
+﻿############################################################
+# Modified Allowed Rival Logic
+countries_are_valid_rivals = {
 	has_overlapping_interests = scope:target_country
-	
+
 	trigger_if = {
 		limit = {
 			country_rank = rank_value:great_power
 		}
-		scope:target_country = { 
-			OR = {
-				country_rank = rank_value:great_power
-				country_rank = rank_value:major_power
-				country_rank = rank_value:unrecognized_major_power
-			}
-		}		
+		scope:target_country = {
+			country_rank = rank_value:great_power
+		}
 	}
-	
+
 	trigger_if = {
 		limit = {
 			country_rank = rank_value:major_power
 		}
-		scope:target_country = { 
+		scope:target_country = {
 			OR = {
 				country_rank = rank_value:great_power
 				country_rank = rank_value:major_power
-				country_rank = rank_value:unrecognized_major_power
-				country_rank = rank_value:minor_power
 			}
-		}		
+		}
 	}
 
 	trigger_if = {
 		limit = {
 			country_rank = rank_value:minor_power
 		}
-		scope:target_country = { 
+		scope:target_country = {
 			OR = {
 				country_rank = rank_value:major_power
 				country_rank = rank_value:minor_power
-				country_rank = rank_value:insignificant_power
 			}
-		}		
+		}
 	}
 
 	trigger_if = {
 		limit = {
 			country_rank = rank_value:insignificant_power
 		}
-		scope:target_country = { 
+		scope:target_country = {
 			OR = {
 				country_rank = rank_value:minor_power
 				country_rank = rank_value:insignificant_power
 			}
-		}		
+		}
 	}
 
 	trigger_if = {
 		limit = {
 			country_rank = rank_value:unrecognized_major_power
 		}
-		scope:target_country = { 
-			OR = {
-				country_rank = rank_value:great_power
-				country_rank = rank_value:major_power
-				country_rank = rank_value:unrecognized_major_power
-				country_rank = rank_value:unrecognized_regional_power
-			}
-		}		
+		scope:target_country = {
+			country_rank = rank_value:unrecognized_major_power
+		}
 	}
 
 	trigger_if = {
 		limit = {
 			country_rank = rank_value:unrecognized_regional_power
 		}
-		scope:target_country = { 
+		scope:target_country = {
 			OR = {
-				country_rank = rank_value:major_power
 				country_rank = rank_value:unrecognized_major_power
 				country_rank = rank_value:unrecognized_regional_power
-				country_rank = rank_value:unrecognized_power
 			}
-		}		
+		}
 	}
 
 	trigger_if = {
 		limit = {
 			country_rank = rank_value:unrecognized_power
 		}
-		scope:target_country = { 
+		scope:target_country = {
 			OR = {
 				country_rank = rank_value:unrecognized_regional_power
 				country_rank = rank_value:unrecognized_power
 			}
-		}		
-	}			
-}
-
-# Generel Strikes
-# state scope
-state_has_strike_modifier_trigger = {
-	OR = {
-		has_modifier = industrial_strike_modifier
-		has_modifier = mining_strike_modifier
-		has_modifier = industrial_strike_modifier
+		}
 	}
 }

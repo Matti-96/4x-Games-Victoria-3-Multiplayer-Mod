@@ -1,0 +1,71 @@
+﻿############################################################
+# Transport Infrastructure Principles
+principle_transport_1 = {
+	icon = "gfx/interface/icons/principles_icons/transport.dds"
+	background = "gfx/interface/icons/principles_icons/principle_tier_1.dds"
+
+	visible = {
+		has_dlc_feature = power_bloc_features
+	}
+
+	member_modifier = {
+		# +10 Building Economy of Scale Level Cap
+		building_economy_of_scale_level_cap_add = 10
+	}
+
+	ai_weight = {
+		value = 100
+
+		if = {
+			limit = {
+				ig:ig_industrialists ?= { is_in_government = yes }
+			}
+			add = 100
+		}
+
+		if = {
+			limit = { has_strategy = ai_strategy_industrial_expansion }
+			multiply = 1.5
+		}
+		else_if = {
+			limit = { has_strategy = ai_strategy_resource_expansion }
+			multiply = 1.25
+		}
+	}
+}
+
+principle_transport_2 = {
+	icon = "gfx/interface/icons/principles_icons/transport.dds"
+	background = "gfx/interface/icons/principles_icons/principle_tier_2.dds"
+
+	member_modifier = {
+		# +10 Building Economy of Scale Level Cap
+		building_economy_of_scale_level_cap_add = 10
+
+		# Members have increased port throughput
+		building_port_throughput_add = 0.2
+	}
+
+	ai_weight = {
+		value = 1000 # AI prefers upgrading groups it has already picked to unlocking new ones
+	}
+}
+
+principle_transport_3 = {
+	icon = "gfx/interface/icons/principles_icons/transport.dds"
+	background = "gfx/interface/icons/principles_icons/principle_tier_3.dds"
+
+	member_modifier = {
+		# Members have increased port throughput
+		building_port_throughput_add = 0.2
+
+		# +10 Building Economy of Scale Level Cap
+		building_economy_of_scale_level_cap_add = 10
+
+		# Unlocks a set of PMs for Railways
+	}
+
+	ai_weight = {
+		value = 1000 # AI prefers upgrading groups it has already picked to unlocking new ones
+	}
+}

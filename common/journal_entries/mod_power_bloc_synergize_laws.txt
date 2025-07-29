@@ -1,0 +1,426 @@
+﻿je_power_bloc_synergize_laws = {
+	icon = "gfx/interface/icons/event_icons/event_fire.dds"
+
+	group = je_group_internal_affairs
+
+	should_be_pinned_by_default = yes
+
+	is_shown_when_inactive = {
+		any_power_bloc = {
+			has_identity = identity:identity_ideological_union
+		}
+	}
+
+	possible = {
+		is_in_power_bloc = yes
+		is_power_bloc_leader = no
+		power_bloc ?= { has_identity = identity:identity_ideological_union }
+		OR = {
+			custom_tooltip = {
+				text = power_bloc_synergize_governance_principle_trigger_tt
+				NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_governance_principles.type = ROOT.active_law:lawgroup_governance_principles.type }
+			}
+			custom_tooltip = {
+				text = power_bloc_synergize_distribution_of_power_trigger_tt
+				NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = ROOT.active_law:lawgroup_distribution_of_power.type }
+			}
+			custom_tooltip = {
+				text = power_bloc_synergize_economic_system_trigger_tt
+				NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_economic_system.type = ROOT.active_law:lawgroup_economic_system.type }
+			}
+			custom_tooltip = {
+				text = power_bloc_synergize_land_reform_trigger_tt
+				NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = ROOT.active_law:lawgroup_land_reform.type }
+			}
+			custom_tooltip = {
+				text = power_bloc_synergize_free_speech_trigger_tt
+				NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_free_speech.type = ROOT.active_law:lawgroup_free_speech.type }
+			}
+			custom_tooltip = {
+				text = power_bloc_synergize_slavery_trigger_tt
+				NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_slavery.type = ROOT.active_law:lawgroup_slavery.type }
+			}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = { NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_governance_principles.type = ROOT.active_law:lawgroup_governance_principles.type } }
+			set_variable = {
+				name = power_bloc_leader_lawgroup_governance_principles_variable
+				value = 0
+			}
+		}
+		if = {
+			limit = { NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = ROOT.active_law:lawgroup_distribution_of_power.type } }
+			set_variable = {
+				name = power_bloc_leader_lawgroup_distribution_of_power_variable
+				value = 0
+			}
+		}
+		if = {
+			limit = { NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_economic_system.type = ROOT.active_law:lawgroup_economic_system.type } }
+			set_variable = {
+				name = power_bloc_leader_lawgroup_economic_system_variable
+				value = 0
+			}
+		}
+		if = {
+			limit = { NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = ROOT.active_law:lawgroup_land_reform.type } }
+			set_variable = {
+				name = power_bloc_leader_lawgroup_land_reform_variable
+				value = 0
+			}
+		}
+		if = {
+			limit = { NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_free_speech.type = ROOT.active_law:lawgroup_free_speech.type } }
+			set_variable = {
+				name = power_bloc_leader_lawgroup_free_speech_variable
+				value = 0
+			}
+		}
+		if = {
+			limit = { NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_slavery.type = ROOT.active_law:lawgroup_slavery.type } }
+			set_variable = {
+				name = power_bloc_leader_lawgroup_slavery_variable
+				value = 0
+			}
+		}
+	}
+
+	scripted_progress_bar = power_bloc_synergize_law_governance_principles_progress_bar
+	scripted_progress_bar = power_bloc_synergize_law_distribution_of_power_progress_bar
+	scripted_progress_bar = power_bloc_synergize_law_economic_system_progress_bar
+	scripted_progress_bar = power_bloc_synergize_law_land_reform_progress_bar
+	scripted_progress_bar = power_bloc_synergize_law_free_speech_progress_bar
+	scripted_progress_bar = power_bloc_synergize_law_slavery_progress_bar
+
+	complete = {
+		custom_tooltip = {
+			text = power_bloc_synergize_governance_principles_complete_tt
+			power_bloc.power_bloc_leader.active_law:lawgroup_governance_principles.type = ROOT.active_law:lawgroup_governance_principles.type
+		}
+		custom_tooltip = {
+			text = power_bloc_synergize_distribution_of_power_complete_tt
+			power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = ROOT.active_law:lawgroup_distribution_of_power.type
+		}
+		custom_tooltip = {
+			text = power_bloc_synergize_economic_system_complete_tt
+			power_bloc.power_bloc_leader.active_law:lawgroup_economic_system.type = ROOT.active_law:lawgroup_economic_system.type
+		}
+		custom_tooltip = {
+			text = power_bloc_synergize_land_reform_complete_tt
+			power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = ROOT.active_law:lawgroup_land_reform.type
+		}
+		custom_tooltip = {
+			text = power_bloc_synergize_free_speech_complete_tt
+			power_bloc.power_bloc_leader.active_law:lawgroup_free_speech.type = ROOT.active_law:lawgroup_free_speech.type
+		}
+		custom_tooltip = {
+			text = power_bloc_synergize_slavery_complete_tt
+			power_bloc.power_bloc_leader.active_law:lawgroup_slavery.type = ROOT.active_law:lawgroup_slavery.type
+		}
+	}
+
+	on_complete = {
+		remove_variable = power_bloc_leader_lawgroup_governance_principles_variable
+		remove_variable = power_bloc_leader_lawgroup_distribution_of_power_variable
+		remove_variable = power_bloc_leader_lawgroup_economic_system_variable
+		remove_variable = power_bloc_leader_lawgroup_land_reform_variable
+		remove_variable = power_bloc_leader_lawgroup_free_speech_variable
+		remove_variable = power_bloc_leader_lawgroup_slavery_variable
+	}
+
+	fail = {
+		OR = {
+			is_in_power_bloc = no
+			NOT = { power_bloc ?= { has_identity = identity:identity_ideological_union } }
+			is_power_bloc_leader = yes
+		}
+	}
+
+	on_fail = {
+		remove_variable = power_bloc_leader_lawgroup_governance_principles_variable
+		remove_variable = power_bloc_leader_lawgroup_distribution_of_power_variable
+		remove_variable = power_bloc_leader_lawgroup_economic_system_variable
+		remove_variable = power_bloc_leader_lawgroup_land_reform_variable
+		remove_variable = power_bloc_leader_lawgroup_free_speech_variable
+		remove_variable = power_bloc_leader_lawgroup_slavery_variable
+	}
+
+	invalid = {
+		OR = {
+			is_in_power_bloc = no
+			NOT = { power_bloc ?= { has_identity = identity:identity_ideological_union } }
+			is_power_bloc_leader = yes
+		}
+	}
+
+	on_invalid = {
+		remove_variable = power_bloc_leader_lawgroup_governance_principles_variable
+		remove_variable = power_bloc_leader_lawgroup_distribution_of_power_variable
+		remove_variable = power_bloc_leader_lawgroup_economic_system_variable
+		remove_variable = power_bloc_leader_lawgroup_land_reform_variable
+		remove_variable = power_bloc_leader_lawgroup_free_speech_variable
+		remove_variable = power_bloc_leader_lawgroup_slavery_variable
+	}
+
+	on_weekly_pulse = {
+		effect = {
+			if = {
+				limit = { has_variable = power_bloc_leader_lawgroup_governance_principles_variable }
+				custom_tooltip = {
+					text = power_bloc_synergize_governance_principles_tt
+					random_list = {
+						24 = {}
+						1 = {
+							change_variable = {
+								name = power_bloc_leader_lawgroup_governance_principles_variable
+								add = 1
+							}
+							je:je_power_bloc_synergize_laws = {
+								add_progress = {
+									value = 1
+									name = power_bloc_synergize_law_governance_principles_progress_bar
+								}
+							}
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = { NOT = { has_variable = power_bloc_leader_lawgroup_governance_principles_variable } }
+				je:je_power_bloc_synergize_laws = {
+					add_progress = {
+						value = 12
+						name = power_bloc_synergize_law_governance_principles_progress_bar
+					}
+				}
+			}
+			
+			if = {
+				limit = { has_variable = power_bloc_leader_lawgroup_distribution_of_power_variable }
+				custom_tooltip = {
+					text = power_bloc_synergize_distribution_of_power_tt
+					random_list = {
+						24 = {}
+						1 = {
+							change_variable = {
+								name = power_bloc_leader_lawgroup_distribution_of_power_variable
+								add = 1
+							}
+							je:je_power_bloc_synergize_laws = {
+								add_progress = {
+									value = 1
+									name = power_bloc_synergize_law_distribution_of_power_progress_bar
+								}
+							}
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = { NOT = { has_variable = power_bloc_leader_lawgroup_distribution_of_power_variable } }
+				je:je_power_bloc_synergize_laws = {
+					add_progress = {
+						value = 12
+						name = power_bloc_synergize_law_distribution_of_power_progress_bar
+					}
+				}
+			}
+
+			if = {
+				limit = { has_variable = power_bloc_leader_lawgroup_economic_system_variable }
+				custom_tooltip = {
+					text = power_bloc_synergize_economic_system_tt
+					random_list = {
+						24 = {}
+						1 = {
+							change_variable = {
+								name = power_bloc_leader_lawgroup_economic_system_variable
+								add = 1
+							}
+							je:je_power_bloc_synergize_laws = {
+								add_progress = {
+									value = 1
+									name = power_bloc_synergize_law_economic_system_progress_bar
+								}
+							}
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = { NOT = { has_variable = power_bloc_leader_lawgroup_economic_system_variable } }
+				je:je_power_bloc_synergize_laws = {
+					add_progress = {
+						value = 12
+						name = power_bloc_synergize_law_economic_system_progress_bar
+					}
+				}
+			}
+
+			if = {
+				limit = { has_variable = power_bloc_leader_lawgroup_land_reform_variable }
+				custom_tooltip = {
+					text = power_bloc_synergize_land_reform_tt
+					random_list = {
+						24 = {}
+						1 = {
+							change_variable = {
+								name = power_bloc_leader_lawgroup_land_reform_variable
+								add = 1
+							}
+							je:je_power_bloc_synergize_laws = {
+								add_progress = {
+									value = 1
+									name = power_bloc_synergize_law_land_reform_progress_bar
+								}
+							}
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = { NOT = { has_variable = power_bloc_leader_lawgroup_land_reform_variable } }
+				je:je_power_bloc_synergize_laws = {
+					add_progress = {
+						value = 12
+						name = power_bloc_synergize_law_land_reform_progress_bar
+					}
+				}
+			}
+
+			if = {
+				limit = { has_variable = power_bloc_leader_lawgroup_free_speech_variable }
+				custom_tooltip = {
+					text = power_bloc_synergize_free_speech_tt
+					random_list = {
+						24 = {}
+						1 = {
+							change_variable = {
+								name = power_bloc_leader_lawgroup_free_speech_variable
+								add = 1
+							}
+							je:je_power_bloc_synergize_laws = {
+								add_progress = {
+									value = 1
+									name = power_bloc_synergize_law_free_speech_progress_bar
+								}
+							}
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = { NOT = { has_variable = power_bloc_leader_lawgroup_free_speech_variable } }
+				je:je_power_bloc_synergize_laws = {
+					add_progress = {
+						value = 12
+						name = power_bloc_synergize_law_free_speech_progress_bar
+					}
+				}
+			}
+
+			if = {
+				limit = { has_variable = power_bloc_leader_lawgroup_slavery_variable }
+				custom_tooltip = {
+					text = power_bloc_synergize_slavery_tt
+					random_list = {
+						24 = {}
+						1 = {
+							change_variable = {
+								name = power_bloc_leader_lawgroup_slavery_variable
+								add = 1
+							}
+							je:je_power_bloc_synergize_laws = {
+								add_progress = {
+									value = 1
+									name = power_bloc_synergize_law_slavery_progress_bar
+								}
+							}
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = { NOT = { has_variable = power_bloc_leader_lawgroup_slavery_variable } }
+				je:je_power_bloc_synergize_laws = {
+					add_progress = {
+						value = 12
+						name = power_bloc_synergize_law_slavery_progress_bar
+					}
+				}
+			}
+
+			power_bloc_law_synergizing_modifier_update = yes
+
+			if = {
+				limit = { has_variable = power_bloc_leader_lawgroup_governance_principles_variable }
+				if = {
+					limit = { var:power_bloc_leader_lawgroup_governance_principles_variable > 11.5 }
+					trigger_event = {
+						id = power_bloc_synergize_laws_events.1
+						popup = yes
+					}
+					remove_variable = power_bloc_leader_lawgroup_governance_principles_variable
+				}
+			}
+			if = {
+				limit = { has_variable = power_bloc_leader_lawgroup_distribution_of_power_variable }
+				if = {
+					limit = { var:power_bloc_leader_lawgroup_distribution_of_power_variable > 11.5 }
+					trigger_event = {
+						id = power_bloc_synergize_laws_events.2
+						popup = yes
+					}
+					remove_variable = power_bloc_leader_lawgroup_distribution_of_power_variable
+				}
+			}
+			if = {
+				limit = { has_variable = power_bloc_leader_lawgroup_economic_system_variable }
+				if = {
+					limit = { var:power_bloc_leader_lawgroup_economic_system_variable > 11.5 }
+					trigger_event = {
+						id = power_bloc_synergize_laws_events.3
+						popup = yes
+					}
+					remove_variable = power_bloc_leader_lawgroup_economic_system_variable
+				}
+			}
+			if = {
+				limit = { has_variable = power_bloc_leader_lawgroup_land_reform_variable }
+				if = {
+					limit = { var:power_bloc_leader_lawgroup_land_reform_variable > 11.5 }
+					trigger_event = {
+						id = power_bloc_synergize_laws_events.4
+						popup = yes
+					}
+					remove_variable = power_bloc_leader_lawgroup_land_reform_variable
+				}
+			}
+			if = {
+				limit = { has_variable = power_bloc_leader_lawgroup_free_speech_variable }
+				if = {
+					limit = { var:power_bloc_leader_lawgroup_free_speech_variable > 11.5 }
+					trigger_event = {
+						id = power_bloc_synergize_laws_events.5
+						popup = yes
+					}
+					remove_variable = power_bloc_leader_lawgroup_free_speech_variable
+				}
+			}
+			if = {
+				limit = { has_variable = power_bloc_leader_lawgroup_slavery_variable }
+				if = {
+					limit = { var:power_bloc_leader_lawgroup_slavery_variable > 11.5 }
+					trigger_event = {
+						id = power_bloc_synergize_laws_events.6
+						popup = yes
+					}
+					remove_variable = power_bloc_leader_lawgroup_slavery_variable
+				}
+			}
+		}
+	}
+}

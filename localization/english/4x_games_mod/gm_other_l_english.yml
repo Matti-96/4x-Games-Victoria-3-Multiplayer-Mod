@@ -1,9 +1,0 @@
-﻿l_english:
-# Game Master Related
- boost_war_support_button:0 "Unlocks the #bold "Boost War Support"#! decision, which prolongs war in exchange for national unrest."
-
- gm_notification_group: "Game Master Action"
-
- #Decrees
- decree_host_scope:0 "GM Scope"
- decree_host_scope_desc:0 "This decree signals to the GM decision where to make an effect (such as where to build a university)."

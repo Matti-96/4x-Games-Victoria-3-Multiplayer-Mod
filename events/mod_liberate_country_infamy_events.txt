@@ -1,0 +1,129 @@
+﻿namespace = liberate_country_infamy_events
+
+liberate_country_infamy_events.1 = {
+	hidden = yes
+	immediate = {
+		root = {
+			if = {
+				limit = {
+					any_country = {
+						has_truce_with = prev
+						NOT = {
+							this = scope:releaser
+						}
+					}
+				}
+				random_country = {
+					limit = {
+						has_truce_with = prev
+						NOT = {
+							this = scope:releaser
+						}
+					}
+					save_scope_as = potential_overlord
+				}
+				set_variable = {
+					name = potential_overlord
+					value = scope:potential_overlord
+				}
+				copy_laws = scope:potential_overlord
+				scope:potential_overlord = {
+					if = {
+						limit = {
+							NOT = {
+								has_variable = pending_overlord_event
+							}
+						}
+						set_variable = {
+							name = pending_overlord_event
+						}
+						trigger_event = {
+							id = liberate_country_infamy_events.2
+							popup = yes
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+liberate_country_infamy_events.2 = {
+	type = country_event
+	placement = scope:target_vassal
+
+	title = liberate_country_infamy_events.2title
+	desc = liberate_country_infamy_events.2desc
+	flavor = liberate_country_infamy_events.2flavor
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_ruler_speaking_to_people.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	duration = 3
+
+	immediate = {
+		root = {
+			random_country = {
+				limit = {
+					has_variable = potential_overlord
+					var:potential_overlord = prev
+				}
+				save_scope_as = target_vassal
+			}
+			if = {
+				limit = {
+					is_in_power_bloc = yes
+				}
+				power_bloc = {
+					add_leverage = {
+						target = scope:target_vassal
+						value = 250
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		default_option = yes
+		name = liberate_country_infamy_events.2a
+		custom_label = liberate_country_infamy_events.2alabel
+		trigger = {
+			always = yes
+		}
+		hidden_effect = {
+			scope:target_vassal = {
+				remove_variable = potential_overlord
+			}
+			root = {
+				create_incident = {
+					country = scope:target_vassal
+					value = liberate_country_infamy_baseline
+				}
+				if = {
+					limit = {
+						any_country = {
+							NOT = {
+								this = scope:target_vassal
+							}
+							has_variable = potential_overlord
+							var:potential_overlord = root
+						}
+					}
+					trigger_event = {
+						id = liberate_country_infamy_events.2
+						popup = yes
+					}
+				}
+				else = {
+					remove_variable = pending_overlord_event
+				}	
+			}
+		}
+	}
+}

@@ -1,0 +1,33 @@
+﻿l_english:
+############################################################
+# Intervene in War
+  intervene_in_war.tt:0 "Join any [concept_war] where [SCOPE.sCountry('target_country_scope').GetName] is the [concept_war_leader]"
+  intervene_in_war:0 "Intervene in War"
+  intervene_in_war_action_name:0 "Join the [TARGET_COUNTRY.GetAdjective] War"
+  intervene_in_war_desc:0 "This [concept_diplomatic_action] allows the initiator to join any [concept_war] where the target country is the [concept_war_leader]."
+  intervene_in_war_action_notification_name:0 "[INITIATOR_COUNTRY.GetAdjective] Intervention in [TARGET_COUNTRY.GetName]"
+  intervene_in_war_action_notification_desc:0 "[INITIATOR_COUNTRY.GetName] has announced that it will give full military support to [TARGET_COUNTRY.GetName] in its war. The [INITIATOR_COUNTRY.GetAdjective] Armed Forces will now join the [TARGET_COUNTRY.GetAdjective] Armed Forces in its military operations."
+  intervene_in_war_action_notification_third_party_name:0 "[INITIATOR_COUNTRY.GetAdjective] Intervention in [TARGET_COUNTRY.GetName]"
+  intervene_in_war_action_notification_third_party_desc:0 "[INITIATOR_COUNTRY.GetName] has announced that it will give full military support to [TARGET_COUNTRY.GetName] in its war. The [INITIATOR_COUNTRY.GetAdjective] Armed Forces will now join the [TARGET_COUNTRY.GetAdjective] Armed Forces in its military operations."
+
+############################################################
+# Turn newly created subject into personal union
+  turn_new_subject_into_personal_union:0 "Turn into Personal Union"
+  turn_new_subject_into_personal_union.tt:0 "Turn a newly created subject into a [concept_personal_union] within 14 days of the subject being created"
+  turn_new_subject_into_personal_union_action_name:0 "Turn newly created subject into personal union"
+  turn_new_subject_into_personal_union_desc:0 "This [concept_diplomatic_action] allows the initiator to turn a newly created subject into a personal union within 14 days of the subject being created."
+  turn_new_subject_into_personal_union_action_notification_name:0 "[INITIATOR_COUNTRY.GetAdjective] announces Personal Union with [TARGET_COUNTRY.GetName]"
+  turn_new_subject_into_personal_union_action_notification_desc:0 "[INITIATOR_COUNTRY.GetName] has announced that a Personal Union has been created between themselves and their newly released subject [TARGET_COUNTRY.GetName]."
+  turn_new_subject_into_personal_union_action_notification_third_party_name:0 "[INITIATOR_COUNTRY.GetAdjective] announces Personal Union with [TARGET_COUNTRY.GetName]"
+  turn_new_subject_into_personal_union_action_notification_third_party_desc:0 "[INITIATOR_COUNTRY.GetName] has announced that a Personal Union has been created between themselves and their newly released subject [TARGET_COUNTRY.GetName]."
+
+############################################################
+# Game Master Taking Action
+  game_master_diplo:0 "Game Master Taking Action"
+  game_master_diplo.tt:0 "Take action as the Game Master to resolve a situation in the game."
+  game_master_diplo_action_name:0 "Game Master Taking Action"
+  game_master_diplo_desc:0 "This [concept_diplomatic_action] allows the Game Master to take action to resolve a situation in the game."
+  game_master_diplo_action_notification_name:0 "[INITIATOR_COUNTRY.GetAdjective] takes Game Master Action"
+  game_master_diplo_action_notification_desc:0 "[INITIATOR_COUNTRY.GetName] has announced that it will take Game Master Action to resolve a situation in the game."
+  game_master_diplo_action_notification_third_party_name:0 "[INITIATOR_COUNTRY.GetAdjective] takes Game Master Action"
+  game_master_diplo_action_notification_third_party_desc:0 "[INITIATOR_COUNTRY.GetName] has announced that it will take Game Master Action to resolve a situation in the game."

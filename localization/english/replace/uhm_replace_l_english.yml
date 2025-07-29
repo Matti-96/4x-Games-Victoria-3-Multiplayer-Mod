@@ -1,3 +1,0 @@
-﻿l_english:
- # Paradox Fix
- state_atheism_conversion_tt:1 "25% of [Concept('concept_pop', '$concept_pops$')] in your [Concept('concept_incorporated_state', '$concept_incorporated_states$')] become Atheist"

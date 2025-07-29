@@ -1,12 +1,19 @@
 {
-  "name": "4x Games Victoria 3 Multiplayer Mod",
-  "id": "",
-  "version": "v0.3",
-  "supported_game_version": "1.8.*",
-  "short_description": "This mod implements tweaks that optimize the Multiplayer experience.",
-  "tags": [],
-  "relationships": [],
-  "game_custom_data": {
-    "multiplayer_synchronized": true
+  "name" : "4x Games Multiplayer Mod - V3",
+	"id" : "",
+  "version" : "",
+  "supported_game_version" : "",
+  "short_description" : "",
+  "tags" : [],
+  "relationships" : [],
+  "game_custom_data" : {
+    "multiplayer_synchronized" : true,
+    "replace_paths": [
+      "common/objective_subgoals",
+      "common/objectives",
+      "common/power_bloc_identities",
+      "common/power_bloc_principle_groups",
+      "common/power_bloc_principles"
+    ]
   }
 }

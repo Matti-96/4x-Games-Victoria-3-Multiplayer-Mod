@@ -1,0 +1,4 @@
+﻿# Unincorporate State Decree
+unincorporate_state_decree = {
+	texture = "gfx/interface/icons/map_mode_icons/states.dds"
+}

@@ -1,0 +1,152 @@
+﻿#IG Scope triggers
+#Approves of aggressive diplo plays like conquest, return state, make subject
+warispolitics_ig_approves_aggression = {
+	NOT = {
+		leader = {
+			has_ideology = ideology:ideology_pacifist
+		}
+	}
+	OR = {
+		leader = {
+			OR = {
+				has_ideology = ideology:ideology_jingoist_leader
+				has_ideology = ideology:ideology_bonapartist
+				has_ideology = ideology:ideology_fascist
+			}	
+		}
+		has_ideology = ideology:ideology_jingoist #I FUCKING LOVE WAR
+	}
+}
+
+#Disapproves of aggressive diplo plays like conquest, return state, make subject
+warispolitics_ig_disapproves_aggression = {
+	OR = {
+		leader = {
+			has_ideology = ideology:ideology_pacifist
+		}
+		has_ideology = ideology:ideology_pacifist #Doesn't normally exist outside of leader, but just in case
+		#Crusader Kings Moment: Peasants don't like being levied for offensive wars
+		AND = {
+			owner = {
+				has_law = law_type:law_peasant_levies
+			}
+			is_interest_group_type = ig_rural_folk
+		}
+	}
+}
+
+#Approves of reducing subject autonomy or annexing subjects
+warispolitics_ig_approves_bullying = {
+	OR = {
+		leader = {
+			OR = {
+				has_ideology = ideology:ideology_authoritarian
+				has_ideology = ideology:ideology_bonapartist
+				has_ideology = ideology:ideology_fascist
+				has_ideology = ideology:ideology_vanguardist
+				has_ideology = ideology:ideology_integralist
+			}	
+		}
+		has_ideology = ideology:ideology_caudillismo
+	} 
+}
+
+#Disapproves of reducing subject autonomy or annexing subjects
+warispolitics_ig_disapproves_bullying = {
+	OR = {
+		leader = {
+			OR = {
+				has_ideology = ideology:ideology_pacifist
+				has_ideology = ideology:ideology_anarchist
+				has_ideology = ideology:ideology_humanitarian
+			}
+		}
+	#These don't normally exist outside of Leaders, but just in case.		
+		has_ideology = ideology:ideology_pacifist
+		has_ideology = ideology:ideology_anarchist
+		has_ideology = ideology:ideology_humanitarian
+	}
+}
+
+#Disapproves of targeting Council Republics with aggressive plays
+warispolitics_ig_disapproves_attacking_council_republic = {
+	OR = {
+		leader = {
+			OR = {
+				has_ideology = ideology:ideology_communist
+				has_ideology = ideology:ideology_anarchist
+				#vanguardists don't care
+			}
+		}
+	}
+	#These don't normally exist outside of Leaders, but just in case.
+	has_ideology = ideology:ideology_communist
+	has_ideology = ideology:ideology_anarchist
+}
+
+#Approves of Ban Slavery plays
+warispolitics_ig_hates_slavery = {
+	law_stance = {
+		law = law_type:law_slave_trade
+		value <= disapprove
+	}
+}
+
+#Disapproves of Ban Slavery plays
+warispolitics_ig_loves_slavery = {
+	law_stance = {
+		law = law_type:law_slavery_banned
+		value <= disapprove
+	}
+}
+
+#Disapproves whenever you found a colony
+warispolitics_ig_hates_colonies = {
+	law_stance = {
+		law = law_type:law_no_colonial_affairs
+		value >= approve #debuff is for anyone who dislikes colonies
+	}
+	law_stance = {
+		law = law_type:law_frontier_colonization
+		value <= disapprove #Rural Folk shouldn't get mad at frontier colonies
+	}
+}
+
+#Approves whenever you found a colony
+warispolitics_ig_loves_colonies = {
+	OR = {
+		law_stance = {
+			law = law_type:law_colonial_exploitation
+			value >= approve
+		}
+		law_stance = {
+			law = law_type:law_colonial_resettlement
+			value >= approve
+		}
+		#no buff for frontier colonists
+	}
+}
+
+#Massively approves of waging an Independence war for FREEDOM!!!
+warispolitics_ig_loves_independence = {
+	OR = {
+		leader = {
+			OR = {
+				has_ideology = ideology:ideology_anarchist
+				has_ideology = ideology:ideology_jingoist_leader
+				has_ideology = ideology:ideology_radical
+			}
+		}
+		has_ideology = ideology:ideology_jingoist
+		has_ideology = ideology:ideology_patriotic
+		has_ideology = ideology:ideology_proletarian
+		is_interest_group_type = ig_armed_forces #I FUCKING LOVE WAR
+		is_interest_group_type = ig_intelligentsia #Intelligentsia national pride
+	}
+}
+
+#Disapproves of waging an independence war (unused by default, hook for possible mod compatibility)
+#Some more complicated logic might be warranted here, like comparing this ig's country to the overlord's
+warispolitics_ig_disapproves_independence = {
+	always = no
+}

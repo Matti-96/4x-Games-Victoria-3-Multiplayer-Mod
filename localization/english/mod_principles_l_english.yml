@@ -1,0 +1,18 @@
+﻿l_english:
+############################################################
+# Economic Imperialism Principle Group
+  principle_group_economic_imperialism: "Economic Imperialism"
+  principle_group_economic_imperialism_desc: "The Economic Imperialism principle group focuses on the economic exploitation of foreign territories, prioritizing profit and resource extraction over local governance and development."
+
+  principle_economic_imperialism_1_desc: "$principle_group_economic_imperialism_desc$"
+  principle_economic_imperialism_2_desc: "$principle_group_economic_imperialism_desc$"
+  principle_economic_imperialism_3_desc: "$principle_group_economic_imperialism_desc$"
+
+# Competition Laws
+  principle_group_competition_laws: "Competition Laws"
+  principle_group_competition_laws_desc: "The Competition Laws principle group emphasizes the regulation of markets to prevent monopolies and promote fair competition, ensuring that no single entity can dominate the economy."
+
+  principle_competition_laws_1_desc: "$principle_group_competition_laws_desc$"
+  principle_competition_laws_2_desc: "$principle_group_competition_laws_desc$"
+  principle_competition_laws_3_desc: "$principle_group_competition_laws_desc$"
+

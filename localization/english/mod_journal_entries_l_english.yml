@@ -1,0 +1,26 @@
+﻿l_english:
+############################################################
+# Power Bloc Synergize Laws Journal Entry
+  je_power_bloc_synergize_laws: "Power Bloc Law Synergization"
+  je_power_bloc_synergize_laws_reason: "We are working to align our laws with those of our Power Bloc leader to enhance our political and economic cohesion within the Bloc."
+
+  power_bloc_synergize_governance_principles_tt: "Works to align our governance principles with those of our Power Bloc leader. Has a 10% chance to make progress each week, with 12 progress points required to complete."
+  power_bloc_synergize_distribution_of_power_tt: "Works to align how power is distributed in our country with that of our Power Bloc leader. Has a 10% chance to make progress each week, with 12 progress points required to complete."
+  power_bloc_synergize_economic_system_tt: "Works to align our economic system with that of our Power Bloc leader. Has a 10% chance to make progress each week, with 12 progress points required to complete."
+  power_bloc_synergize_land_reform_tt: "Works to align our land reform policies with those of our Power Bloc leader. Has a 10% chance to make progress each week, with 12 progress points required to complete."
+  power_bloc_synergize_free_speech_tt: "Works to align our free speech policies with those of our Power Bloc leader. Has a 10% chance to make progress each week, with 12 progress points required to complete."
+  power_bloc_synergize_slavery_tt: "Works to align our slavery policies with those of our Power Bloc leader. Has a 10% chance to make progress each week, with 12 progress points required to complete."
+
+  power_bloc_synergize_governance_principle_trigger_tt: "Our governance principles are not aligned with those of our Power Bloc leader."
+  power_bloc_synergize_distribution_of_power_trigger_tt: "The distribution of power in our country is not aligned with that of our Power Bloc leader."
+  power_bloc_synergize_economic_system_trigger_tt: "Our economic system is not aligned with that of our Power Bloc leader."
+  power_bloc_synergize_land_reform_trigger_tt: "Our land reform policies are not aligned with those of our Power Bloc leader."
+  power_bloc_synergize_free_speech_trigger_tt: "Our free speech policies are not aligned with those of our Power Bloc leader."
+  power_bloc_synergize_slavery_trigger_tt: "Our slavery policies are not aligned with those of our Power Bloc leader."
+
+  power_bloc_synergize_governance_principles_complete_tt: "Our governance principles now align with the governance principles of our Power Bloc leader."
+  power_bloc_synergize_distribution_of_power_complete_tt: "The distribution of power in our country now aligns with that of our Power Bloc leader."
+  power_bloc_synergize_economic_system_complete_tt: "Our economic system now aligns with that of our Power Bloc leader."
+  power_bloc_synergize_land_reform_complete_tt: "Our land reform policies now align with those of our Power Bloc leader."
+  power_bloc_synergize_free_speech_complete_tt: "Our free speech policies now align with those of our Power Bloc leader."
+  power_bloc_synergize_slavery_complete_tt: "Our slavery policies now align with those of our Power Bloc leader."

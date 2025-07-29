@@ -1,0 +1,8929 @@
+﻿namespace = game_master_events
+
+game_master_events.1 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.1.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	immediate = {
+		random_country = {
+			limit = { has_variable = game_master_action_target }
+			save_scope_as = target_country
+		}
+	}
+
+	# Do nothing
+	option = {
+		name = game_master_events.1.a
+
+		default_option = yes
+
+		remove_global_variable = game_master_taking_action
+		scope:target_country = { remove_variable = game_master_action_target }
+	}
+
+	# Money
+	option = {
+		name = game_master_events.1.b
+
+		trigger_event = {
+			id = game_master_events.10
+			days = 0
+			popup = yes
+		}
+	}
+
+	# Infamy
+	option = {
+		name = game_master_events.1.c
+
+		trigger_event = {
+			id = game_master_events.20
+			days = 0
+			popup = yes
+		}
+	}
+
+	# Prestige
+	option = {
+		name = game_master_events.1.d
+
+		trigger_event = {
+			id = game_master_events.30
+			days = 0
+			popup = yes
+		}
+	}
+
+	# Authority
+	option = {
+		name = game_master_events.1.e
+
+		trigger_event = {
+			id = game_master_events.40
+			days = 0
+			popup = yes
+		}
+	}
+
+	# Influence
+	option = {
+		name = game_master_events.1.f
+
+		trigger_event = {
+			id = game_master_events.50
+			days = 0
+			popup = yes
+		}
+	}
+
+	# Buildings
+	#option = {
+	#	name = game_master_events.1.g
+
+	#	trigger_event = {
+	#		id = game_master_events.60
+	#		days = 0
+	#		popup = yes
+	#	}
+	#}
+
+	# Change Game Master
+	option = {
+		name = game_master_events.1.h
+
+		trigger_event = {
+			id = game_master_events.70
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+############################################################
+# Game Master Money Actions
+
+# Money - Adding or removing money from the target country
+game_master_events.10 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.10.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	immediate = {
+		random_country = {
+			limit = { has_variable = game_master_action_target }
+			save_scope_as = target_country
+		}
+		set_global_variable = {
+			name = game_master_action_money_amount
+			value = 0
+		}
+	}
+
+	# Adding Money
+	option = {
+		name = game_master_events.10.a
+
+		trigger_event = {
+			id = game_master_events.11
+			days = 0
+			popup = yes
+		}
+
+		set_global_variable = { name = game_master_action_money_add }
+	}
+
+	# Removing Money
+	option = {
+		name = game_master_events.10.b
+
+		trigger_event = {
+			id = game_master_events.11
+			days = 0
+			popup = yes
+		}
+
+		set_global_variable = { name = game_master_action_money_remove }
+	}
+
+	# Do nothing
+	option = {
+		name = game_master_events.10.c
+
+		default_option = yes
+
+		scope:target = {
+			remove_variable = game_master_action_target
+		}
+
+		remove_global_variable = game_master_action_money_amount
+		remove_global_variable = game_master_taking_action
+	}
+}
+
+# Money Amount - How many billions of £ to add or remove
+game_master_events.11 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.11.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# £0
+	option = {
+		name = game_master_events.11.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.12
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £1,000,000,000
+	option = {
+		name = game_master_events.11.b
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 1000000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 1000000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.12
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £2,000,000,000
+	option = {
+		name = game_master_events.11.c
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 2000000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 2000000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.12
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £3,000,000,000
+	option = {
+		name = game_master_events.11.d
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 3000000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 3000000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.12
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £4,000,000,000
+	option = {
+		name = game_master_events.11.e
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 4000000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 4000000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.12
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £5,000,000,000
+	option = {
+		name = game_master_events.11.f
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 5000000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 5000000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.12
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £6,000,000,000
+	option = {
+		name = game_master_events.11.g
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 6000000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 6000000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.12
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £7,000,000,000
+	option = {
+		name = game_master_events.11.h
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 7000000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 7000000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.12
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £8,000,000,000
+	option = {
+		name = game_master_events.11.i
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 8000000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 8000000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.12
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £9,000,000,000
+	option = {
+		name = game_master_events.11.j
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 9000000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 9000000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.12
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Money Amount - How many hundreds of millions of £ to add or remove
+game_master_events.12 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.12.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# £0
+	option = {
+		name = game_master_events.12.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.13
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £100,000,000
+	option = {
+		name = game_master_events.12.b
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 100000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 100000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.13
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £200,000,000
+	option = {
+		name = game_master_events.12.c
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 200000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 200000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.13
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £300,000,000
+	option = {
+		name = game_master_events.12.d
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 300000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 300000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.13
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £400,000,000
+	option = {
+		name = game_master_events.12.e
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 400000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 400000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.13
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £500,000,000
+	option = {
+		name = game_master_events.12.f
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 500000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 500000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.13
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £600,000,000
+	option = {
+		name = game_master_events.12.g
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 600000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 600000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.13
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £700,000,000
+	option = {
+		name = game_master_events.12.h
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 700000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 700000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.13
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £800,000,000
+	option = {
+		name = game_master_events.12.i
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 800000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 800000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.13
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £900,000,000
+	option = {
+		name = game_master_events.12.j
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 900000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 900000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.13
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Money Amount - How many tens of millions of £ to add or remove
+game_master_events.13 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.13.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# £0
+	option = {
+		name = game_master_events.13.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.14
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £10,000,000
+	option = {
+		name = game_master_events.13.b
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 10000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 10000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.14
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £20,000,000
+	option = {
+		name = game_master_events.13.c
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 20000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 20000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.14
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £30,000,000
+	option = {
+		name = game_master_events.13.d
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 30000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 30000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.14
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £40,000,000
+	option = {
+		name = game_master_events.13.e
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 40000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 40000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.14
+			days = 0
+			popup = yes
+		}
+	}	
+
+	# £50,000,000
+	option = {
+		name = game_master_events.13.f
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 50000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 50000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.14
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £60,000,000
+	option = {
+		name = game_master_events.13.g
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 60000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 60000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.14
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £70,000,000
+	option = {
+		name = game_master_events.13.h
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 70000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 70000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.14
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £80,000,000
+	option = {
+		name = game_master_events.13.i
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 80000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 80000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.14
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £90,000,000
+	option = {
+		name = game_master_events.13.j
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 90000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 90000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.14
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Money Amount - How many millions of £ to add or remove
+game_master_events.14 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.14.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# £0
+	option = {
+		name = game_master_events.14.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.15
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £1,000,000
+	option = {
+		name = game_master_events.14.b
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 1000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 1000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.15
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £2,000,000
+	option = {
+		name = game_master_events.14.c
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 2000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 2000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.15
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £3,000,000
+	option = {
+		name = game_master_events.14.d
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 3000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 3000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.15
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £4,000,000
+	option = {
+		name = game_master_events.14.e
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 4000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 4000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.15
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £5,000,000
+	option = {
+		name = game_master_events.14.f
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 5000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 5000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.15
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £6,000,000
+	option = {
+		name = game_master_events.14.g
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 6000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 6000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.15
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £7,000,000
+	option = {
+		name = game_master_events.14.h
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 7000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 7000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.15
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £8,000,000
+	option = {
+		name = game_master_events.14.i
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 8000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 8000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.15
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £9,000,000
+	option = {
+		name = game_master_events.14.j
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 9000000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 9000000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.15
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Money Amount - How many hundreds of thousands of £ to add or remove
+game_master_events.15 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.15.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# £0
+	option = {
+		name = game_master_events.15.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.16
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £100,000
+	option = {
+		name = game_master_events.15.b
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 100000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 100000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.16
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £200,000
+	option = {
+		name = game_master_events.15.c
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 200000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 200000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.16
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £300,000
+	option = {
+		name = game_master_events.15.d
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 300000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 300000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.16
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £400,000
+	option = {
+		name = game_master_events.15.e
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 400000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 400000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.16
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £500,000
+	option = {
+		name = game_master_events.15.f
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 500000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 500000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.16
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £600,000
+	option = {
+		name = game_master_events.15.g
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 600000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 600000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.16
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £700,000
+	option = {
+		name = game_master_events.15.h
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 700000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 700000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.16
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £800,000
+	option = {
+		name = game_master_events.15.i
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 800000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 800000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.16
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £900,000
+	option = {
+		name = game_master_events.15.j
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 900000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 900000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.16
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Money Amount - How many tens of thousands of £ to add or remove
+game_master_events.16 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.16.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# £0
+	option = {
+		name = game_master_events.16.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.17
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £10,000
+	option = {
+		name = game_master_events.16.b
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 10000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 10000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.17
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £20,000
+	option = {
+		name = game_master_events.16.c
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 20000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 20000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.17
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £30,000
+	option = {
+		name = game_master_events.16.d
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 30000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 30000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.17
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £40,000
+	option = {
+		name = game_master_events.16.e
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 40000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 40000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.17
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £50,000
+	option = {
+		name = game_master_events.16.f
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 50000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 50000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.17
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £60,000
+	option = {
+		name = game_master_events.16.g
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 60000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 60000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.17
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £70,000
+	option = {
+		name = game_master_events.16.h
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 70000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 70000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.17
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £80,000
+	option = {
+		name = game_master_events.16.i
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 80000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 80000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.17
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £90,000
+	option = {
+		name = game_master_events.16.j
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 90000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 90000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.17
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Money Amount - How many thousands of £ to add or remove
+game_master_events.17 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.17.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# £0
+	option = {
+		name = game_master_events.17.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.18
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £1,000
+	option = {
+		name = game_master_events.17.b
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 1000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 1000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.18
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £2,000
+	option = {
+		name = game_master_events.17.c
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 2000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 2000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.18
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £3,000
+	option = {
+		name = game_master_events.17.d
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 3000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 3000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.18
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £4,000
+	option = {
+		name = game_master_events.17.e
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 4000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 4000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.18
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £5,000
+	option = {
+		name = game_master_events.17.f
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 5000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 5000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.18
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £6,000
+	option = {
+		name = game_master_events.17.g
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 6000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 6000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.18
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £7,000
+	option = {
+		name = game_master_events.17.h
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 7000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 7000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.18
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £8,000
+	option = {
+		name = game_master_events.17.i
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 8000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 8000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.18
+			days = 0
+			popup = yes
+		}
+	}
+
+	# £9,000
+	option = {
+		name = game_master_events.17.j
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				add = 9000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			change_global_variable = {
+				name = game_master_action_money_amount
+				subtract = 9000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.18
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Final Confirmation - Confirm the money action
+game_master_events.18 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.18.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	immediate = {
+		random_country ={
+			limit = { has_variable = game_master_action_target }
+			save_scope_as = target_country
+		}
+	}
+
+	# Confirm Action
+	option = {
+		name = game_master_events.18.a
+
+		scope:target_country = {
+			add_treasury = global_var:game_master_action_money_amount
+			remove_variable = game_master_action_target 
+		}
+
+		remove_global_variable = game_master_action_money_amount
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			remove_global_variable = game_master_action_money_add
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			remove_global_variable = game_master_action_money_remove
+		}
+
+		remove_global_variable = game_master_taking_action
+	}
+
+	# Reset Money Action/Start from the beginning
+	option = {
+		name = game_master_events.18.b
+
+		remove_global_variable = game_master_action_money_amount
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			remove_global_variable = game_master_action_money_add
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			remove_global_variable = game_master_action_money_remove
+		}
+
+		trigger_event = {
+			id = game_master_events.10
+			days = 0
+			popup = yes
+		}
+	}
+
+	# Go back to the Game Master main menu
+	option = {
+		name = game_master_events.18.c
+
+		default_option = yes
+
+		remove_global_variable = game_master_action_money_amount
+
+		if = {
+			limit = { has_global_variable = game_master_action_money_add }
+			remove_global_variable = game_master_action_money_add
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_money_remove }
+			remove_global_variable = game_master_action_money_remove
+		}
+
+		trigger_event = {
+			id = game_master_events.1
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+############################################################
+# Game Master - Infamy Actions
+
+# Adding or Removing Infamy
+game_master_events.20 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.20.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	immediate = {
+		scope:target = {
+			remove_variable = game_master_action_target
+		}
+		set_global_variable = {
+			name = game_master_action_infamy_amount
+			value = 0
+		}
+	}
+
+	option = {
+		name = game_master_events.20.a
+
+		set_global_variable = { name = game_master_action_infamy_add }
+
+		trigger_event = {
+			id = game_master_events.21
+			days = 0
+			popup = yes
+		}
+	}
+
+	option = {
+		name = game_master_events.20.b
+
+		set_global_variable = { name = game_master_action_infamy_remove }
+
+		trigger_event = {
+			id = game_master_events.21
+			days = 0
+			popup = yes
+		}
+	}
+
+	option = {
+		name = game_master_events.20.c
+
+		default_option = yes
+
+		scope:target_country = {
+			remove_variable = game_master_action_target
+		}
+
+		remove_global_variable = game_master_action_infamy_amount
+		remove_global_variable = game_master_taking_action
+	}
+}
+
+# Infamy Amount - How many hundreds of infamy to add or remove
+game_master_events.21 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.21.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Infamy
+	option = {
+		name = game_master_events.21.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.22
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 100 Infamy
+	option = {
+		name = game_master_events.21.b
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 100
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 100
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.22
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 200 Infamy
+	option = {
+		name = game_master_events.21.c
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 200
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 200
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.22
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 300 Infamy
+	option = {
+		name = game_master_events.21.d
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 300
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 300
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.22
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 400 Infamy
+	option = {
+		name = game_master_events.21.e
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 400
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 400
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.22
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 500 Infamy
+	option = {
+		name = game_master_events.21.f
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 500
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 500
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.22
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 600 Infamy
+	option = {
+		name = game_master_events.21.g
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 600
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 600
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.22
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 700 Infamy
+	option = {
+		name = game_master_events.21.h
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 700
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 700
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.22
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 800 Infamy
+	option = {
+		name = game_master_events.21.i
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 800
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 800
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.22
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 900 Infamy
+	option = {
+		name = game_master_events.21.j
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 900
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 900
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.22
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Infamy Amount - How many tens of infamy to add or remove
+game_master_events.22 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.22.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Infamy
+	option = {
+		name = game_master_events.22.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.23
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 10 Infamy
+	option = {
+		name = game_master_events.22.b
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 10
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 10
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.23
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 20 Infamy
+	option = {
+		name = game_master_events.22.c
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 20
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 20
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.23
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 30 Infamy
+	option = {
+		name = game_master_events.22.d
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 30
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 30
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.23
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 40 Infamy
+	option = {
+		name = game_master_events.22.e
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 40
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 40
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.23
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 50 Infamy
+	option = {
+		name = game_master_events.22.f
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 50
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 50
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.23
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 60 Infamy
+	option = {
+		name = game_master_events.22.g
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 60
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 60
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.23
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 70 Infamy
+	option = {
+		name = game_master_events.22.h
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 70
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 70
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.23
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 80 Infamy
+	option = {
+		name = game_master_events.22.i
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 80
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 80
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.23
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 90 Infamy
+	option = {
+		name = game_master_events.22.j
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 90
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 90
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.23
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Infamy Amount - How many units of infamy to add or remove
+game_master_events.23 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.23.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Infamy
+	option = {
+		name = game_master_events.23.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.24
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 1 Infamy
+	option = {
+		name = game_master_events.23.b
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 1
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 1
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.24
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 2 Infamy
+	option = {
+		name = game_master_events.23.c
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 2
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 2
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.24
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 3 Infamy
+	option = {
+		name = game_master_events.23.d
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 3
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 3
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.24
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 4 Infamy
+	option = {
+		name = game_master_events.23.e
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 4
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 4
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.24
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 5 Infamy
+	option = {
+		name = game_master_events.23.f
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 5
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 5
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.24
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 6 Infamy
+	option = {
+		name = game_master_events.23.g
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 6
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 6
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.24
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 7 Infamy
+	option = {
+		name = game_master_events.23.h
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 7
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 7
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.24
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 8 Infamy
+	option = {
+		name = game_master_events.23.i
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 8
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 8
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.24
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 9 Infamy
+	option = {
+		name = game_master_events.23.j
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				add = 9
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			change_global_variable = {
+				name = game_master_action_infamy_amount
+				subtract = 9
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.24
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Confirm Infamy Action - Confirm the infamy action
+game_master_events.24 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.24.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	immediate = {
+		random_country = {
+			limit = { has_variable = game_master_action_target }
+			save_scope_as = target_country
+		}
+	}
+
+	# Confirm Action
+	option = {
+		name = game_master_events.24.a
+
+		scope:target_country = {
+			change_infamy = global_var:game_master_action_infamy_amount
+			remove_variable = game_master_action_target
+		}
+
+		remove_global_variable = game_master_action_infamy_amount
+		
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			remove_global_variable = game_master_action_infamy_add
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			remove_global_variable = game_master_action_infamy_remove
+		}
+
+		remove_global_variable = game_master_taking_action
+	}
+
+	# Reset Infamy Action/Start from the beginning
+	option = {
+		name = game_master_events.24.b
+
+		remove_global_variable = game_master_action_infamy_amount
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			remove_global_variable = game_master_action_infamy_add
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			remove_global_variable = game_master_action_infamy_remove
+		}
+
+		trigger_event = {
+			id = game_master_events.20
+			days = 0
+			popup = yes
+		}
+	}
+
+	# Go back to the Game Master main menu
+	option = {
+		name = game_master_events.18.c
+
+		default_option = yes
+
+		remove_global_variable = game_master_action_infamy_amount
+
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_add }
+			remove_global_variable = game_master_action_infamy_add
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_infamy_remove }
+			remove_global_variable = game_master_action_infamy_remove
+		}
+
+		trigger_event = {
+			id = game_master_events.1
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+############################################################
+# Game Master - Prestige Actions
+
+# Adding or Removing Prestige
+game_master_events.30 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.30.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	immediate = {
+		random_country = {
+			limit = { has_variable = game_master_action_target }
+			save_scope_as = target_country
+		}
+		set_global_variable = {
+			name = game_master_action_prestige_amount
+			value = 0
+		}
+		set_global_variable = {
+			name = game_master_action_prestige_duration
+			value = 0
+		}
+	}
+
+	option = {
+		name = game_master_events.30.a
+
+		set_global_variable = { name = game_master_action_prestige_add }
+
+		trigger_event = {
+			id = game_master_events.31
+			days = 0
+			popup = yes
+		}
+	}
+
+	option = {
+		name = game_master_events.30.b
+
+		set_global_variable = { name = game_master_action_prestige_remove }
+
+		trigger_event = {
+			id = game_master_events.31
+			days = 0
+			popup = yes
+		}
+	}
+
+	option = {
+		trigger = {
+			scope:target_country = {
+				has_modifier = game_master_prestige_add_modifier
+			}
+		}
+
+		name = game_master_events.30.c
+
+		scope:target_country = { 
+			remove_modifier = game_master_prestige_add_modifier
+			remove_variable = game_master_action_target
+		}
+
+		remove_global_variable = game_master_action_prestige_amount
+		remove_global_variable = game_master_action_prestige_duration
+		remove_global_variable = game_master_taking_action
+	}
+
+	option = {
+		trigger = {
+			scope:target_country = {
+				has_modifier = game_master_prestige_multiplier_modifier
+			}
+		}
+
+		name = game_master_events.30.d
+
+		scope:target_country = { 
+			remove_modifier = game_master_prestige_multiplier_modifier
+			remove_variable = game_master_action_target
+		}
+
+		remove_global_variable = game_master_action_prestige_amount
+		remove_global_variable = game_master_action_prestige_duration
+		remove_global_variable = game_master_taking_action
+	}
+
+	option = {
+		trigger = {
+			scope:target_country = {
+				has_modifier = game_master_prestige_add_modifier
+				has_modifier = game_master_prestige_multiplier_modifier
+			}
+		}
+
+		name = game_master_events.30.e
+
+		scope:target_country = { 
+			remove_modifier = game_master_prestige_add_modifier
+			remove_modifier = game_master_prestige_multiplier_modifier
+			remove_variable = game_master_action_target
+		}
+
+		remove_global_variable = game_master_action_prestige_amount
+		remove_global_variable = game_master_action_prestige_duration
+		remove_global_variable = game_master_taking_action
+	}
+
+	option = {
+		name = game_master_events.30.f
+
+		default_option = yes
+
+		scope:target_country = {
+			remove_variable = game_master_action_target
+		}
+
+		remove_global_variable = game_master_action_prestige_amount
+		remove_global_variable = game_master_action_prestige_duration
+		remove_global_variable = game_master_taking_action
+	}
+}
+
+# Add Modifier or Multiplier Modifier
+game_master_events.31 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.31.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	option = {
+		name = game_master_events.31.a
+
+		default_option = yes
+
+		set_global_variable = { name = game_master_action_prestige_add_modifier }
+
+		trigger_event = {
+			id = game_master_events.32
+			days = 0
+			popup = yes
+		}
+	}
+
+	option = {
+		name = game_master_events.31.b
+
+		set_global_variable = { name = game_master_action_prestige_multiplier_modifier }
+
+		trigger_event = {
+			id = game_master_events.33
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Prestige Amount - How many thousands of prestige to add or remove
+game_master_events.32 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.32.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Prestige
+	option = {
+		name = game_master_events.32.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.33
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 1000 Prestige
+	option = {
+		name = game_master_events.32.b
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 1000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 1000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.33
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 2000 Prestige
+	option = {
+		name = game_master_events.32.c
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 2000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 2000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.33
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 3000 Prestige
+	option = {
+		name = game_master_events.32.d
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 3000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 3000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.33
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 4000 Prestige
+	option = {
+		name = game_master_events.32.e
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 4000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 4000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.33
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 5000 Prestige
+	option = {
+		name = game_master_events.32.f
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 5000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 5000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.33
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 6000 Prestige
+	option = {
+		name = game_master_events.32.g
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 6000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 6000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.33
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 7000 Prestige
+	option = {
+		name = game_master_events.32.h
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 7000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 7000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.33
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 8000 Prestige
+	option = {
+		name = game_master_events.32.i
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 8000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 8000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.33
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 9000 Prestige
+	option = {
+		name = game_master_events.32.j
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 9000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 9000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.33
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Prestige Amount - How many hundreds of prestige to add or remove
+game_master_events.33 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.33.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Prestige
+	option = {
+		name = game_master_events.33.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.34
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 100 Prestige
+	option = {
+		name = game_master_events.33.b
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 100
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 100
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.34
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 200 Prestige
+	option = {
+		name = game_master_events.33.c
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 200
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 200
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.34
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 300 Prestige
+	option = {
+		name = game_master_events.33.d
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 300
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 300
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.34
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 400 Prestige
+	option = {
+		name = game_master_events.33.e
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 400
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 400
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.34
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 500 Prestige
+	option = {
+		name = game_master_events.33.f
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 500
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 500
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.34
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 600 Prestige
+	option = {
+		name = game_master_events.33.g
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 600
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 600
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.34
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 700 Prestige
+	option = {
+		name = game_master_events.33.h
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 700
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 700
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.34
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 800 Prestige
+	option = {
+		name = game_master_events.33.i
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 800
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 800
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.34
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 900 Prestige
+	option = {
+		name = game_master_events.33.j
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 900
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 900
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.34
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Prestige Amount - How many tens of prestige to add or remove
+game_master_events.34 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.34.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Prestige
+	option = {
+		name = game_master_events.34.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.35
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 10 Prestige
+	option = {
+		name = game_master_events.34.b
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 10
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 10
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.35
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 20 Prestige
+	option = {
+		name = game_master_events.34.c
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 20
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 20
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.35
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 30 Prestige
+	option = {
+		name = game_master_events.34.d
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 30
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 30
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.35
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 40 Prestige
+	option = {
+		name = game_master_events.34.e
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 40
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 40
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.35
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 50 Prestige
+	option = {
+		name = game_master_events.34.f
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 50
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 50
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.35
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 60 Prestige
+	option = {
+		name = game_master_events.34.g
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 60
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 60
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.35
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 70 Prestige
+	option = {
+		name = game_master_events.34.h
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 70
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 70
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.35
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 80 Prestige
+	option = {
+		name = game_master_events.34.i
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 80
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 80
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.35
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 90 Prestige
+	option = {
+		name = game_master_events.34.j
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 90
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 90
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.35
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Prestige Amount - How many units of prestige to add or remove
+game_master_events.35 = {
+	type = country_event
+	placement = ROOT
+	
+	title = game_master_events.35.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Prestige
+	option = {
+		name = game_master_events.35.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.36
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 1 Prestige
+	option = {
+		name = game_master_events.35.b
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 1
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 1
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.36
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 2 Prestige
+	option = {
+		name = game_master_events.35.c
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 2
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 2
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.36
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 3 Prestige
+	option = {
+		name = game_master_events.35.d
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 3
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 3
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.36
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 4 Prestige
+	option = {
+		name = game_master_events.35.e
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 4
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 4
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.36
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 5 Prestige
+	option = {
+		name = game_master_events.35.f
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 5
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 5
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.36
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 6 Prestige
+	option = {
+		name = game_master_events.35.g
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 6
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 6
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.36
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 7 Prestige
+	option = {
+		name = game_master_events.35.h
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 7
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 7
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.36
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 8 Prestige
+	option = {
+		name = game_master_events.35.i
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 8
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 8
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.36
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 9 Prestige
+	option = {
+		name = game_master_events.35.j
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				add = 9
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			change_global_variable = {
+				name = game_master_action_prestige_amount
+				subtract = 9
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.36
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Prestige Duration - How many tens of years the prestige modifier will last
+game_master_events.36 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.36.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Years
+	option = {
+		name = game_master_events.36.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.37
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 10 Years
+	option = {
+		name = game_master_events.36.b
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 120
+		}
+
+		trigger_event = {
+			id = game_master_events.37
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 20 Years
+	option = {
+		name = game_master_events.36.c
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 240
+		}
+
+		trigger_event = {
+			id = game_master_events.37
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 30 Years
+	option = {
+		name = game_master_events.36.d
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 360
+		}
+
+		trigger_event = {
+			id = game_master_events.37
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 40 Years
+	option = {
+		name = game_master_events.36.e
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 480
+		}
+
+		trigger_event = {
+			id = game_master_events.37
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 50 Years
+	option = {
+		name = game_master_events.36.f
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 600
+		}
+
+		trigger_event = {
+			id = game_master_events.37
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 60 Years
+	option = {
+		name = game_master_events.36.g
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 720
+		}
+
+		trigger_event = {
+			id = game_master_events.37
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 70 Years
+	option = {
+		name = game_master_events.36.h
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 840
+		}
+
+		trigger_event = {
+			id = game_master_events.37
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 80 Years
+	option = {
+		name = game_master_events.36.i
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 960
+		}
+
+		trigger_event = {
+			id = game_master_events.37
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 90 Years
+	option = {
+		name = game_master_events.36.j
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 1080
+		}
+
+		trigger_event = {
+			id = game_master_events.37
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Prestige Duration - How many years the prestige modifier will last
+game_master_events.37 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.37.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Years
+	option = {
+		name = game_master_events.37.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.38
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 1 Year
+	option = {
+		name = game_master_events.37.b
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 12
+		}
+
+		trigger_event = {
+			id = game_master_events.38
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 2 Years
+	option = {
+		name = game_master_events.37.c
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 24
+		}
+
+		trigger_event = {
+			id = game_master_events.38
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 3 Years
+	option = {
+		name = game_master_events.37.d
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 36
+		}
+
+		trigger_event = {
+			id = game_master_events.38
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 4 Years
+	option = {
+		name = game_master_events.37.e
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 48
+		}
+
+		trigger_event = {
+			id = game_master_events.38
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 5 Years
+	option = {
+		name = game_master_events.37.f
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 60
+		}
+
+		trigger_event = {
+			id = game_master_events.38
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 6 Years
+	option = {
+		name = game_master_events.37.g
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 72
+		}
+
+		trigger_event = {
+			id = game_master_events.38
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 7 Years
+	option = {
+		name = game_master_events.37.h
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 84
+		}
+
+		trigger_event = {
+			id = game_master_events.38
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 8 Years
+	option = {
+		name = game_master_events.37.i
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 96
+		}
+
+		trigger_event = {
+			id = game_master_events.38
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 9 Years
+	option = {
+		name = game_master_events.37.j
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 108
+		}
+
+		trigger_event = {
+			id = game_master_events.38
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Prestige Duration - How many months the prestige modifier will last
+game_master_events.38 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.38.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Months
+	option = {
+		name = game_master_events.38.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.39
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 1 Month
+	option = {
+		name = game_master_events.38.b
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 1
+		}
+
+		trigger_event = {
+			id = game_master_events.39
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 2 Months
+	option = {
+		name = game_master_events.38.c
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 2
+		}
+
+		trigger_event = {
+			id = game_master_events.39
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 3 Months
+	option = {
+		name = game_master_events.38.d
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 3
+		}
+
+		trigger_event = {
+			id = game_master_events.39
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 4 Months
+	option = {
+		name = game_master_events.38.e
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 4
+		}
+
+		trigger_event = {
+			id = game_master_events.39
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 5 Months
+	option = {
+		name = game_master_events.38.f
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 5
+		}
+
+		trigger_event = {
+			id = game_master_events.39
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 6 Months
+	option = {
+		name = game_master_events.38.g
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 6
+		}
+
+		trigger_event = {
+			id = game_master_events.39
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 7 Months
+	option = {
+		name = game_master_events.38.h
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 7
+		}
+
+		trigger_event = {
+			id = game_master_events.39
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 8 Months
+	option = {
+		name = game_master_events.38.i
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 8
+		}
+
+		trigger_event = {
+			id = game_master_events.39
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 9 Months
+	option = {
+		name = game_master_events.38.j
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 9
+		}
+
+		trigger_event = {
+			id = game_master_events.39
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 10 Months
+	option = {
+		name = game_master_events.38.k
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 10
+		}
+
+		trigger_event = {
+			id = game_master_events.39
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 11 Months
+	option = {
+		name = game_master_events.38.l
+
+		change_global_variable = {
+			name = game_master_action_prestige_duration
+			add = 11
+		}
+
+		trigger_event = {
+			id = game_master_events.39
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Confirm Prestige Action - Confirm the prestige action
+game_master_events.39 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.39.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	immediate = {
+		random_country = {
+			limit = { has_variable = game_master_action_target }
+			save_scope_as = target_country
+		}
+	}
+
+	# Confirm Prestige Action
+	option = {
+		name = game_master_events.39.a
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			if = {
+				limit = { has_global_variable = game_master_action_prestige_add_modifier }
+				scope:target_country = {
+					add_modifier = {
+						name = game_master_prestige_add_modifier
+						multiplier = global_var:game_master_action_prestige_amount
+						months = game_master_modifier_prestige_duration
+					}
+					remove_variable = game_master_action_target
+				}
+
+				remove_global_variable = game_master_action_prestige_add_modifier
+				remove_global_variable = game_master_action_prestige_amount
+				remove_global_variable = game_master_action_prestige_duration
+				remove_global_variable = game_master_taking_action
+			}
+			else_if = {
+				limit = { has_global_variable = game_master_action_prestige_multiplier_modifier }
+				scope:target_country = {
+					add_modifier = {
+						name = game_master_prestige_multiplier_modifier
+						multiplier = global_var:game_master_action_prestige_amount
+						months = game_master_modifier_prestige_duration
+					}
+					remove_variable = game_master_action_target
+				}
+				
+				remove_global_variable = game_master_action_prestige_multiplier_modifier
+				remove_global_variable = game_master_action_prestige_amount
+				remove_global_variable = game_master_action_prestige_duration
+				remove_global_variable = game_master_taking_action
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			if = {
+				limit = { has_global_variable = game_master_action_prestige_add_modifier }
+				scope:target_country = {
+					add_modifier = {
+						name = game_master_prestige_add_modifier
+						multiplier = global_var:game_master_action_prestige_amount
+						months = game_master_modifier_prestige_duration
+					}
+					remove_variable = game_master_action_target
+				}
+
+				remove_global_variable = game_master_action_prestige_add_modifier
+				remove_global_variable = game_master_action_prestige_amount
+				remove_global_variable = game_master_action_prestige_duration
+				remove_global_variable = game_master_taking_action
+			}
+			else_if = {
+				limit = { has_global_variable = game_master_action_prestige_multiplier_modifier }
+				scope:target_country = {
+					add_modifier = {
+						name = game_master_prestige_multiplier_modifier
+						multiplier = global_var:game_master_action_prestige_amount
+						months = game_master_modifier_prestige_duration
+					}
+					remove_variable = game_master_action_target
+				}
+				
+				remove_global_variable = game_master_action_prestige_multiplier_modifier
+				remove_global_variable = game_master_action_prestige_amount
+				remove_global_variable = game_master_action_prestige_duration
+				remove_global_variable = game_master_taking_action
+			}
+		}
+	}
+
+	# Reset Prestige Action
+	option = {
+		name = game_master_events.39.b
+
+		remove_global_variable = game_master_action_prestige_amount
+		remove_global_variable = game_master_action_prestige_duration
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			remove_global_variable = game_master_action_prestige_add
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			remove_global_variable = game_master_action_prestige_remove
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add_modifier }
+			remove_global_variable = game_master_action_prestige_add_modifier
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_multiplier_modifier }
+			remove_global_variable = game_master_action_prestige_multiplier_modifier
+		}
+
+		trigger_event = {
+			id = game_master_events.30
+			days = 0
+			popup = yes
+		}
+	}
+
+	# Go back to the Game Master Main Menu
+	option = {
+		name = game_master_events.39.c
+
+		default_option = yes
+
+		remove_global_variable = game_master_action_prestige_amount
+		remove_global_variable = game_master_action_prestige_duration
+
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add }
+			remove_global_variable = game_master_action_prestige_add
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_remove }
+			remove_global_variable = game_master_action_prestige_remove
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_add_modifier }
+			remove_global_variable = game_master_action_prestige_add_modifier
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_prestige_multiplier_modifier }
+			remove_global_variable = game_master_action_prestige_multiplier_modifier
+		}
+
+		trigger_event = {
+			id = game_master_events.1
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+############################################################
+# Game Master - Authority Actions
+
+# Adding or Removing Authority
+game_master_events.40 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.40.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	immediate = {
+		random_country = {
+			limit = { has_variable = game_master_action_target }
+			save_scope_as = target_country
+		}
+		set_global_variable = {
+			name = game_master_action_authority_amount
+			value = 0
+		}
+		set_global_variable = {
+			name = game_master_action_authority_duration
+			value = 0
+		}
+	}
+
+	option = {
+		name = game_master_events.40.a
+
+		set_global_variable = { name = game_master_action_authority_add }
+
+		trigger_event = {
+			id = game_master_events.41
+			days = 0
+			popup = yes
+		}
+	}
+
+	option = {
+		name = game_master_events.40.b
+
+		set_global_variable = { name = game_master_action_authority_remove }
+
+		trigger_event = {
+			id = game_master_events.41
+			days = 0
+			popup = yes
+		}
+	}
+
+	option = {
+		trigger = {
+			scope:target_country = {
+				has_modifier = game_master_authority_add_modifier
+			}
+		}
+
+		name = game_master_events.40.c
+
+		scope:target_country = {
+			remove_modifier = game_master_authority_add_modifier
+			remove_variable = game_master_action_target
+		}
+
+		remove_global_variable = game_master_action_authority_amount
+		remove_global_variable = game_master_action_authority_duration
+		remove_global_variable = game_master_taking_action
+	}
+
+	option = {
+		trigger = {
+			scope:target_country = {
+				has_modifier = game_master_authority_multiplier_modifier
+			}
+		}
+
+		name = game_master_events.40.d
+
+		scope:target_country = {
+			remove_modifier = game_master_authority_multiplier_modifier
+			remove_variable = game_master_action_target
+		}
+
+		remove_global_variable = game_master_action_authority_amount
+		remove_global_variable = game_master_action_authority_duration
+		remove_global_variable = game_master_taking_action
+	}
+
+	option = {
+		trigger = {
+			scope:target_country = {
+				has_modifier = game_master_authority_add_modifier
+				has_modifier = game_master_authority_multiplier_modifier
+			}
+		}
+
+		name = game_master_events.40.e
+
+		scope:target_country = {
+			remove_modifier = game_master_authority_add_modifier
+			remove_modifier = game_master_authority_multiplier_modifier
+			remove_variable = game_master_action_target
+		}
+
+		remove_global_variable = game_master_action_authority_amount
+		remove_global_variable = game_master_action_authority_duration
+		remove_global_variable = game_master_taking_action
+	}
+
+	option = {
+		name = game_master_events.40.f
+
+		default_option = yes
+
+		scope:target = {
+			remove_variable = game_master_action_target
+		}
+
+		remove_global_variable = game_master_action_authority_amount
+		remove_global_variable = game_master_action_authority_duration
+		remove_global_variable = game_master_taking_action
+	}
+}
+
+# Add Modifier or Multiplier Modifier
+game_master_events.41 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.41.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	option = {
+		name = game_master_events.41.a
+
+		default_option = yes
+
+		set_global_variable = { name = game_master_action_authority_add_modifier }
+
+		trigger_event = {
+			id = game_master_events.42
+			days = 0
+			popup = yes
+		}
+	}
+
+	option = {
+		name = game_master_events.41.b
+
+		set_global_variable = { name = game_master_action_authority_multiplier_modifier }
+
+		trigger_event = {
+			id = game_master_events.43
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Authority Amount - How many thousands of authority to add or remove
+game_master_events.42 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.42.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Authority
+	option = {
+		name = game_master_events.42.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.43
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 1000 Authority
+	option = {
+		name = game_master_events.42.b
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 1000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 1000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.43
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 2000 Authority
+	option = {
+		name = game_master_events.42.c
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 2000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 2000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.43
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 3000 Authority
+	option = {
+		name = game_master_events.42.d
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 3000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 3000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.43
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 4000 Authority
+	option = {
+		name = game_master_events.42.e
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 4000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 4000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.43
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 5000 Authority
+	option = {
+		name = game_master_events.42.f
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 5000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 5000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.43
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 6000 Authority
+	option = {
+		name = game_master_events.42.g
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 6000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 6000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.43
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 7000 Authority
+	option = {
+		name = game_master_events.42.h
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 7000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 7000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.43
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 8000 Authority
+	option = {
+		name = game_master_events.42.i
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 8000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 8000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.43
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 9000 Authority
+	option = {
+		name = game_master_events.42.j
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 9000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 9000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.43
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Authority Amount - How many hundreds of authority to add or remove
+game_master_events.43 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.43.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Authority
+	option = {
+		name = game_master_events.43.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.44
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 100 Authority
+	option = {
+		name = game_master_events.43.b
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 100
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 100
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.44
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 200 Authority
+	option = {
+		name = game_master_events.43.c
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 200
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 200
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.44
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 300 Authority
+	option = {
+		name = game_master_events.43.d
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 300
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 300
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.44
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 400 Authority
+	option = {
+		name = game_master_events.43.e
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 400
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 400
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.44
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 500 Authority
+	option = {
+		name = game_master_events.43.f
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 500
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 500
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.44
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 600 Authority
+	option = {
+		name = game_master_events.43.g
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 600
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 600
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.44
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 700 Authority
+	option = {
+		name = game_master_events.43.h
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 700
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 700
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.44
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 800 Authority
+	option = {
+		name = game_master_events.43.i
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 800
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 800
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.44
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 900 Authority
+	option = {
+		name = game_master_events.43.j
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 900
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 900
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.44
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Authority Amount - How many tens of authority to add or remove
+game_master_events.44 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.44.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Authority
+	option = {
+		name = game_master_events.44.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.45
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 10 Authority
+	option = {
+		name = game_master_events.44.b
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 10
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 10
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.45
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 20 Authority
+	option = {
+		name = game_master_events.44.c
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 20
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 20
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.45
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 30 Authority
+	option = {
+		name = game_master_events.44.d
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 30
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 30
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.45
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 40 Authority
+	option = {
+		name = game_master_events.44.e
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 40
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 40
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.45
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 50 Authority
+	option = {
+		name = game_master_events.44.f
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 50
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 50
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.45
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 60 Authority
+	option = {
+		name = game_master_events.44.g
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 60
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 60
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.45
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 70 Authority
+	option = {
+		name = game_master_events.44.h
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 70
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 70
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.45
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 80 Authority
+	option = {
+		name = game_master_events.44.i
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 80
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 80
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.45
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 90 Authority
+	option = {
+		name = game_master_events.44.j
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 90
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 90
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.45
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Authority Amount - How many units of authority to add or remove
+game_master_events.45 = {
+	type = country_event
+	placement = ROOT
+	
+	title = game_master_events.45.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Authority
+	option = {
+		name = game_master_events.45.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.46
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 1 Authority
+	option = {
+		name = game_master_events.45.b
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 1
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 1
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.46
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 2 Authority
+	option = {
+		name = game_master_events.45.c
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 2
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 2
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.46
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 3 Authority
+	option = {
+		name = game_master_events.45.d
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 3
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 3
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.46
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 4 Authority
+	option = {
+		name = game_master_events.45.e
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 4
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 4
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.46
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 5 Authority
+	option = {
+		name = game_master_events.45.f
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 5
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 5
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.46
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 6 Authority
+	option = {
+		name = game_master_events.45.g
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 6
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 6
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.46
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 7 Authority
+	option = {
+		name = game_master_events.45.h
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 7
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 7
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.46
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 8 Authority
+	option = {
+		name = game_master_events.45.i
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 8
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 8
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.46
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 9 Authority
+	option = {
+		name = game_master_events.45.j
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				add = 9
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			change_global_variable = {
+				name = game_master_action_authority_amount
+				subtract = 9
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.46
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Authority Duration - How many tens of years the authority modifier will last
+game_master_events.46 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.46.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Years
+	option = {
+		name = game_master_events.46.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.47
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 10 Years
+	option = {
+		name = game_master_events.46.b
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 120
+		}
+
+		trigger_event = {
+			id = game_master_events.47
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 20 Years
+	option = {
+		name = game_master_events.46.c
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 240
+		}
+
+		trigger_event = {
+			id = game_master_events.47
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 30 Years
+	option = {
+		name = game_master_events.46.d
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 360
+		}
+
+		trigger_event = {
+			id = game_master_events.47
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 40 Years
+	option = {
+		name = game_master_events.46.e
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 480
+		}
+
+		trigger_event = {
+			id = game_master_events.47
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 50 Years
+	option = {
+		name = game_master_events.46.f
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 600
+		}
+
+		trigger_event = {
+			id = game_master_events.47
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 60 Years
+	option = {
+		name = game_master_events.46.g
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 720
+		}
+
+		trigger_event = {
+			id = game_master_events.47
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 70 Years
+	option = {
+		name = game_master_events.46.h
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 840
+		}
+
+		trigger_event = {
+			id = game_master_events.47
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 80 Years
+	option = {
+		name = game_master_events.46.i
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 960
+		}
+
+		trigger_event = {
+			id = game_master_events.47
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 90 Years
+	option = {
+		name = game_master_events.46.j
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 1080
+		}
+
+		trigger_event = {
+			id = game_master_events.47
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Authority Duration - How many years the authority modifier will last
+game_master_events.47 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.47.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Years
+	option = {
+		name = game_master_events.47.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.48
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 1 Year
+	option = {
+		name = game_master_events.47.b
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 12
+		}
+
+		trigger_event = {
+			id = game_master_events.48
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 2 Years
+	option = {
+		name = game_master_events.47.c
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 24
+		}
+
+		trigger_event = {
+			id = game_master_events.48
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 3 Years
+	option = {
+		name = game_master_events.47.d
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 36
+		}
+
+		trigger_event = {
+			id = game_master_events.48
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 4 Years
+	option = {
+		name = game_master_events.47.e
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 48
+		}
+
+		trigger_event = {
+			id = game_master_events.48
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 5 Years
+	option = {
+		name = game_master_events.47.f
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 60
+		}
+
+		trigger_event = {
+			id = game_master_events.48
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 6 Years
+	option = {
+		name = game_master_events.47.g
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 72
+		}
+
+		trigger_event = {
+			id = game_master_events.48
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 7 Years
+	option = {
+		name = game_master_events.47.h
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 84
+		}
+
+		trigger_event = {
+			id = game_master_events.48
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 8 Years
+	option = {
+		name = game_master_events.47.i
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 96
+		}
+
+		trigger_event = {
+			id = game_master_events.48
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 9 Years
+	option = {
+		name = game_master_events.47.j
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 108
+		}
+
+		trigger_event = {
+			id = game_master_events.48
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Authority Duration - How many months the authority modifier will last
+game_master_events.48 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.48.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Months
+	option = {
+		name = game_master_events.48.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.49
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 1 Month
+	option = {
+		name = game_master_events.48.b
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 1
+		}
+
+		trigger_event = {
+			id = game_master_events.49
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 2 Months
+	option = {
+		name = game_master_events.48.c
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 2
+		}
+
+		trigger_event = {
+			id = game_master_events.49
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 3 Months
+	option = {
+		name = game_master_events.48.d
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 3
+		}
+
+		trigger_event = {
+			id = game_master_events.49
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 4 Months
+	option = {
+		name = game_master_events.48.e
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 4
+		}
+
+		trigger_event = {
+			id = game_master_events.49
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 5 Months
+	option = {
+		name = game_master_events.48.f
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 5
+		}
+
+		trigger_event = {
+			id = game_master_events.49
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 6 Months
+	option = {
+		name = game_master_events.48.g
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 6
+		}
+
+		trigger_event = {
+			id = game_master_events.49
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 7 Months
+	option = {
+		name = game_master_events.48.h
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 7
+		}
+
+		trigger_event = {
+			id = game_master_events.49
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 8 Months
+	option = {
+		name = game_master_events.48.i
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 8
+		}
+
+		trigger_event = {
+			id = game_master_events.49
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 9 Months
+	option = {
+		name = game_master_events.48.j
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 9
+		}
+
+		trigger_event = {
+			id = game_master_events.49
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 10 Months
+	option = {
+		name = game_master_events.48.k
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 10
+		}
+
+		trigger_event = {
+			id = game_master_events.49
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 11 Months
+	option = {
+		name = game_master_events.48.l
+
+		change_global_variable = {
+			name = game_master_action_authority_duration
+			add = 11
+		}
+
+		trigger_event = {
+			id = game_master_events.49
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Confirm Authority Action - Confirm the authority action
+game_master_events.49 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.49.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	immediate = {
+		random_country = {
+			limit = { has_variable = game_master_action_target }
+			save_scope_as = target_country
+		}
+	}
+
+	# Confirm Authority Action
+	option = {
+		name = game_master_events.49.a
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			if = {
+				limit = { has_global_variable = game_master_action_authority_add_modifier }
+				scope:target_country = {
+					add_modifier = {
+						name = game_master_authority_add_modifier
+						multiplier = global_var:game_master_action_authority_amount
+						months = game_master_modifier_authority_duration
+					}
+					remove_variable = game_master_action_target
+				}
+
+				remove_global_variable = game_master_action_authority_add_modifier
+				remove_global_variable = game_master_action_authority_amount
+				remove_global_variable = game_master_action_authority_duration
+				remove_global_variable = game_master_taking_action
+			}
+			else_if = {
+				limit = { has_global_variable = game_master_action_authority_multiplier_modifier }
+				scope:target_country = {
+					add_modifier = {
+						name = game_master_authority_multiplier_modifier
+						multiplier = global_var:game_master_action_authority_amount
+						months = game_master_modifier_authority_duration
+					}
+					remove_variable = game_master_action_target
+				}
+				
+				remove_global_variable = game_master_action_authority_multiplier_modifier
+				remove_global_variable = game_master_action_authority_amount
+				remove_global_variable = game_master_action_authority_duration
+				remove_global_variable = game_master_taking_action
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			if = {
+				limit = { has_global_variable = game_master_action_authority_add_modifier }
+				scope:target_country = {
+					add_modifier = {
+						name = game_master_authority_add_modifier
+						multiplier = global_var:game_master_action_authority_amount
+						months = game_master_modifier_authority_duration
+					}
+					remove_variable = game_master_action_target
+				}
+
+				remove_global_variable = game_master_action_authority_add_modifier
+				remove_global_variable = game_master_action_authority_amount
+				remove_global_variable = game_master_action_authority_duration
+				remove_global_variable = game_master_taking_action
+			}
+			else_if = {
+				limit = { has_global_variable = game_master_action_authority_multiplier_modifier }
+				scope:target_country = {
+					add_modifier = {
+						name = game_master_authority_multiplier_modifier
+						multiplier = global_var:game_master_action_authority_amount
+						months = game_master_modifier_authority_duration
+					}
+					remove_variable = game_master_action_target
+				}
+				
+				remove_global_variable = game_master_action_authority_multiplier_modifier
+				remove_global_variable = game_master_action_authority_amount
+				remove_global_variable = game_master_action_authority_duration
+				remove_global_variable = game_master_taking_action
+			}
+		}
+	}
+
+	# Reset Authority Action
+	option = {
+		name = game_master_events.49.b
+
+		remove_global_variable = game_master_action_authority_amount
+		remove_global_variable = game_master_action_authority_duration
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			remove_global_variable = game_master_action_authority_add
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			remove_global_variable = game_master_action_authority_remove
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add_modifier }
+			remove_global_variable = game_master_action_authority_add_modifier
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_authority_multiplier_modifier }
+			remove_global_variable = game_master_action_authority_multiplier_modifier
+		}
+
+		trigger_event = {
+			id = game_master_events.40
+			days = 0
+			popup = yes
+		}
+	}
+
+	# Go back to the Game Master Main Menu
+	option = {
+		name = game_master_events.49.c
+
+		default_option = yes
+
+		remove_global_variable = game_master_action_authority_amount
+		remove_global_variable = game_master_action_authority_duration
+
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add }
+			remove_global_variable = game_master_action_authority_add
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_authority_remove }
+			remove_global_variable = game_master_action_authority_remove
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_authority_add_modifier }
+			remove_global_variable = game_master_action_authority_add_modifier
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_authority_multiplier_modifier }
+			remove_global_variable = game_master_action_authority_multiplier_modifier
+		}
+
+		trigger_event = {
+			id = game_master_events.1
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+############################################################
+# Game Master - Influence Actions
+
+# Adding or Removing Influence
+game_master_events.50 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.50.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	immediate = {
+		random_country = {
+			limit = { has_variable = game_master_action_target }
+			save_scope_as = target_country
+		}
+		set_global_variable = {
+			name = game_master_action_influence_amount
+			value = 0
+		}
+		set_global_variable = {
+			name = game_master_action_influence_duration
+			value = 0
+		}
+	}
+
+	option = {
+		name = game_master_events.50.a
+
+		set_global_variable = { name = game_master_action_influence_add }
+
+		trigger_event = {
+			id = game_master_events.51
+			days = 0
+			popup = yes
+		}
+	}
+
+	option = {
+		name = game_master_events.50.b
+
+		set_global_variable = { name = game_master_action_influence_remove }
+
+		trigger_event = {
+			id = game_master_events.51
+			days = 0
+			popup = yes
+		}
+	}
+
+	option = {
+		trigger = {
+			scope:target_country = {
+				has_modifier = game_master_influence_add_modifier
+			}
+		}
+
+		name = game_master_events.50.c
+
+		scope:target_country = {
+			remove_modifier = game_master_influence_add_modifier
+			remove_variable = game_master_action_target
+		}
+	}
+
+	option = {
+		trigger = {
+			scope:target_country = {
+				has_modifier = game_master_influence_multiplier_modifier
+			}
+		}
+
+		name = game_master_events.50.d
+
+		scope:target_country = {
+			remove_modifier = game_master_influence_multiplier_modifier
+			remove_variable = game_master_action_target
+		}
+	}
+
+	option = {
+		trigger = {
+			scope:target_country = {
+				has_modifier = game_master_influence_add_modifier
+				has_modifier = game_master_influence_multiplier_modifier
+			}
+		}
+
+		name = game_master_events.50.e
+
+		scope:target_country = {
+			remove_modifier = game_master_influence_add_modifier
+			remove_modifier = game_master_influence_multiplier_modifier
+			remove_variable = game_master_action_target
+		}
+	}
+
+	option = {
+		name = game_master_events.50.f
+
+		default_option = yes
+
+		scope:target = {
+			remove_variable = game_master_action_target
+		}
+
+		remove_global_variable = game_master_taking_action
+	}
+}
+
+# Add Modifier or Multiplier Modifier
+game_master_events.51 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.51.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	option = {
+		name = game_master_events.51.a
+
+		default_option = yes
+
+		set_global_variable = { name = game_master_action_influence_add_modifier }
+
+		trigger_event = {
+			id = game_master_events.52
+			days = 0
+			popup = yes
+		}
+	}
+
+	option = {
+		name = game_master_events.51.b
+
+		set_global_variable = { name = game_master_action_influence_multiplier_modifier }
+
+		trigger_event = {
+			id = game_master_events.53
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Influence Amount - How many thousands of influence to add or remove
+game_master_events.52 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.52.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Influence
+	option = {
+		name = game_master_events.52.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.53
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 1000 Influence
+	option = {
+		name = game_master_events.52.b
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 1000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 1000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.53
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 2000 Influence
+	option = {
+		name = game_master_events.52.c
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 2000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 2000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.53
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 3000 Influence
+	option = {
+		name = game_master_events.52.d
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 3000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 3000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.53
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 4000 Influence
+	option = {
+		name = game_master_events.52.e
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 4000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 4000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.53
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 5000 Influence
+	option = {
+		name = game_master_events.52.f
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 5000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 5000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.53
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 6000 Influence
+	option = {
+		name = game_master_events.52.g
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 6000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 6000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.53
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 7000 Influence
+	option = {
+		name = game_master_events.52.h
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 7000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 7000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.53
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 8000 Influence
+	option = {
+		name = game_master_events.52.i
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 8000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 8000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.53
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 9000 Influence
+	option = {
+		name = game_master_events.52.j
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 9000
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 9000
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.53
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Influence Amount - How many hundreds of influence to add or remove
+game_master_events.53 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.53.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Influence
+	option = {
+		name = game_master_events.53.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.54
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 100 Influence
+	option = {
+		name = game_master_events.53.b
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 100
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 100
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.54
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 200 Influence
+	option = {
+		name = game_master_events.53.c
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 200
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 200
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.54
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 300 Influence
+	option = {
+		name = game_master_events.53.d
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 300
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 300
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.54
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 400 Influence
+	option = {
+		name = game_master_events.53.e
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 400
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 400
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.54
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 500 Influence
+	option = {
+		name = game_master_events.53.f
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 500
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 500
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.54
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 600 Influence
+	option = {
+		name = game_master_events.53.g
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 600
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 600
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.54
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 700 Influence
+	option = {
+		name = game_master_events.53.h
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 700
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 700
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.54
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 800 Influence
+	option = {
+		name = game_master_events.53.i
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 800
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 800
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.54
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 900 Influence
+	option = {
+		name = game_master_events.53.j
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 900
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 900
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.54
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Influence Amount - How many tens of influence to add or remove
+game_master_events.54 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.54.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Influence
+	option = {
+		name = game_master_events.54.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.55
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 10 Influence
+	option = {
+		name = game_master_events.54.b
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 10
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 10
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.55
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 20 Influence
+	option = {
+		name = game_master_events.54.c
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 20
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 20
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.55
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 30 Influence
+	option = {
+		name = game_master_events.54.d
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 30
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 30
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.55
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 40 Influence
+	option = {
+		name = game_master_events.54.e
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 40
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 40
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.55
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 50 Influence
+	option = {
+		name = game_master_events.54.f
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 50
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 50
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.55
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 60 Influence
+	option = {
+		name = game_master_events.54.g
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 60
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 60
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.55
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 70 Influence
+	option = {
+		name = game_master_events.54.h
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 70
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 70
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.55
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 80 Influence
+	option = {
+		name = game_master_events.54.i
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 80
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 80
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.55
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 90 Influence
+	option = {
+		name = game_master_events.54.j
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 90
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 90
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.55
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Influence Amount - How many units of influence to add or remove
+game_master_events.55 = {
+	type = country_event
+	placement = ROOT
+	
+	title = game_master_events.55.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Influence
+	option = {
+		name = game_master_events.55.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.56
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 1 Influence
+	option = {
+		name = game_master_events.55.b
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 1
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 1
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.56
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 2 Influence
+	option = {
+		name = game_master_events.55.c
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 2
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 2
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.56
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 3 Influence
+	option = {
+		name = game_master_events.55.d
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 3
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 3
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.56
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 4 Influence
+	option = {
+		name = game_master_events.55.e
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 4
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 4
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.56
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 5 Influence
+	option = {
+		name = game_master_events.55.f
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 5
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 5
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.56
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 6 Influence
+	option = {
+		name = game_master_events.55.g
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 6
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 6
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.56
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 7 Influence
+	option = {
+		name = game_master_events.55.h
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 7
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 7
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.56
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 8 Influence
+	option = {
+		name = game_master_events.55.i
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 8
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 8
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.56
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 9 Influence
+	option = {
+		name = game_master_events.55.j
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				add = 9
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			change_global_variable = {
+				name = game_master_action_influence_amount
+				subtract = 9
+			}
+		}
+
+		trigger_event = {
+			id = game_master_events.56
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Influence Duration - How many tens of years the influence modifier will last
+game_master_events.56 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.56.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Years
+	option = {
+		name = game_master_events.56.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.57
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 10 Years
+	option = {
+		name = game_master_events.56.b
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 120
+		}
+
+		trigger_event = {
+			id = game_master_events.57
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 20 Years
+	option = {
+		name = game_master_events.56.c
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 240
+		}
+
+		trigger_event = {
+			id = game_master_events.57
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 30 Years
+	option = {
+		name = game_master_events.56.d
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 360
+		}
+
+		trigger_event = {
+			id = game_master_events.57
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 40 Years
+	option = {
+		name = game_master_events.56.e
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 480
+		}
+
+		trigger_event = {
+			id = game_master_events.57
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 50 Years
+	option = {
+		name = game_master_events.56.f
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 600
+		}
+
+		trigger_event = {
+			id = game_master_events.57
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 60 Years
+	option = {
+		name = game_master_events.56.g
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 720
+		}
+
+		trigger_event = {
+			id = game_master_events.57
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 70 Years
+	option = {
+		name = game_master_events.56.h
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 840
+		}
+
+		trigger_event = {
+			id = game_master_events.57
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 80 Years
+	option = {
+		name = game_master_events.56.i
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 960
+		}
+
+		trigger_event = {
+			id = game_master_events.57
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 90 Years
+	option = {
+		name = game_master_events.56.j
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 1080
+		}
+
+		trigger_event = {
+			id = game_master_events.57
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Influence Duration - How many years the influence modifier will last
+game_master_events.57 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.57.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Years
+	option = {
+		name = game_master_events.57.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.58
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 1 Year
+	option = {
+		name = game_master_events.57.b
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 12
+		}
+
+		trigger_event = {
+			id = game_master_events.58
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 2 Years
+	option = {
+		name = game_master_events.57.c
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 24
+		}
+
+		trigger_event = {
+			id = game_master_events.58
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 3 Years
+	option = {
+		name = game_master_events.57.d
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 36
+		}
+
+		trigger_event = {
+			id = game_master_events.58
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 4 Years
+	option = {
+		name = game_master_events.57.e
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 48
+		}
+
+		trigger_event = {
+			id = game_master_events.58
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 5 Years
+	option = {
+		name = game_master_events.57.f
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 60
+		}
+
+		trigger_event = {
+			id = game_master_events.58
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 6 Years
+	option = {
+		name = game_master_events.57.g
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 72
+		}
+
+		trigger_event = {
+			id = game_master_events.58
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 7 Years
+	option = {
+		name = game_master_events.57.h
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 84
+		}
+
+		trigger_event = {
+			id = game_master_events.58
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 8 Years
+	option = {
+		name = game_master_events.57.i
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 96
+		}
+
+		trigger_event = {
+			id = game_master_events.58
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 9 Years
+	option = {
+		name = game_master_events.57.j
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 108
+		}
+
+		trigger_event = {
+			id = game_master_events.58
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Influence Duration - How many months the influence modifier will last
+game_master_events.58 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.58.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	# 0 Months
+	option = {
+		name = game_master_events.58.a
+
+		default_option = yes
+
+		trigger_event = {
+			id = game_master_events.59
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 1 Month
+	option = {
+		name = game_master_events.58.b
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 1
+		}
+
+		trigger_event = {
+			id = game_master_events.59
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 2 Months
+	option = {
+		name = game_master_events.58.c
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 2
+		}
+
+		trigger_event = {
+			id = game_master_events.59
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 3 Months
+	option = {
+		name = game_master_events.58.d
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 3
+		}
+
+		trigger_event = {
+			id = game_master_events.59
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 4 Months
+	option = {
+		name = game_master_events.58.e
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 4
+		}
+
+		trigger_event = {
+			id = game_master_events.59
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 5 Months
+	option = {
+		name = game_master_events.58.f
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 5
+		}
+
+		trigger_event = {
+			id = game_master_events.59
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 6 Months
+	option = {
+		name = game_master_events.58.g
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 6
+		}
+
+		trigger_event = {
+			id = game_master_events.59
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 7 Months
+	option = {
+		name = game_master_events.58.h
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 7
+		}
+
+		trigger_event = {
+			id = game_master_events.59
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 8 Months
+	option = {
+		name = game_master_events.58.i
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 8
+		}
+
+		trigger_event = {
+			id = game_master_events.59
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 9 Months
+	option = {
+		name = game_master_events.58.j
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 9
+		}
+
+		trigger_event = {
+			id = game_master_events.59
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 10 Months
+	option = {
+		name = game_master_events.58.k
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 10
+		}
+
+		trigger_event = {
+			id = game_master_events.59
+			days = 0
+			popup = yes
+		}
+	}
+
+	# 11 Months
+	option = {
+		name = game_master_events.58.l
+
+		change_global_variable = {
+			name = game_master_action_influence_duration
+			add = 11
+		}
+
+		trigger_event = {
+			id = game_master_events.59
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+# Confirm Influence Action - Confirm the influence action
+game_master_events.59 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.59.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	immediate = {
+		random_country = {
+			limit = { has_variable = game_master_action_target }
+			save_scope_as = target_country
+		}
+	}
+
+	# Confirm Influence Action
+	option = {
+		name = game_master_events.59.a
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			if = {
+				limit = { has_global_variable = game_master_action_influence_add_modifier }
+				scope:target_country = {
+					add_modifier = {
+						name = game_master_influence_add_modifier
+						multiplier = global_var:game_master_action_influence_amount
+						months = game_master_modifier_influence_duration
+					}
+					remove_variable = game_master_action_target
+				}
+
+				remove_global_variable = game_master_action_influence_add_modifier
+				remove_global_variable = game_master_action_influence_amount
+				remove_global_variable = game_master_action_influence_duration
+			}
+			else_if = {
+				limit = { has_global_variable = game_master_action_influence_multiplier_modifier }
+				scope:target_country = {
+					add_modifier = {
+						name = game_master_influence_multiplier_modifier
+						multiplier = global_var:game_master_action_influence_amount
+						months = game_master_modifier_influence_duration
+					}
+					remove_variable = game_master_action_target
+				}
+				
+				remove_global_variable = game_master_action_influence_multiplier_modifier
+				remove_global_variable = game_master_action_influence_amount
+				remove_global_variable = game_master_action_influence_duration
+			}
+		}
+		else_if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			if = {
+				limit = { has_global_variable = game_master_action_influence_add_modifier }
+				scope:target_country = {
+					add_modifier = {
+						name = game_master_influence_add_modifier
+						multiplier = global_var:game_master_action_influence_amount
+						months = game_master_modifier_influence_duration
+					}
+					remove_variable = game_master_action_target
+				}
+
+				remove_global_variable = game_master_action_influence_add_modifier
+				remove_global_variable = game_master_action_influence_amount
+				remove_global_variable = game_master_action_influence_duration
+			}
+			else_if = {
+				limit = { has_global_variable = game_master_action_influence_multiplier_modifier }
+				scope:target_country = {
+					add_modifier = {
+						name = game_master_influence_multiplier_modifier
+						multiplier = global_var:game_master_action_influence_amount
+						months = game_master_modifier_influence_duration
+					}
+					remove_variable = game_master_action_target
+				}
+				
+				remove_global_variable = game_master_action_influence_multiplier_modifier
+				remove_global_variable = game_master_action_influence_amount
+				remove_global_variable = game_master_action_influence_duration
+			}
+		}
+	}
+
+	# Reset Influence Action
+	option = {
+		name = game_master_events.59.b
+
+		remove_global_variable = game_master_action_influence_amount
+		remove_global_variable = game_master_action_influence_duration
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			remove_global_variable = game_master_action_influence_add
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			remove_global_variable = game_master_action_influence_remove
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add_modifier }
+			remove_global_variable = game_master_action_influence_add_modifier
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_influence_multiplier_modifier }
+			remove_global_variable = game_master_action_influence_multiplier_modifier
+		}
+
+		trigger_event = {
+			id = game_master_events.50
+			days = 0
+			popup = yes
+		}
+	}
+
+	# Go back to the Game Master Main Menu
+	option = {
+		name = game_master_events.59.c
+
+		default_option = yes
+
+		remove_global_variable = game_master_action_influence_amount
+		remove_global_variable = game_master_action_influence_duration
+
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add }
+			remove_global_variable = game_master_action_influence_add
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_influence_remove }
+			remove_global_variable = game_master_action_influence_remove
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_influence_add_modifier }
+			remove_global_variable = game_master_action_influence_add_modifier
+		}
+		if = {
+			limit = { has_global_variable = game_master_action_influence_multiplier_modifier }
+			remove_global_variable = game_master_action_influence_multiplier_modifier
+		}
+
+		trigger_event = {
+			id = game_master_events.1
+			days = 0
+			popup = yes
+		}
+	}
+}
+
+############################################################
+# Game Master - Buildings Actions
+
+# Which building is being added
+
+
+############################################################
+# Game Master - Change Game Master Actions
+
+# Game Master Options
+game_master_events.70 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.70.title
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 1
+
+	trigger = {}
+
+	immediate = {
+		random_country = {
+			limit = { has_variable = game_master_action_target }
+			save_scope_as = target_country
+		}
+	}
+
+	# Change Game Master
+	option = {
+		name = game_master_events.70.a
+
+		remove_modifier = game_master_modifier
+
+		scope:target_country = {
+			add_modifier = game_master_modifier
+			remove_variable = game_master_action_target
+		}
+
+		remove_global_variable = game_master_taking_action
+	}
+
+	# Return to Game Master Main Menu
+	option = {
+		name = game_master_events.70.b
+
+		trigger_event = {
+			id = game_master_events.1
+			days = 0
+			popup = yes
+		}
+	}
+
+	# Do nothing
+	option = {
+		name = game_master_events.70.c
+
+		default_option = yes
+
+		scope:target_country = {
+			remove_variable = game_master_action_target
+		}
+
+		remove_global_variable = game_master_taking_action
+	}
+}

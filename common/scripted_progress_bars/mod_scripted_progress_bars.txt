@@ -1,0 +1,69 @@
+﻿#############################################################
+# Power Bloc Synergize Laws Progress Bars
+power_bloc_synergize_law_governance_principles_progress_bar = {
+	name = "power_bloc_synergize_law_governance_principles_progress_bar"
+	desc = "power_bloc_synergize_law_governance_principles_progress_bar_desc"
+
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 12
+}
+
+power_bloc_synergize_law_distribution_of_power_progress_bar = {
+	name = "power_bloc_synergize_law_distribution_of_power_progress_bar"
+	desc = "power_bloc_synergize_law_distribution_of_power_progress_bar_desc"
+
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 12
+}
+
+power_bloc_synergize_law_economic_system_progress_bar = {
+	name = "power_bloc_synergize_law_economic_system_progress_bar"
+	desc = "power_bloc_synergize_law_economic_system_progress_bar_desc"
+
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 12
+}
+
+power_bloc_synergize_law_land_reform_progress_bar = {
+	name = "power_bloc_synergize_law_land_reform_progress_bar"
+	desc = "power_bloc_synergize_law_land_reform_progress_bar_desc"
+
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 12
+}
+
+power_bloc_synergize_law_free_speech_progress_bar = {
+	name = "power_bloc_synergize_law_free_speech_progress_bar"
+	desc = "power_bloc_synergize_law_free_speech_progress_bar_desc"
+
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 12
+}
+
+power_bloc_synergize_law_slavery_progress_bar = {
+	name = "power_bloc_synergize_law_slavery_progress_bar"
+	desc = "power_bloc_synergize_law_slavery_progress_bar_desc"
+
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 12
+}
+
+#############################################################

@@ -1,100 +1,443 @@
-﻿on_monthly_pulse_country = {
+﻿############################################################
+# Technology spread modifiers applied after completing each of the first four eras of technology
+on_monthly_pulse_country = {
 	on_actions = {
-		mod_canals_tolls
-		mod_infamy_punishments
+		mod_technology_production_era_1_check
+		mod_technology_production_era_2_check
+		mod_technology_production_era_3_check
+		mod_technology_production_era_4_check
+		mod_technology_military_era_1_check
+		mod_technology_military_era_2_check
+		mod_technology_military_era_3_check
+		mod_technology_military_era_4_check
+		mod_technology_society_era_1_check
+		mod_technology_society_era_2_check
+		mod_technology_society_era_3_check
+		mod_technology_society_era_4_check
 	}
 }
 
-mod_canals_tolls = {
+mod_technology_production_era_1_check = {
 	effect = {
-		# If the country has the modifier, remove it first
-		# This is to ensure that the modifier is reapplied with the new value
-		if = {
-			limit = { has_modifier = mod_suez_canal_toll }
-			remove_modifier = mod_suez_canal_toll
-		}
-		if = {
-			limit = { has_modifier = mod_panama_canal_toll }
-			remove_modifier = mod_panama_canal_toll
-		}
-		# Check if the country has the Suez or Panama Canal and apply the toll modifier accordingly
-		# The toll is based on the global GDP and the prosperity of the company owning the canal
 		if = {
 			limit = {
-				has_building = building_suez_canal
-				has_company = company_type:company_suez_company
-				any_company = {
-					type = company_type:company_suez_company
-					prosperity >= 100
-				}
+				NOT = { has_modifier = mod_technology_production_era_1 }
+				NOT = { has_modifier = mod_technology_production_era_2 }
+				NOT = { has_modifier = mod_technology_production_era_3 }
+				NOT = { has_modifier = mod_technology_production_era_4 }
+
+				has_technology_researched = enclosure
+				has_technology_researched = manufacturies
+				has_technology_researched = shaft_mining
+				has_technology_researched = cotton_gin
+				has_technology_researched = lathe
+				has_technology_researched = distillation
+				has_technology_researched = steelworking
+				has_technology_researched = prospecting
 			}
-			add_modifier = {
-				name = mod_suez_canal_toll
-				months = 1
-				multiplier = {
-					value = global_gdp
-					divide = 10000
-					multiply = 0.075
-					round = yes
-					multiply = 10
-					min = 100000
-				}
-			}
-		}
-		if = {
-			limit = { 
-				has_building = building_panama_canal
-				has_company = company_type:company_panama_company
-				any_company = {
-					type = company_type:company_panama_company
-					prosperity >= 100
-				}
-			}
-			add_modifier = {
-				name = mod_panama_canal_toll
-				months = 1
-				multiplier = {
-					value = global_gdp
-					divide = 10000
-					multiply = 0.075
-					round = yes
-					multiply = 10
-					min = 100000
-				}
-			}
+			add_modifier = { name = mod_technology_production_era_1 }
 		}
 	}
 }
 
-mod_infamy_punishments = {
+mod_technology_production_era_2_check = {
 	effect = {
-		# Punishments for infamy levels
-		# Higher levels of infamy causes loan interest to increase
 		if = {
-			limit = { infamy = infamy_threshold:infamous }
-			add_modifier = mod_infamy_infamous_punishment
-		}
-		else_if = {
-			limit = { NOT = { infamy = infamy_threshold:infamous } }
-			remove_modifier = mod_infamy_infamous_punishment
-		}
+			limit = {
+				NOT = { has_modifier = mod_technology_production_era_2 }
+				NOT = { has_modifier = mod_technology_production_era_3 }
+				NOT = { has_modifier = mod_technology_production_era_4 }
+				has_modifier = mod_technology_production_era_1
 
-		if = {
-			limit = { infamy = infamy_threshold:notorious }
-			add_modifier = mod_infamy_notorious_punishment
-		}
-		else_if = {
-			limit = { NOT = { infamy = infamy_threshold:notorious } }
-			remove_modifier = mod_infamy_notorious_punishment
-		}
-
-		if = {
-			limit = { infamy = infamy_threshold:pariah }
-			add_modifier = mod_infamy_pariah_punishment
-		}
-		else_if = {
-			limit = { NOT = { infamy = infamy_threshold:pariah } }
-			remove_modifier = mod_infamy_pariah_punishment
+				has_technology_researched = crystal_glass
+				has_technology_researched = intensive_agriculture
+				has_technology_researched = fractional_distillation
+				has_technology_researched = canneries
+				has_technology_researched = watertube_boiler
+				has_technology_researched = atmospheric_engine
+				has_technology_researched = railways
+				has_technology_researched = chemical_bleaching
+				has_technology_researched = nitroglycerin
+				has_technology_researched = bessemer_process
+				has_technology_researched = baking_powder
+				has_technology_researched = mechanized_workshops
+				has_technology_researched = mechanical_tools
+			}
+			add_modifier = { name = mod_technology_production_era_2 }
+			remove_modifier = mod_technology_production_era_1
 		}
 	}
 }
+
+mod_technology_production_era_3_check = {
+	effect = {
+		if = {
+			limit = {
+				NOT = { has_modifier = mod_technology_production_era_3 }
+				NOT = { has_modifier = mod_technology_production_era_4 }
+				has_modifier = mod_technology_production_era_2
+
+				has_technology_researched = improved_fertilizer
+				has_technology_researched = steam_donkey
+				has_technology_researched = dynamite
+				has_technology_researched = rubber_mastication
+				has_technology_researched = rotary_valve_engine
+				has_technology_researched = reinforced_concrete
+				has_technology_researched = threshing_machine
+				has_technology_researched = pumpjacks
+				has_technology_researched = aniline
+				has_technology_researched = open_hearth_process
+				has_technology_researched = vulcanization
+				has_technology_researched = vacuum_canning
+				has_technology_researched = shift_work
+				has_technology_researched = steel_railway_cars
+				has_technology_researched = electrical_generation
+			}
+			add_modifier = { name = mod_technology_production_era_3 }
+			remove_modifier = mod_technology_production_era_2
+		}
+	}
+}
+
+mod_technology_production_era_4_check = {
+	effect = {
+		if = {
+			limit = {
+				NOT = { has_modifier = mod_technology_production_era_4 }
+				has_modifier = mod_technology_production_era_3
+
+				has_technology_researched = mechanized_farming
+				has_technology_researched = art_silk
+				has_technology_researched = automatic_bottle_blowers
+				has_technology_researched = conveyors
+				has_technology_researched = pasteurization
+				has_technology_researched = electric_railway
+				has_technology_researched = combustion_engine
+				has_technology_researched = pneumatic_tools
+				has_technology_researched = nitrogen_fixation
+				has_technology_researched = electric_arc_process
+				has_technology_researched = steam_turbine
+				has_technology_researched = plastics
+				has_technology_researched = electrical_capacitors
+				has_technology_researched = radio
+				has_technology_researched = telephone
+			}
+			add_modifier = { name = mod_technology_production_era_4 }
+			remove_modifier = mod_technology_production_era_3
+		}
+	}
+}
+
+mod_technology_military_era_1_check = {
+	effect = {
+		if = {
+			limit = {
+				NOT = { has_modifier = mod_technology_military_era_1 }
+				NOT = { has_modifier = mod_technology_military_era_2 }
+				NOT = { has_modifier = mod_technology_military_era_3 }
+				NOT = { has_modifier = mod_technology_military_era_4 }
+
+				has_technology_researched = standing_army
+				has_technology_researched = navigation
+				has_technology_researched = drydocks
+				has_technology_researched = mandatory_service
+				has_technology_researched = gunsmithing
+				has_technology_researched = artillery
+				has_technology_researched = military_drill
+				has_technology_researched = napoleonic_warfare
+				has_technology_researched = admiralty
+				has_technology_researched = army_reserves
+				has_technology_researched = line_infantry
+				has_technology_researched = paddle_steamer
+			}
+			add_modifier = { name = mod_technology_military_era_1 }
+		}
+	}
+}
+
+mod_technology_military_era_2_check = {
+	effect = {
+		if = {
+			limit = {
+				NOT = { has_modifier = mod_technology_military_era_2 }
+				NOT = { has_modifier = mod_technology_military_era_3 }
+				NOT = { has_modifier = mod_technology_military_era_4 }
+				has_modifier = mod_technology_military_era_1
+
+				has_technology_researched = field_works
+				has_technology_researched = logistics
+				has_technology_researched = triage
+				has_technology_researched = shell_gun
+				has_technology_researched = percussion_cap
+				has_technology_researched = rifling
+				has_technology_researched = general_staff
+				has_technology_researched = screw_frigate
+				has_technology_researched = power_of_the_purse
+				has_technology_researched = hydraulic_cranes
+			}
+			add_modifier = { name = mod_technology_military_era_2 }
+			remove_modifier = mod_technology_military_era_1
+		}
+	}
+}
+
+mod_technology_military_era_3_check = {
+	effect = {
+		if = {
+			limit = {
+				NOT = { has_modifier = mod_technology_military_era_3 }
+				NOT = { has_modifier = mod_technology_military_era_4 }
+				has_modifier = mod_technology_military_era_2
+
+				has_technology_researched = modern_nursing
+				has_technology_researched = enlistment_offices
+				has_technology_researched = electric_telegraph
+				has_technology_researched = military_statistics
+				has_technology_researched = repeaters
+				has_technology_researched = breech_loading_artillery
+				has_technology_researched = handcranked_machine_gun
+				has_technology_researched = self_propelled_torpedoes
+				has_technology_researched = monitor_tech
+				has_technology_researched = ironclad_tech
+				has_technology_researched = jeune_ecole
+				has_technology_researched = floating_harbor
+				has_technology_researched = gantry_cranes
+			}
+			add_modifier = { name = mod_technology_military_era_3 }
+			remove_modifier = mod_technology_military_era_2
+		}
+	}
+}
+
+mod_technology_military_era_4_check = {
+	effect = {
+		if = {
+			limit = {
+				NOT = { has_modifier = mod_technology_military_era_4 }
+				has_modifier = mod_technology_military_era_3
+
+				has_technology_researched = trench_works
+				has_technology_researched = war_propaganda
+				has_technology_researched = wargaming
+				has_technology_researched = defense_in_depth
+				has_technology_researched = bolt_action_rifles
+				has_technology_researched = automatic_machine_guns
+				has_technology_researched = submarine
+				has_technology_researched = destroyer
+				has_technology_researched = dreadnought
+				has_technology_researched = sea_lane_strategies
+				has_technology_researched = landing_craft
+				has_technology_researched = concrete_dockyards
+			}
+			add_modifier = { name = mod_technology_military_era_4 }
+			remove_modifier = mod_technology_military_era_3
+		}
+	}
+}
+
+mod_technology_society_era_1_check = {
+	effect = {
+		if = {
+			limit = {
+				NOT = { has_modifier = mod_technology_society_era_1 }
+				NOT = { has_modifier = mod_technology_society_era_2 }
+				NOT = { has_modifier = mod_technology_society_era_3 }
+				NOT = { has_modifier = mod_technology_society_era_4 }
+
+				has_technology_researched = urbanization
+				has_technology_researched = urban_planning
+				has_technology_researched = rationalism
+				has_technology_researched = tech_bureaucracy
+				has_technology_researched = currency_standards
+				has_technology_researched = democracy
+				has_technology_researched = romanticism
+				has_technology_researched = international_trade
+				has_technology_researched = centralization
+				has_technology_researched = banking
+				has_technology_researched = academia
+				has_technology_researched = colonization
+				has_technology_researched = international_relations
+				has_technology_researched = law_enforcement
+				has_technology_researched = stock_exchange
+				has_technology_researched = medical_degrees
+				has_technology_researched = mass_communication
+				has_technology_researched = empiricism
+			}
+			add_modifier = { name = mod_technology_society_era_1 }
+		}
+	}
+}
+
+mod_technology_society_era_2_check = {
+	effect = {
+		if = {
+			limit = {
+				NOT = { has_modifier = mod_technology_society_era_2 }
+				NOT = { has_modifier = mod_technology_society_era_3 }
+				NOT = { has_modifier = mod_technology_society_era_4 }
+				has_modifier = mod_technology_society_era_1
+
+				has_technology_researched = corporate_charters
+				has_technology_researched = egalitarianism
+				has_technology_researched = pharmaceuticals
+				has_technology_researched = modern_sewerage
+				has_technology_researched = quinine
+				has_technology_researched = organized_sports
+				has_technology_researched = central_archives
+				has_technology_researched = central_banking
+				has_technology_researched = joint_stock_companies
+				has_technology_researched = dialectics
+				has_technology_researched = psychiatry
+				has_technology_researched = realism
+				has_technology_researched = nationalism
+				has_technology_researched = labor_movement
+				has_technology_researched = postal_savings
+			}
+			add_modifier = { name = mod_technology_society_era_2 }
+			remove_modifier = mod_technology_society_era_1
+		}
+	}
+}
+
+mod_technology_society_era_3_check = {
+	effect = {
+		if = {
+			limit = {
+				NOT = { has_modifier = mod_technology_society_era_3 }
+				NOT = { has_modifier = mod_technology_society_era_4 }
+				has_modifier = mod_technology_society_era_2
+
+				has_technology_researched = human_rights
+				has_technology_researched = feminism
+				has_technology_researched = steel_frame_buildings
+				has_technology_researched = civilizing_mission
+				has_technology_researched = anarchism
+				has_technology_researched = socialism
+				has_technology_researched = corporatism
+				has_technology_researched = pan-nationalism
+				has_technology_researched = mutual_funds
+				has_technology_researched = investment_banks
+				has_technology_researched = camera
+				has_technology_researched = philosophical_pragmatism
+				has_technology_researched = identification_documents
+			}
+			add_modifier = { name = mod_technology_society_era_3 }
+			remove_modifier = mod_technology_society_era_2
+		}
+	}
+}
+
+mod_technology_society_era_4_check = {
+	effect = {
+		if = {
+			limit = {
+				NOT = { has_modifier = mod_technology_society_era_4 }
+				has_modifier = mod_technology_society_era_3
+
+				has_technology_researched = elevator
+				has_technology_researched = zeppelins
+				has_technology_researched = malaria_prevention
+				has_technology_researched = central_planning
+				has_technology_researched = political_agitation
+				has_technology_researched = international_exchange_standards
+				has_technology_researched = corporate_management
+				has_technology_researched = psychoanalysis
+				has_technology_researched = film
+				has_technology_researched = multilateral_alliances
+			}
+			add_modifier = { name = mod_technology_society_era_4 }
+			remove_modifier = mod_technology_society_era_3
+		}
+	}
+}
+
+############################################################
+# Apply infamy for releasing country as independent
+on_country_released_as_independent = {
+	on_actions = {
+		liberate_country_infamy_action
+	}
+}
+
+liberate_country_infamy_action = {
+	effect = {
+		liberate_country_infamy = yes
+	}
+}
+
+#############################################################
+# Give Country a National Pride/Military Triumph modifier if they win a war against a country with one of the wargoals being humiliation
+on_wargoal_enforced = {
+	on_actions = {
+		mod_national_pride_military_triumph_action
+	}
+}
+
+mod_national_pride_military_triumph_action = {
+	effect = {
+		if = {
+			limit = {
+				scope:target = {
+					has_modifier = country_humiliated
+				}
+			}
+			add_modifier = {
+				name = national_pride_military_triumph
+				months = 60
+				is_decaying = yes
+			}
+		}
+	}
+}
+
+#############################################################
+# Enable countries to switch a newly released subject to a different subject type
+on_country_released_as_own_subject = {
+	on_actions = {
+		mod_switch_subject_type_action
+	}
+}
+
+mod_switch_subject_type_action = {
+	effect = {
+		set_variable = {
+			name = just_released_country_as_subject
+			days = 14
+		}
+		scope:target = {
+			set_variable = {
+				name = just_released_as_subject_by_overlord
+				days = 14
+			}
+		}
+	}
+}
+
+#############################################################
+# Game Master On Actions
+on_monthly_pulse_country = {
+	on_actions = {
+		mod_game_master_on_action
+	}
+}
+
+mod_game_master_on_action = {
+	effect = {
+		if = {
+			limit = {
+				has_global_variable = game_master_decision_taken
+				any_country = {
+					has_modifier = game_master_modifier
+					is_player = no
+				}
+			}
+			random_country = {
+				limit = { has_modifier = game_master_modifier }
+				remove_modifier = game_master_modifier
+				remove_global_variable = game_master_decision_taken
+			}
+		}
+	}
+}
+
+#############################################################

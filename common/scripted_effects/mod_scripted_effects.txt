@@ -1,0 +1,660 @@
+﻿############################################################
+# Liberate Country Infamy cost scripted effect
+liberate_country_infamy = {
+	root = {
+		save_scope_as = releaser
+	}
+	scope:target = {
+		trigger_event = {
+			id = liberate_country_infamy_events.1
+			days = 1
+		}
+	}
+}
+
+############################################################
+# Power Bloc synergize laws modifier update scripted effect
+power_bloc_law_synergizing_modifier_update = {
+	# Governance Principles Modifiers
+	if = {
+		limit = { has_variable = power_bloc_leader_lawgroup_governance_principles_variable }
+		if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_governance_principles_variable = 0
+				NOT = { has_modifier = power_bloc_leader_lawgroup_governance_principles_variable_0 }
+			}
+			add_modifier = power_bloc_leader_lawgroup_governance_principles_variable_0
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_governance_principles_variable = 1 
+				NOT = { has_modifier = power_bloc_leader_lawgroup_governance_principles_variable_1 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_governance_principles_variable_0
+			add_modifier = power_bloc_leader_lawgroup_governance_principles_variable_1
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_governance_principles_variable = 2
+				NOT = { has_modifier = power_bloc_leader_lawgroup_governance_principles_variable_2 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_governance_principles_variable_1
+			add_modifier = power_bloc_leader_lawgroup_governance_principles_variable_2
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_governance_principles_variable = 3
+				NOT = { has_modifier = power_bloc_leader_lawgroup_governance_principles_variable_3 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_governance_principles_variable_2
+			add_modifier = power_bloc_leader_lawgroup_governance_principles_variable_3
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_governance_principles_variable = 4
+				NOT = { has_modifier = power_bloc_leader_lawgroup_governance_principles_variable_4 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_governance_principles_variable_3
+			add_modifier = power_bloc_leader_lawgroup_governance_principles_variable_4
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_governance_principles_variable = 5
+				NOT = { has_modifier = power_bloc_leader_lawgroup_governance_principles_variable_5 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_governance_principles_variable_4
+			add_modifier = power_bloc_leader_lawgroup_governance_principles_variable_5
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_governance_principles_variable = 6
+				NOT = { has_modifier = power_bloc_leader_lawgroup_governance_principles_variable_6 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_governance_principles_variable_5
+			add_modifier = power_bloc_leader_lawgroup_governance_principles_variable_6
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_governance_principles_variable = 7
+				NOT = { has_modifier = power_bloc_leader_lawgroup_governance_principles_variable_7 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_governance_principles_variable_6
+			add_modifier = power_bloc_leader_lawgroup_governance_principles_variable_7
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_governance_principles_variable = 8
+				NOT = { has_modifier = power_bloc_leader_lawgroup_governance_principles_variable_8 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_governance_principles_variable_7
+			add_modifier = power_bloc_leader_lawgroup_governance_principles_variable_8
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_governance_principles_variable = 9
+				NOT = { has_modifier = power_bloc_leader_lawgroup_governance_principles_variable_9 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_governance_principles_variable_8
+			add_modifier = power_bloc_leader_lawgroup_governance_principles_variable_9
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_governance_principles_variable = 10
+				NOT = { has_modifier = power_bloc_leader_lawgroup_governance_principles_variable_10 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_governance_principles_variable_9
+			add_modifier = power_bloc_leader_lawgroup_governance_principles_variable_10
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_governance_principles_variable = 11
+				NOT = { has_modifier = power_bloc_leader_lawgroup_governance_principles_variable_11 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_governance_principles_variable_10
+			add_modifier = power_bloc_leader_lawgroup_governance_principles_variable_11
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_governance_principles_variable = 12
+				NOT = { has_modifier = power_bloc_leader_lawgroup_governance_principles_variable_12 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_governance_principles_variable_11
+			add_modifier = power_bloc_leader_lawgroup_governance_principles_variable_12
+		}
+	}
+	# Distribution of Power Modifiers
+	if = {
+		limit = { has_variable = power_bloc_leader_lawgroup_distribution_of_power_variable }
+		if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_distribution_of_power_variable = 0
+				NOT = { has_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_0 }
+			}
+			add_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_0
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_distribution_of_power_variable = 1
+				NOT = { has_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_1 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_0
+			add_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_1
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_distribution_of_power_variable = 2
+				NOT = { has_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_2 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_1
+			add_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_2
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_distribution_of_power_variable = 3
+				NOT = { has_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_3 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_2
+			add_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_3
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_distribution_of_power_variable = 4
+				NOT = { has_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_4 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_3
+			add_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_4
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_distribution_of_power_variable = 5
+				NOT = { has_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_5 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_4
+			add_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_5
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_distribution_of_power_variable = 6
+				NOT = { has_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_6 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_5
+			add_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_6
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_distribution_of_power_variable = 7
+				NOT = { has_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_7 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_6
+			add_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_7
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_distribution_of_power_variable = 8
+				NOT = { has_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_8 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_7
+			add_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_8
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_distribution_of_power_variable = 9
+				NOT = { has_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_9 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_8
+			add_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_9
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_distribution_of_power_variable = 10
+				NOT = { has_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_10 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_9
+			add_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_10
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_distribution_of_power_variable = 11
+				NOT = { has_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_11 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_10
+			add_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_11
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_distribution_of_power_variable = 12
+				NOT = { has_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_12 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_11
+			add_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_12
+		}
+	}
+	# Economic System Modifiers
+	if = {
+		limit = { has_variable = power_bloc_leader_lawgroup_economic_system_variable }
+		if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_economic_system_variable = 0
+				NOT = { has_modifier = power_bloc_leader_lawgroup_economic_system_variable_0 }
+			}
+			add_modifier = power_bloc_leader_lawgroup_economic_system_variable_0
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_economic_system_variable = 1
+				NOT = { has_modifier = power_bloc_leader_lawgroup_economic_system_variable_1 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_economic_system_variable_0
+			add_modifier = power_bloc_leader_lawgroup_economic_system_variable_1
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_economic_system_variable = 2
+				NOT = { has_modifier = power_bloc_leader_lawgroup_economic_system_variable_2 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_economic_system_variable_1
+			add_modifier = power_bloc_leader_lawgroup_economic_system_variable_2
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_economic_system_variable = 3
+				NOT = { has_modifier = power_bloc_leader_lawgroup_economic_system_variable_3 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_economic_system_variable_2
+			add_modifier = power_bloc_leader_lawgroup_economic_system_variable_3
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_economic_system_variable = 4
+				NOT = { has_modifier = power_bloc_leader_lawgroup_economic_system_variable_4 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_economic_system_variable_3
+			add_modifier = power_bloc_leader_lawgroup_economic_system_variable_4
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_economic_system_variable = 5
+				NOT = { has_modifier = power_bloc_leader_lawgroup_economic_system_variable_5 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_economic_system_variable_4
+			add_modifier = power_bloc_leader_lawgroup_economic_system_variable_5
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_economic_system_variable = 6
+				NOT = { has_modifier = power_bloc_leader_lawgroup_economic_system_variable_6 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_economic_system_variable_5
+			add_modifier = power_bloc_leader_lawgroup_economic_system_variable_6
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_economic_system_variable = 7
+				NOT = { has_modifier = power_bloc_leader_lawgroup_economic_system_variable_7 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_economic_system_variable_6
+			add_modifier = power_bloc_leader_lawgroup_economic_system_variable_7
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_economic_system_variable = 8
+				NOT = { has_modifier = power_bloc_leader_lawgroup_economic_system_variable_8 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_economic_system_variable_7
+			add_modifier = power_bloc_leader_lawgroup_economic_system_variable_8
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_economic_system_variable = 9
+				NOT = { has_modifier = power_bloc_leader_lawgroup_economic_system_variable_9 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_economic_system_variable_8
+			add_modifier = power_bloc_leader_lawgroup_economic_system_variable_9
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_economic_system_variable = 10
+				NOT = { has_modifier = power_bloc_leader_lawgroup_economic_system_variable_10 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_economic_system_variable_9
+			add_modifier = power_bloc_leader_lawgroup_economic_system_variable_10
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_economic_system_variable = 11
+				NOT = { has_modifier = power_bloc_leader_lawgroup_economic_system_variable_11 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_economic_system_variable_10
+			add_modifier = power_bloc_leader_lawgroup_economic_system_variable_11
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_economic_system_variable = 12
+				NOT = { has_modifier = power_bloc_leader_lawgroup_economic_system_variable_12 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_economic_system_variable_11
+			add_modifier = power_bloc_leader_lawgroup_economic_system_variable_12
+		}
+	}
+	# Land Reform Modifiers
+	if = {
+		limit = { has_variable = power_bloc_leader_lawgroup_land_reform_variable }
+		if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_land_reform_variable = 0
+				NOT = { has_modifier = power_bloc_leader_lawgroup_land_reform_variable_0 }
+			}
+			add_modifier = power_bloc_leader_lawgroup_land_reform_variable_0
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_land_reform_variable = 1
+				NOT = { has_modifier = power_bloc_leader_lawgroup_land_reform_variable_1 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_land_reform_variable_0
+			add_modifier = power_bloc_leader_lawgroup_land_reform_variable_1
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_land_reform_variable = 2
+				NOT = { has_modifier = power_bloc_leader_lawgroup_land_reform_variable_2 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_land_reform_variable_1
+			add_modifier = power_bloc_leader_lawgroup_land_reform_variable_2
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_land_reform_variable = 3
+				NOT = { has_modifier = power_bloc_leader_lawgroup_land_reform_variable_3 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_land_reform_variable_2
+			add_modifier = power_bloc_leader_lawgroup_land_reform_variable_3
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_land_reform_variable = 4
+				NOT = { has_modifier = power_bloc_leader_lawgroup_land_reform_variable_4 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_land_reform_variable_3
+			add_modifier = power_bloc_leader_lawgroup_land_reform_variable_4
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_land_reform_variable = 5
+				NOT = { has_modifier = power_bloc_leader_lawgroup_land_reform_variable_5 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_land_reform_variable_4
+			add_modifier = power_bloc_leader_lawgroup_land_reform_variable_5
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_land_reform_variable = 6
+				NOT = { has_modifier = power_bloc_leader_lawgroup_land_reform_variable_6 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_land_reform_variable_5
+			add_modifier = power_bloc_leader_lawgroup_land_reform_variable_6
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_land_reform_variable = 7
+				NOT = { has_modifier = power_bloc_leader_lawgroup_land_reform_variable_7 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_land_reform_variable_6
+			add_modifier = power_bloc_leader_lawgroup_land_reform_variable_7
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_land_reform_variable = 8
+				NOT = { has_modifier = power_bloc_leader_lawgroup_land_reform_variable_8 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_land_reform_variable_7
+			add_modifier = power_bloc_leader_lawgroup_land_reform_variable_8
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_land_reform_variable = 9
+				NOT = { has_modifier = power_bloc_leader_lawgroup_land_reform_variable_9 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_land_reform_variable_8
+			add_modifier = power_bloc_leader_lawgroup_land_reform_variable_9
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_land_reform_variable = 10
+				NOT = { has_modifier = power_bloc_leader_lawgroup_land_reform_variable_10 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_land_reform_variable_9
+			add_modifier = power_bloc_leader_lawgroup_land_reform_variable_10
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_land_reform_variable = 11
+				NOT = { has_modifier = power_bloc_leader_lawgroup_land_reform_variable_11 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_land_reform_variable_10
+			add_modifier = power_bloc_leader_lawgroup_land_reform_variable_11
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_land_reform_variable = 12
+				NOT = { has_modifier = power_bloc_leader_lawgroup_land_reform_variable_12 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_land_reform_variable_11
+			add_modifier = power_bloc_leader_lawgroup_land_reform_variable_12
+		}
+	}
+	# Free Speech Modifiers
+	if = {
+		limit = { has_variable = power_bloc_leader_lawgroup_free_speech_variable }
+		if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_free_speech_variable = 0
+				NOT = { has_modifier = power_bloc_leader_lawgroup_free_speech_variable_0 }
+			}
+			add_modifier = power_bloc_leader_lawgroup_free_speech_variable_0
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_free_speech_variable = 1
+				NOT = { has_modifier = power_bloc_leader_lawgroup_free_speech_variable_1 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_free_speech_variable_0
+			add_modifier = power_bloc_leader_lawgroup_free_speech_variable_1
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_free_speech_variable = 2
+				NOT = { has_modifier = power_bloc_leader_lawgroup_free_speech_variable_2 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_free_speech_variable_1
+			add_modifier = power_bloc_leader_lawgroup_free_speech_variable_2
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_free_speech_variable = 3
+				NOT = { has_modifier = power_bloc_leader_lawgroup_free_speech_variable_3 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_free_speech_variable_2
+			add_modifier = power_bloc_leader_lawgroup_free_speech_variable_3
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_free_speech_variable = 4
+				NOT = { has_modifier = power_bloc_leader_lawgroup_free_speech_variable_4 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_free_speech_variable_3
+			add_modifier = power_bloc_leader_lawgroup_free_speech_variable_4
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_free_speech_variable = 5
+				NOT = { has_modifier = power_bloc_leader_lawgroup_free_speech_variable_5 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_free_speech_variable_4
+			add_modifier = power_bloc_leader_lawgroup_free_speech_variable_5
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_free_speech_variable = 6
+				NOT = { has_modifier = power_bloc_leader_lawgroup_free_speech_variable_6 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_free_speech_variable_5
+			add_modifier = power_bloc_leader_lawgroup_free_speech_variable_6
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_free_speech_variable = 7
+				NOT = { has_modifier = power_bloc_leader_lawgroup_free_speech_variable_7 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_free_speech_variable_6
+			add_modifier = power_bloc_leader_lawgroup_free_speech_variable_7
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_free_speech_variable = 8
+				NOT = { has_modifier = power_bloc_leader_lawgroup_free_speech_variable_8 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_free_speech_variable_7
+			add_modifier = power_bloc_leader_lawgroup_free_speech_variable_8
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_free_speech_variable = 9
+				NOT = { has_modifier = power_bloc_leader_lawgroup_free_speech_variable_9 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_free_speech_variable_8
+			add_modifier = power_bloc_leader_lawgroup_free_speech_variable_9
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_free_speech_variable = 10
+				NOT = { has_modifier = power_bloc_leader_lawgroup_free_speech_variable_10 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_free_speech_variable_9
+			add_modifier = power_bloc_leader_lawgroup_free_speech_variable_10
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_free_speech_variable = 11
+				NOT = { has_modifier = power_bloc_leader_lawgroup_free_speech_variable_11 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_free_speech_variable_10
+			add_modifier = power_bloc_leader_lawgroup_free_speech_variable_11
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_free_speech_variable = 12
+				NOT = { has_modifier = power_bloc_leader_lawgroup_free_speech_variable_12 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_free_speech_variable_11
+			add_modifier = power_bloc_leader_lawgroup_free_speech_variable_12
+		}
+	}
+	# Slavery Modifiers
+	if = {
+		limit = { has_variable = power_bloc_leader_lawgroup_slavery_variable }
+		if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_slavery_variable = 0
+				NOT = { has_modifier = power_bloc_leader_lawgroup_slavery_variable_0 }
+			}
+			add_modifier = power_bloc_leader_lawgroup_slavery_variable_0
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_slavery_variable = 1
+				NOT = { has_modifier = power_bloc_leader_lawgroup_slavery_variable_1 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_slavery_variable_0
+			add_modifier = power_bloc_leader_lawgroup_slavery_variable_1
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_slavery_variable = 2
+				NOT = { has_modifier = power_bloc_leader_lawgroup_slavery_variable_2 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_slavery_variable_1
+			add_modifier = power_bloc_leader_lawgroup_slavery_variable_2
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_slavery_variable = 3
+				NOT = { has_modifier = power_bloc_leader_lawgroup_slavery_variable_3 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_slavery_variable_2
+			add_modifier = power_bloc_leader_lawgroup_slavery_variable_3
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_slavery_variable = 4
+				NOT = { has_modifier = power_bloc_leader_lawgroup_slavery_variable_4 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_slavery_variable_3
+			add_modifier = power_bloc_leader_lawgroup_slavery_variable_4
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_slavery_variable = 5
+				NOT = { has_modifier = power_bloc_leader_lawgroup_slavery_variable_5 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_slavery_variable_4
+			add_modifier = power_bloc_leader_lawgroup_slavery_variable_5
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_slavery_variable = 6
+				NOT = { has_modifier = power_bloc_leader_lawgroup_slavery_variable_6 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_slavery_variable_5
+			add_modifier = power_bloc_leader_lawgroup_slavery_variable_6
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_slavery_variable = 7
+				NOT = { has_modifier = power_bloc_leader_lawgroup_slavery_variable_7 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_slavery_variable_6
+			add_modifier = power_bloc_leader_lawgroup_slavery_variable_7
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_slavery_variable = 8
+				NOT = { has_modifier = power_bloc_leader_lawgroup_slavery_variable_8 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_slavery_variable_7
+			add_modifier = power_bloc_leader_lawgroup_slavery_variable_8
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_slavery_variable = 9
+				NOT = { has_modifier = power_bloc_leader_lawgroup_slavery_variable_9 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_slavery_variable_8
+			add_modifier = power_bloc_leader_lawgroup_slavery_variable_9
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_slavery_variable = 10
+				NOT = { has_modifier = power_bloc_leader_lawgroup_slavery_variable_10 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_slavery_variable_9
+			add_modifier = power_bloc_leader_lawgroup_slavery_variable_10
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_slavery_variable = 11
+				NOT = { has_modifier = power_bloc_leader_lawgroup_slavery_variable_11 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_slavery_variable_10
+			add_modifier = power_bloc_leader_lawgroup_slavery_variable_11
+		}
+		else_if = {
+			limit = {
+				var:power_bloc_leader_lawgroup_slavery_variable = 12
+				NOT = { has_modifier = power_bloc_leader_lawgroup_slavery_variable_12 }
+			}
+			remove_modifier = power_bloc_leader_lawgroup_slavery_variable_11
+			add_modifier = power_bloc_leader_lawgroup_slavery_variable_12
+		}
+	}
+}

@@ -1,0 +1,419 @@
+﻿#############################################################
+# Production methods requiring transportation are hidden when the transportation good isn't present in the state
+
+# 02 - Agro
+pm_refrigerated_rail_cars_building_livestock_ranch = {
+	texture = "gfx/interface/icons/production_method_icons/refrigerated_rail_cars.dds"
+
+	unlocking_technologies = {
+		electric_railway
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_electricity_add = 1
+			goods_input_transportation_add = 1
+		}
+
+		level_scaled = {
+			building_employment_laborers_add = -1000
+		}
+	}
+
+	required_input_goods = electricity
+	required_input_goods = transportation
+
+	is_hidden_when_unavailable = yes
+}
+
+# 03 - Mines
+pm_rail_transport_mine = {
+	texture = "gfx/interface/icons/production_method_icons/rail_transport.dds"
+	state_modifiers = {
+		workforce_scaled = {
+			state_pollution_generation_add = 10
+		}
+	}
+
+	unlocking_technologies = {
+		railways
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			# input goods
+			goods_input_transportation_add = 5
+		}
+
+		level_scaled = {
+			building_employment_laborers_add = -1000
+		}
+	}
+
+	required_input_goods = transportation
+
+	is_hidden_when_unavailable = yes
+}
+
+# 04 - Plantations
+pm_steam_rail_transport = {
+	texture = "gfx/interface/icons/production_method_icons/rail_transport.dds"
+
+	state_modifiers = {
+		workforce_scaled = {
+			state_pollution_generation_add = 10
+		}
+	}
+
+	unlocking_technologies = {
+		railways
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			# input goods
+			goods_input_transportation_add = 5
+		}
+
+		level_scaled = {
+			building_employment_laborers_add = -1000
+		}
+	}
+
+	required_input_goods = transportation
+
+	is_hidden_when_unavailable = yes
+}
+
+# 09 - Misc Resources
+pm_rail_transport_building_logging_camp = {
+	texture = "gfx/interface/icons/production_method_icons/rail_transport.dds"
+
+	state_modifiers = {
+		workforce_scaled = {
+			state_pollution_generation_add = 15
+		}
+	}
+
+	unlocking_technologies = {
+		railways
+	}
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_transportation_add = 5
+		}
+
+		level_scaled = {
+			building_employment_laborers_add = -1000
+		}
+	}
+
+	required_input_goods = transportation
+
+	is_hidden_when_unavailable = yes
+}
+
+pm_log_carts = {
+	texture = "gfx/interface/icons/production_method_icons/log_carts.dds"
+
+	state_modifiers = {
+		workforce_scaled = {
+			state_pollution_generation_add = 15
+		}
+	}
+
+	unlocking_technologies = {
+		electric_railway
+	}
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_transportation_add = 8
+		}
+
+		level_scaled = {
+			building_employment_laborers_add = -1500
+		}
+	}
+
+	required_input_goods = transportation
+
+	is_hidden_when_unavailable = yes
+}
+
+pm_refrigerated_rail_cars_building_fishing_wharf = {
+	texture = "gfx/interface/icons/production_method_icons/refrigerated_rail_cars.dds"
+
+	state_modifiers = {
+		workforce_scaled = {
+			state_pollution_generation_add = 15
+		}
+	}
+
+	unlocking_technologies = {
+		electric_railway
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			# input
+			goods_input_electricity_add = 5
+			goods_input_transportation_add = 5
+		}
+
+		level_scaled = {
+			# employment
+			building_employment_laborers_add = -2000
+		}
+	}
+
+	required_input_goods = electricity
+	required_input_goods = transportation
+
+	is_hidden_when_unavailable = yes
+}
+
+pm_flash_freezing_building_fishing_wharf = {
+	texture = "gfx/interface/icons/production_method_icons/flash_refrigerated.dds"
+
+	unlocking_technologies = {
+		flash_freezing
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			# input
+			goods_input_electricity_add = 7
+			goods_input_transportation_add = 7
+		}
+
+		level_scaled = {
+			# employment
+			building_employment_laborers_add = -3000
+		}
+	}
+
+	required_input_goods = electricity
+	required_input_goods = transportation
+
+	is_hidden_when_unavailable = yes
+}
+
+pm_refrigerated_rail_cars_building_whaling_station = {
+	texture = "gfx/interface/icons/production_method_icons/refrigerated_rail_cars.dds"
+
+	state_modifiers = {
+		workforce_scaled = {
+			state_pollution_generation_add = 15
+		}
+	}
+
+	unlocking_technologies = {
+		electric_railway
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			# input
+			goods_input_electricity_add = 5
+			goods_input_transportation_add = 5
+		}
+
+		level_scaled = {
+			# employment
+			building_employment_laborers_add = -2000
+		}
+	}
+
+	required_input_goods = electricity
+	required_input_goods = transportation
+
+	is_hidden_when_unavailable = yes
+}
+
+pm_flash_freezing_building_whaling_station = {
+	texture = "gfx/interface/icons/production_method_icons/flash_refrigerated.dds"
+
+	unlocking_technologies = {
+		flash_freezing
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			# input
+			goods_input_electricity_add = 7
+			goods_input_transportation_add = 7
+		}
+
+		level_scaled = {
+			# employment
+			building_employment_laborers_add = -3000
+		}
+	}
+
+	required_input_goods = electricity
+	required_input_goods = transportation
+
+	is_hidden_when_unavailable = yes
+}
+
+pm_rail_transport_building_oil_rig = {
+	texture = "gfx/interface/icons/production_method_icons/rail_transport.dds"
+
+	state_modifiers = {
+		workforce_scaled = {
+			state_pollution_generation_add = 5
+		}
+	}
+
+	unlocking_technologies = {
+		railways
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_transportation_add = 5
+		}
+
+		level_scaled = {
+			building_employment_laborers_add = -1000
+		}
+	}
+
+	required_input_goods = transportation
+
+	is_hidden_when_unavailable = yes
+}
+
+pm_tanker_cars = {
+	texture = "gfx/interface/icons/production_method_icons/tanker_cars.dds"
+
+	state_modifiers = {
+		workforce_scaled = {
+			state_pollution_generation_add = 10
+		}
+	}
+
+	unlocking_technologies = {
+		steel_railway_cars
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_transportation_add = 10
+		}
+
+		level_scaled = {
+			building_employment_laborers_add = -2000
+		}
+	}
+
+	required_input_goods = transportation
+
+	is_hidden_when_unavailable = yes
+}
+
+#############################################################
+# Changes to trade center base production methods
+pm_trade_center = {
+	texture = "gfx/interface/icons/production_method_icons/trade_center.dds"
+	replacement_if_valid = pm_trade_center_principle_external_trade_2
+	is_hidden_when_unavailable = yes
+
+	country_modifiers = {
+		workforce_scaled = {
+			country_influence_add = 1
+		}
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_clerks_add = 800
+			building_employment_shopkeepers_add = 200
+		}
+	}
+	state_modifiers = {
+		workforce_scaled = {
+			state_weekly_trades_add = 1
+			state_trade_capacity_add = 10
+		}
+	}
+}
+
+pm_trade_center_principle_external_trade_2 = {
+	texture = "gfx/interface/icons/production_method_icons/trade_center.dds"
+	is_hidden_when_unavailable = yes
+
+	unlocking_principles = {
+		principle_external_trade_2
+		principle_external_trade_3
+	}
+
+	country_modifiers = {
+		workforce_scaled = {
+			country_influence_add = 2
+		}
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_clerks_add = 800
+			building_employment_shopkeepers_add = 200
+		}
+	}
+	state_modifiers = {
+		workforce_scaled = {
+			state_weekly_trades_add = 2
+			state_trade_capacity_add = 10
+		}
+	}
+}
+
+pm_vacuum_canning_principle_3 = {
+	texture = "gfx/interface/icons/production_method_icons/vaccum_canning.dds"
+	is_hidden_when_unavailable = yes
+
+	unlocking_principles = {
+		principle_food_standardization_2
+		principle_food_standardization_3
+	}
+
+	unlocking_technologies = {
+		vacuum_canning
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			# input goods
+			goods_input_grain_add = -30		# x20 = -600
+			goods_input_fish_add = 30		# x20 = 600
+			goods_input_meat_add = 20		# x30 = 600
+			goods_input_iron_add = 10		# x40 =  400
+			goods_input_oil_add = 5 			# x40 =  200
+
+			# output goods
+			goods_output_groceries_add = 70	# x30 = 2100
+		}
+
+		level_scaled = {
+			# profit = 600 (23.1)
+			building_employment_machinists_add = 500	# x1.5 = 750 laborer wages
+			building_employment_engineers_add = 200		# x3.0 = 600 laborer wages
+		}
+	}
+}
+
+pm_principle_freedom_of_movement_3 = {
+	texture = "gfx/interface/icons/production_method_icons/government_run.dds"
+
+	is_hidden_when_unavailable = yes
+
+	state_modifiers = {
+		unscaled = {
+			state_migration_pull_mult = 0.2
+		}
+	}
+}
+
+pm_freedom_of_movement_no_effect = {
+	texture = "gfx/interface/icons/production_method_icons/government_run.dds"
+}

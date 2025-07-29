@@ -1,0 +1,726 @@
+﻿on_diplomatic_play_started = {
+	on_actions = {
+		warispolitics_diplo_play_aggressive
+		warispolitics_diplo_play_subject
+		warispolitics_diplo_play_ban_slavery
+		warispolitics_diplo_play_independence
+	}
+}
+
+warispolitics_diplo_play_aggressive = {
+	effect = {
+		if = {
+			limit = {
+				#Should only fire on actual aggressive actions 
+				NOT = {
+					is_diplomatic_play_type = dp_secession
+					is_diplomatic_play_type = dp_revolution
+					is_diplomatic_play_type = dp_annex_subject
+					is_diplomatic_play_type = dp_reduce_autonomy
+					is_diplomatic_play_type = dp_native_uprising
+					is_diplomatic_play_type = dp_increase_autonomy
+					is_diplomatic_play_type = dp_independence
+					is_diplomatic_play_type = dp_ban_slavery
+					is_diplomatic_play_type = dp_taiping_rebellion
+				}
+				game_date > 1836.1.1 #fixes weirdness around diplo plays initiated in History
+				#if there's relevant lobbies, go through them instead
+				scope:initiator = {
+					NOT = {
+						any_political_lobby = {
+							is_political_lobby_type = lobby_pro_country
+							target = scope:target
+						}
+					}
+					NOT = {
+						any_political_lobby = {
+							is_political_lobby_type = lobby_anti_country
+							target = scope:target
+						}
+					}
+				}
+			}
+			scope:initiator = {
+				#Aggression: Minor
+				if = {
+					limit = {
+						country_rank > scope:target.country_rank
+					 }
+					#Positive
+					every_interest_group = {
+						limit = {
+							warispolitics_ig_approves_aggression = yes
+						}
+						if = {
+							limit = { has_modifier = warispolitics_aggression_positive_minor }
+							remove_modifier = warispolitics_aggression_positive_minor
+						}
+						add_modifier = {
+							name = warispolitics_aggression_positive_minor
+							days =  normal_modifier_time
+							is_decaying = yes
+						}
+						post_notification = warispolitics_ig_approves_aggression_minor
+					}
+					#Negative
+					every_interest_group = {
+						limit = {
+							warispolitics_ig_disapproves_aggression = yes
+						}
+						if = {
+							limit = { has_modifier = warispolitics_aggression_negative_minor }
+							remove_modifier = warispolitics_aggression_negative_minor
+						}
+						add_modifier = {
+							name = warispolitics_aggression_negative_minor
+							days =  normal_modifier_time
+							is_decaying = yes
+						}
+						post_notification = warispolitics_ig_disapproves_aggression_minor
+					}
+				}
+				#Aggression: Major
+				if = {
+					limit = {
+						country_rank <= scope:target.country_rank
+						}
+					#Positive
+					every_interest_group = {
+						limit = {
+							warispolitics_ig_approves_aggression = yes
+						}
+						if = {
+							limit = { has_modifier = warispolitics_aggression_positive_major }
+							remove_modifier = warispolitics_aggression_positive_major
+						}
+						add_modifier = {
+							name = warispolitics_aggression_positive_major
+							days =  normal_modifier_time
+							is_decaying = yes
+						}
+						post_notification = warispolitics_ig_approves_aggression_major
+					}
+					#Negative
+					every_interest_group = {
+						limit = {
+							warispolitics_ig_disapproves_aggression = yes
+						}
+						if = {
+							limit = { has_modifier = warispolitics_aggression_negative_major }
+							remove_modifier = warispolitics_aggression_negative_major
+						}
+						add_modifier = {
+							name = warispolitics_aggression_negative_major
+							days =  normal_modifier_time
+							is_decaying = yes
+						}
+						post_notification = warispolitics_ig_disapproves_aggression_major
+					}
+				}
+				#Aggression (Socialists don't like attacking Council Republics)
+				if = {
+					limit = {
+						scope:target = {
+							has_radical_leftist_government = yes
+							NOT = {
+								ruler = {
+									has_ideology = ideology:ideology_fascist
+								}
+							}
+						}
+					}
+					every_interest_group = {
+						limit = {
+							warispolitics_ig_disapproves_attacking_council_republic = yes
+						}
+						add_modifier = {
+							name = warispolitics_aggression_negative_socialist
+							days =  normal_modifier_time
+							is_decaying = yes
+						}
+						post_notification = warispolitics_ig_disapproves_aggression_socialist
+					}
+				}
+			}
+		}
+	}
+}
+
+warispolitics_diplo_play_subject = {
+	effect = {
+		#Subject Bullying
+		if = {
+			limit = { 
+				OR = {
+					is_diplomatic_play_type = dp_annex_subject
+					is_diplomatic_play_type = dp_reduce_autonomy
+				}
+			}
+			scope:initiator = {
+				#Positive
+				every_interest_group = {
+					limit = {
+						warispolitics_ig_approves_bullying = yes
+					}
+					if = {
+						limit = { has_modifier = warispolitics_subject_bully_positive }
+						remove_modifier = warispolitics_subject_bully_positive
+					}
+					add_modifier = {
+						name = warispolitics_subject_bully_positive
+						days =  normal_modifier_time
+						is_decaying = yes
+					}
+					post_notification = warispolitics_ig_approves_subject_bully
+				}
+				#Negative
+				every_interest_group = {
+					limit = {
+						warispolitics_ig_disapproves_bullying = yes
+					}
+					if = {
+						limit = { has_modifier = warispolitics_subject_bully_negative }
+						remove_modifier = warispolitics_subject_bully_negative
+					}
+					add_modifier = {
+						name = warispolitics_subject_bully_negative
+						days =  normal_modifier_time
+						is_decaying = yes
+					}
+					post_notification = warispolitics_ig_disapproves_subject_bully
+				}
+			}
+		}
+	}
+}
+
+warispolitics_diplo_play_ban_slavery = {
+	effect = {
+		if = {
+			limit = { 
+				is_diplomatic_play_type = dp_ban_slavery
+			}
+			scope:initiator = {
+				#Positive
+				every_interest_group = {
+					limit = {
+						warispolitics_ig_hates_slavery = yes
+					}
+					if = {
+						limit = { has_modifier = warispolitics_slavery_ban_positive }
+						remove_modifier = warispolitics_slavery_ban_positive
+					}
+					add_modifier = {
+						name = warispolitics_slavery_ban_positive
+						days =  normal_modifier_time
+						is_decaying = yes
+					}
+					post_notification = warispolitics_ig_approves_slavery_ban
+				}
+				#Negative
+				every_interest_group = {
+					limit = {
+						warispolitics_ig_loves_slavery = yes
+					}
+					if = {
+						limit = { has_modifier = warispolitics_slavery_ban_negative }
+						remove_modifier = warispolitics_slavery_ban_negative
+					}
+					add_modifier = {
+						name = warispolitics_slavery_ban_negative
+						days =  normal_modifier_time
+						is_decaying = yes
+					}
+					post_notification = warispolitics_ig_disapproves_slavery_ban
+				}
+			}
+		}
+	}
+}
+
+warispolitics_diplo_play_independence = {
+	effect = {
+		if = {
+			limit = { 
+				OR = {
+					is_diplomatic_play_type = dp_independence
+					is_diplomatic_play_type = dp_increase_autonomy
+				}
+			}
+			scope:initiator = {
+				# IG modifiers deprecated in favor of Lobbies
+				# #Positive
+				# every_interest_group = {
+				# 	limit = {
+				# 		warispolitics_ig_loves_independence = yes
+				# 	}
+				# 	if = {
+				# 		limit = { has_modifier = warispolitics_independence_positive }
+				# 		remove_modifier = warispolitics_independence_positive
+				# 	}
+				# 	add_modifier = {
+				# 		name = warispolitics_independence_positive
+				# 		days =  normal_modifier_time
+				# 		is_decaying = yes
+				# 	}
+				# 	post_notification = warispolitics_ig_approves_independence
+				# }
+				# #Negative
+				# every_interest_group = {
+				# 	limit = {
+				# 		warispolitics_ig_disapproves_independence = yes
+				# 	}
+				# 	if = {
+				# 		limit = { has_modifier = warispolitics_independence_negative }
+				# 		remove_modifier = warispolitics_independence_negative
+				# 	}
+				# 	add_modifier = {
+				# 		name = warispolitics_independence_negative
+				# 		days =  normal_modifier_time
+				# 		is_decaying = yes
+				# 	}
+				# 	post_notification = warispolitics_ig_disapproves_independence
+				# }
+				#Pops React
+				if = {
+					limit = {
+						has_technology_researched = nationalism
+					 }
+					random_primary_culture = {
+						save_scope_as = primary_culture_scope
+					}
+					add_loyalists = {
+						culture = scope:primary_culture_scope
+						value = 0.10
+					}
+					post_notification = warispolitics_pops_approve_independence
+				}
+				
+			}
+		}
+	}
+}
+
+# on_diplomatic_demand = {
+# 	on_actions = {
+# 		warispolitics_demand_ban_slavery
+# 	}
+# }
+
+# warispolitics_demand_ban_slavery = {
+# 	effect = {
+# 		if = {
+# 			limit = { 
+# 				is_diplomatic_demand_type = dp_ban_slavery
+# 			}
+# 			scope:initiator = {
+# 				#Positive
+# 				every_interest_group = {
+# 					limit = {
+# 						law_stance = {
+# 							law = law_type:law_slave_trade
+# 							value <= disapprove
+# 						}
+# 					}
+# 					if = {
+# 						limit = { has_modifier = warispolitics_slavery_ban_positive }
+# 						remove_modifier = warispolitics_slavery_ban_positive
+# 					}
+# 					add_modifier = {
+# 						name = warispolitics_slavery_ban_positive
+# 						days =  normal_modifier_time
+# 						is_decaying = yes
+# 					}
+# 					post_notification = warispolitics_ig_approves_slavery_ban
+# 				}
+# 				#Negative
+# 				every_interest_group = {
+# 					limit = {
+# 						law_stance = {
+# 							law = law_type:law_slavery_banned
+# 							value <= disapprove
+# 						}
+# 					}
+# 					if = {
+# 						limit = { has_modifier = warispolitics_slavery_ban_negative }
+# 						remove_modifier = warispolitics_slavery_ban_negative
+# 					}
+# 					add_modifier = {
+# 						name = warispolitics_slavery_ban_negative
+# 						days =  normal_modifier_time
+# 						is_decaying = yes
+# 					}
+# 					post_notification = warispolitics_ig_disapproves_slavery_ban
+# 				}
+# 			}
+# 		}
+# 	}
+# }
+
+
+on_capitulation = {
+	on_actions = {
+		warispolitics_capitulate
+	}
+}
+
+warispolitics_capitulate = {
+	effect = {
+		if = {
+			limit = { 
+				has_modifier = warispolitics_lost_war
+			}
+			remove_modifier = warispolitics_lost_war
+		}
+		add_modifier = {
+			name = warispolitics_lost_war
+			days = 1825
+			is_decaying = yes
+		}
+		#IGs dinged
+		every_interest_group = {
+			limit = {
+				is_in_government = yes
+			}
+			if = {
+				limit = { 
+					has_modifier = warispolitics_ig_war_loser
+				}
+				remove_modifier = warispolitics_ig_war_loser
+			}
+			add_modifier = {
+				name = warispolitics_ig_war_loser
+				is_decaying = yes
+				days = 1825
+			}
+		}
+		#Ruler dinged
+		if = {
+			limit = {
+				exists = ruler
+			 }
+			 ruler = {
+				if = {
+					limit = {
+						has_modifier = warispolitics_character_lost_war
+					 }
+					 remove_modifier = warispolitics_character_lost_war
+				}
+				add_modifier = {
+					name = warispolitics_character_lost_war
+					is_decaying = yes
+					days = 1825
+				}
+			}
+		}
+	}
+}
+
+on_wargoal_enforced = {
+	on_actions = {
+		warispolitics_war_won
+	}
+}
+
+warispolitics_war_won = {
+	effect = {
+		if = {
+			limit = { 
+				has_modifier = warispolitics_won_war
+			}
+			remove_modifier = warispolitics_won_war
+		}
+		add_modifier = {
+			name = warispolitics_won_war
+			days = 1825
+			is_decaying = yes
+		}
+		#IGs Rewarded
+		every_interest_group = {
+			limit = {
+				is_in_government = yes
+			}
+			if = {
+				limit = { 
+					has_modifier = warispolitics_ig_war_winner
+				}
+				remove_modifier = warispolitics_ig_war_winner
+			}
+			add_modifier = {
+				name = warispolitics_ig_war_winner
+				is_decaying = yes
+				days = 1825
+			}
+		}
+		#Ruler Rewarded
+		ruler = {
+			if = {
+				limit = {
+					has_modifier = warispolitics_character_won_war
+				 }
+				 remove_modifier = warispolitics_character_won_war
+			}
+			add_modifier = {
+				name = warispolitics_character_won_war
+				is_decaying = yes
+				days = 1825
+			}
+		}
+	}
+}
+
+on_colony_created = {
+	on_actions = {
+		warispolitics_colony_created
+	}
+}
+
+warispolitics_colony_created = {
+	effect = {
+		owner = {
+			#Positive
+			every_interest_group = {
+				limit = {
+					warispolitics_ig_loves_colonies = yes
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_modifier = warispolitics_colony_positive
+						}
+					 }
+					 post_notification = warispolitics_ig_approves_colony
+				}
+				if = {
+					limit = { has_modifier = warispolitics_colony_positive }
+					remove_modifier = warispolitics_colony_positive
+				}
+				add_modifier = {
+					name = warispolitics_colony_positive
+					days =  normal_modifier_time
+					is_decaying = yes
+				}
+			}
+			#Negative
+			every_interest_group = {
+				limit = {
+					warispolitics_ig_hates_colonies = yes
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_modifier = warispolitics_colony_negative
+						}
+					 }
+					 post_notification = warispolitics_ig_disapproves_colony
+				}
+				if = {
+					limit = { has_modifier = warispolitics_colony_negative }
+					remove_modifier = warispolitics_colony_negative
+				}
+				add_modifier = {
+					name = warispolitics_colony_negative
+					days =  normal_modifier_time
+					is_decaying = yes
+				}
+			}
+		}
+	}
+}
+
+# on_peace_agreement_signed_war_leader = {
+# 	on_actions = {
+# 		warispolitics_negotiated_peace
+# 	}
+# }
+
+# warispolitics_negotiated_peace = {
+# 	effect = {
+# 		if = {
+# 			limit = { 
+# 				this = {
+# 					exists = yes
+# 				}
+# 			}
+# 			#Negative
+# 			every_interest_group = {
+# 			limit = {
+# 				OR = {
+# 					leader ?= {
+# 						OR = {
+# 							has_ideology = ideology:ideology_jingoist_leader
+# 							has_ideology = ideology:ideology_bonapartist
+# 							has_ideology = ideology:ideology_fascist
+# 						}		
+# 					}
+# 					has_ideology = ideology:ideology_caudillismo
+# 				}
+# 			}
+# 			if = {
+# 				limit = { has_modifier = warispolitics_whitepeace_negative }
+# 				remove_modifier = warispolitics_whitepeace_negative
+# 			}
+# 			add_modifier = {
+# 				name = warispolitics_whitepeace_negative
+# 				days =  normal_modifier_time
+# 				is_decaying = yes
+# 			}
+# 			post_notification = warispolitics_ig_disapproves_whitepeace
+# 		}
+# 		#Positive
+# 		every_interest_group = {
+# 			limit = {
+# 				leader ?= {
+# 					has_ideology = ideology:ideology_pacifist
+# 				}
+# 			}
+# 			if = {
+# 				limit = { has_modifier = warispolitics_whitepeace_positive }
+# 				remove_modifier = warispolitics_whitepeace_positive
+# 			}
+# 			add_modifier = {
+# 				name = warispolitics_whitepeace_positive
+# 				days =  normal_modifier_time
+# 				is_decaying = yes
+# 			}
+# 			post_notification = warispolitics_ig_approves_whitepeace
+# 		}
+# 		}	
+# 	}
+# }
+
+on_diplo_play_back_down = {
+	on_actions = {
+		warispolitics_backed_down
+	}
+}
+
+warispolitics_backed_down = {
+	effect = {
+		scope:actor = {
+			if = {
+				limit = { 
+					has_modifier = warispolitics_backed_down
+				}
+				remove_modifier = warispolitics_backed_down
+			}
+			add_modifier = {
+				name = warispolitics_backed_down
+				days =  normal_modifier_time
+				is_decaying = yes
+			}
+		}
+	}
+}
+
+# on_diplomatic_proposal_accepted = {
+# 	on_actions = {
+# 		warispolitics_trade_agreement_made
+# 	}
+# }
+
+# warispolitics_trade_agreement_made = {
+# 	effect = {
+# 		if = {
+# 			limit = {
+# 				scope:notification_target = {
+# 					has_diplomatic_pact = {
+# 						who = scope:actor
+# 						type = trade_agreement
+# 					}
+# 				}
+# 			}
+# 			scope:actor = {
+# 				every_interest_group = {
+# 					limit = {
+# 						law_stance = {
+# 							law = law_type:law_free_trade
+# 							value >= approve
+# 						}
+# 					}
+# 				}
+# 				if = {
+# 					limit = { 
+# 						has_modifier = warispolitics_tradeagreement_positive
+# 					}
+# 					remove_modifier = warispolitics_tradeagreement_positive
+# 				}
+# 				add_modifier = {
+# 					name = warispolitics_tradeagreement_positive
+# 					days =  normal_modifier_time
+# 					is_decaying = yes
+# 				}
+# 			}
+# 		}
+# 	}
+# }
+
+# on_half_yearly_pulse_country = {
+# 	on_actions = {
+# 		warispolitics_pacts_update
+# 	}
+# }
+
+# warispolitics_pacts_update = {
+# 	effect = {
+# 		#Jingoists like having lots of subjects
+# 		if = {
+# 			limit = { 
+# 				any_subject_or_below = {
+# 					count >= 3
+# 				}
+# 			}
+# 		}
+# 		every_interest_group = {
+# 			limit = {
+# 				NOT = {
+# 					leader = {
+# 						has_ideology = ideology:ideology_pacifist
+# 					}
+# 					has_modifier = warispolitics_overlord_positive
+# 				}
+# 				OR = {
+# 					leader = {
+# 						OR = {
+# 							has_ideology = ideology:ideology_jingoist_leader
+# 							has_ideology = ideology:ideology_bonapartist
+# 						}	
+# 					}
+# 					has_ideology = ideology:ideology_jingoist
+# 				} 
+# 			}
+# 			add_modifier = {
+# 				name = warispolitics_overlord_positive
+# 			}
+# 		}
+# 	}
+# }
+
+on_revolution_start = { 
+	on_actions = {
+		warispolitics_subject_rebellion
+	}
+}
+
+warispolitics_subject_rebellion = {
+	effect = {
+		if = {
+			limit = { 
+				any_country = {
+					is_subject_of = prev
+				}
+			}
+			post_notification = warispolitics_subjects_revolution
+			every_subject_or_below = {
+				limit = {
+					is_subject_of = root
+				}
+				change_relations = {
+					country = root
+					value = -30
+				}
+				add_liberty_desire = 25
+			}
+		}
+	}
+}

@@ -1,86 +1,4 @@
-﻿base_values = {
-	country_weekly_innovation_add = 50
-	country_weekly_innovation_max_add = 50
-	country_tech_spread_add = 25
-	
-	country_loan_interest_rate_add = 0.2
-	
-	country_legitimacy_govt_size_add = 1
-	
-	country_bureaucracy_add = 100
-	country_authority_add = 100
-	country_influence_add = 100
-
-	country_secession_progress_add = 0.1
-
-	state_education_access_wealth_add = 0.005
-	
-	country_law_enactment_max_setbacks_add = 3
-	
-	country_minting_add = 500
-	country_government_dividends_efficiency_add = 0.35
-
-	state_tax_capacity_add = 100
-	state_infrastructure_add = 3
-	state_infrastructure_from_automobiles_consumption_add = 0.25
-	
-	state_lower_strata_expected_sol_add = 5
-	state_middle_strata_expected_sol_add = 10
-	state_upper_strata_expected_sol_add = 15
-	state_expected_sol_from_literacy = 5
-	
-	state_farmers_investment_pool_contribution_add = 0.05
-	state_shopkeepers_investment_pool_contribution_add = 0.05
-	state_clergymen_investment_pool_contribution_add = 0.20
-	state_aristocrats_investment_pool_contribution_add = 0.20
-	state_capitalists_investment_pool_contribution_add = 0.30
-	
-	# To balance for unincorporated states not paying taxes
-	state_unincorporated_starting_wages_mult = -0.20
-	building_unincorporated_subsistence_output_mult = -0.20
-		
-	country_construction_add = 10
-	
-	building_mobilization_cost_mult = 0.6
-	
-	building_economy_of_scale_level_cap_add = 20
-	
-	state_market_access_price_impact = 0.75
-	
-	country_company_throughput_bonus_add = 0.1
-	country_company_construction_efficiency_bonus_add = 0.25
-	
-	country_max_weekly_construction_progress_add = 10
-	
-	country_free_trade_routes_add = 5
-	
-	military_formation_organization_gain_add = 0.5 # 200 days to get max organization
-	
-	state_urbanization_per_level_add = 100
-	
-	unit_experience_gain_add = 1.0
-}
-
-modifier_recently_adjusted_primary_PM = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_negative.dds
-	building_throughput_add = -0.2
-}
-
-modifier_recently_adjusted_secondary_PM = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_negative.dds
-	building_throughput_add = -0.1
-}
-
-modifier_failed_schleswig_holstein_question = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
-	country_prestige_mult = -0.15
-}
-
-modifier_moderator_controlled_switzerland = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	country_gold_reserve_limit_mult = 1000		# +10000% gold reserve limit modifier
-}
-
+﻿#############################################################
 # Reworked Migration Button modifier
 sa_migration_cost = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
@@ -93,69 +11,603 @@ sa_migration_cost_money = {
 	country_expenses_add = 1
 }
 
-country_authority_per_subject = {
-	country_authority_mult = 0.02
-}
-
-# Scales with country literacy rate
-country_literacy_rate = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
-	country_weekly_innovation_max_add = 150
-	country_tech_spread_add = 75
-}
-
 excess_innovation = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
-	country_tech_spread_add = 0.02
+	country_tech_spread_add = 0.02		# Was 0.2; reduced to 0.02 to reduce the effectiveness of spamming universities
 }
 
-modifier_vassalization_authority_per_subject_bonus = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	country_authority_mult = 0.02
+#############################################################
+# Technology Spread Modifiers
+mod_technology_production_era_1 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
+	country_production_tech_spread_mult = 0.1	# 10% production tech spread bonus for completing the era 1 of the production technology tree
 }
 
-#
-mod_i_did_diplo = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+mod_technology_production_era_2 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
+	country_production_tech_spread_mult = 0.30	# 30% production tech spread bonus for completing the era 2 of the production technology tree
 }
 
-# 
-mod_i_did_not_diplo = {
+mod_technology_production_era_3 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
+	country_production_tech_spread_mult = 0.60	# 60% production tech spread bonus for completing the era 3 of the production technology tree
+}
+
+mod_technology_production_era_4 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
+	country_production_tech_spread_mult = 1.0	# 100% production tech spread bonus for completing the era 4 of the production technology tree
+}
+
+mod_technology_military_era_1 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
+	country_military_tech_spread_mult = 0.1	# 10% military tech spread bonus for completing the era 1 of the military technology tree
+}
+
+mod_technology_military_era_2 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
+	country_military_tech_spread_mult = 0.30	# 30% military tech spread bonus for completing the era 2 of the military technology tree
+}
+
+mod_technology_military_era_3 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
+	country_military_tech_spread_mult = 0.60	# 60% military tech spread bonus for completing the era 3 of the military technology tree
+}
+
+mod_technology_military_era_4 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
+	country_military_tech_spread_mult = 1.0	# 100% military tech spread bonus for completing the era 4 of the military technology tree
+}
+
+mod_technology_society_era_1 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
+	country_society_tech_spread_mult = 0.1	# 10% society tech spread bonus for completing the era 1 of the society technology tree
+}
+
+mod_technology_society_era_2 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
+	country_society_tech_spread_mult = 0.30	# 30% society tech spread bonus for completing the era 2 of the society technology tree
+}
+
+mod_technology_society_era_3 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
+	country_society_tech_spread_mult = 0.60	# 60% society tech spread bonus for completing the era 3 of the society technology tree
+}
+
+mod_technology_society_era_4 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
+	country_society_tech_spread_mult = 1.0	# 100% society tech spread bonus for completing the era 4 of the society technology tree
+}
+
+#############################################################
+# Rivalries no longer give influence
+country_rivalry = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+}
+
+#############################################################
+# Modifier added when a country wins a war against a country with humiliation wargoal
+national_pride_military_triumph = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_mobilization_positive.dds
+	country_prestige_mult = 0.1 	# 10% prestige bonus for winning a war against a country with humiliation wargoal; will be decaying and last for 5 years
+}
+
+#############################################################
+# War Is Politics Modifiers
+warispolitics_character_lost_war = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_capitulate_negative.dds
+	character_popularity_add = -20
+}
+
+warispolitics_character_won_war = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_mobilization_positive.dds
+	character_popularity_add = 15
+}
+
+warispolitics_lost_war = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_capitulate_negative.dds
+	country_legitimacy_base_add = -10.5
+	country_prestige_from_army_power_projection_mult = -0.11
+	country_soldiers_pol_str_mult = 0.11
+	interest_group_ig_armed_forces_pop_attraction_mult = -0.11
+}
+
+warispolitics_won_war = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_mobilization_positive.dds
+	country_legitimacy_base_add = 4.5
+	country_prestige_from_army_power_projection_mult = 0.11
+	country_officers_pol_str_mult = 0.16
+	country_soldiers_pol_str_mult = 0.06
+	interest_group_ig_armed_forces_pop_attraction_mult = 0.11
+}
+
+warispolitics_backed_down = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_capitulate_negative.dds
+	country_legitimacy_base_add = -5.5
+	country_prestige_mult = -0.11
+}
+
+warispolitics_aggression_positive_minor = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_mobilization_positive.dds
+	interest_group_approval_add = 2.5
+}
+
+warispolitics_aggression_positive_major = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_mobilization_positive.dds
+	interest_group_approval_add = 4.5
+}
+
+warispolitics_aggression_negative_minor = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_mobilization_negative.dds
+	interest_group_approval_add = -3.5
+}
+
+warispolitics_aggression_negative_major = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_mobilization_negative.dds
+	interest_group_approval_add = -5.5
+}
+
+warispolitics_aggression_negative_socialist = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
+	interest_group_approval_add = -4.5
 }
 
-modifier_india_company_rule = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
-	interest_group_ig_industrialists_pol_str_mult = 3
-	country_bureaucrats_pol_str_mult = 2
-	country_capitalists_pol_str_mult = 0.5
-	country_officers_pol_str_mult = 0.5
-	country_aristocrats_pol_str_mult = -0.80
-	country_legitimacy_base_add = -50
-	country_legitimacy_headofstate_add = 65
+warispolitics_whitepeace_positive = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	interest_group_approval_add = 1.5
 }
 
-mod_suez_canal_toll = {
+warispolitics_whitepeace_negative = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
+	interest_group_approval_add = -2.5
+}
+
+warispolitics_subject_bully_positive = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
+	interest_group_approval_add = 2.5
+}
+
+warispolitics_subject_bully_negative = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
+	interest_group_approval_add = -4.5
+}
+
+warispolitics_slavery_ban_positive = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
+	interest_group_approval_add = 2.5
+}
+
+warispolitics_slavery_ban_negative = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
+	interest_group_approval_add = -2.5
+}
+
+warispolitics_colony_positive = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	interest_group_approval_add = 2.5
+}
+
+warispolitics_colony_negative = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
+	interest_group_approval_add = -2.5
+}
+
+warispolitics_independence_positive = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	interest_group_approval_add = 8.5
+}
+
+warispolitics_independence_negative = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
+	interest_group_approval_add = -5.5
+}
+
+warispolitics_overlord_positive = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	interest_group_approval_add = 2.5
+}
+
+warispolitics_tradeagreement_positive = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
-	country_tax_income_add = 1
+	interest_group_approval_add = 2.5
 }
 
-mod_panama_canal_toll = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
-	country_tax_income_add = 1
+warispolitics_ig_war_loser = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_capitulate_negative.dds
+	interest_group_pop_attraction_mult = -0.10
+	interest_group_pol_str_mult = -0.20
 }
 
-mod_infamy_infamous_punishment = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
-	country_loan_interest_rate_add = 0.025	# 2.5% interest rate increase
+warispolitics_ig_war_winner = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_mobilization_positive.dds
+	interest_group_pop_attraction_mult = 0.05
+	interest_group_pol_str_mult = 0.10
 }
 
-mod_infamy_notorious_punishment = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
-	country_loan_interest_rate_add = 0.075	# 7.5% interest rate increase
+#############################################################
+# Power Bloc Synergize Laws Modifiers
+
+# Governance Principles Modifiers
+power_bloc_leader_lawgroup_governance_principles_variable_0 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+}
+power_bloc_leader_lawgroup_governance_principles_variable_1 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -1
+}
+power_bloc_leader_lawgroup_governance_principles_variable_2 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -2
+}
+power_bloc_leader_lawgroup_governance_principles_variable_3 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -3
+}
+power_bloc_leader_lawgroup_governance_principles_variable_4 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -4
+}
+power_bloc_leader_lawgroup_governance_principles_variable_5 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -5
+}
+power_bloc_leader_lawgroup_governance_principles_variable_6 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -6
+}
+power_bloc_leader_lawgroup_governance_principles_variable_7 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -7
+}
+power_bloc_leader_lawgroup_governance_principles_variable_8 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -8
+}
+power_bloc_leader_lawgroup_governance_principles_variable_9 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -9
+}
+power_bloc_leader_lawgroup_governance_principles_variable_10 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -10
+}
+power_bloc_leader_lawgroup_governance_principles_variable_11 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -11
+}
+power_bloc_leader_lawgroup_governance_principles_variable_12 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -12
+}
+power_bloc_leader_lawgroup_governance_principles_law_changed = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -12
 }
 
-mod_infamy_pariah_punishment = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
-	country_loan_interest_rate_add = 0.20	# 20% interest rate increase
+# Distribution of Power Modifiers
+power_bloc_leader_lawgroup_distribution_of_power_variable_0 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
 }
+power_bloc_leader_lawgroup_distribution_of_power_variable_1 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -1
+}
+power_bloc_leader_lawgroup_distribution_of_power_variable_2 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -2
+}
+power_bloc_leader_lawgroup_distribution_of_power_variable_3 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -3
+}
+power_bloc_leader_lawgroup_distribution_of_power_variable_4 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -4
+}
+power_bloc_leader_lawgroup_distribution_of_power_variable_5 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -5
+}
+power_bloc_leader_lawgroup_distribution_of_power_variable_6 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -6
+}
+power_bloc_leader_lawgroup_distribution_of_power_variable_7 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -7
+}
+power_bloc_leader_lawgroup_distribution_of_power_variable_8 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -8
+}
+power_bloc_leader_lawgroup_distribution_of_power_variable_9 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -9
+}
+power_bloc_leader_lawgroup_distribution_of_power_variable_10 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -10
+}
+power_bloc_leader_lawgroup_distribution_of_power_variable_11 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -11
+}
+power_bloc_leader_lawgroup_distribution_of_power_variable_12 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -12
+}
+power_bloc_leader_lawgroup_distribution_of_power_law_changed = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -12
+}
+
+# Economic System Modifiers
+power_bloc_leader_lawgroup_economic_system_variable_0 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+}
+power_bloc_leader_lawgroup_economic_system_variable_1 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -1
+}
+power_bloc_leader_lawgroup_economic_system_variable_2 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -2
+}
+power_bloc_leader_lawgroup_economic_system_variable_3 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -3
+}
+power_bloc_leader_lawgroup_economic_system_variable_4 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -4
+}
+power_bloc_leader_lawgroup_economic_system_variable_5 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -5
+}
+power_bloc_leader_lawgroup_economic_system_variable_6 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -6
+}
+power_bloc_leader_lawgroup_economic_system_variable_7 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -7
+}
+power_bloc_leader_lawgroup_economic_system_variable_8 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -8
+}
+power_bloc_leader_lawgroup_economic_system_variable_9 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -9
+}
+power_bloc_leader_lawgroup_economic_system_variable_10 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -10
+}
+power_bloc_leader_lawgroup_economic_system_variable_11 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -11
+}
+power_bloc_leader_lawgroup_economic_system_variable_12 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -12
+}
+power_bloc_leader_lawgroup_economic_system_law_changed = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -12
+}
+
+# Land Reform Modifiers
+power_bloc_leader_lawgroup_land_reform_variable_0 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+}
+power_bloc_leader_lawgroup_land_reform_variable_1 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -1
+}
+power_bloc_leader_lawgroup_land_reform_variable_2 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -2
+}
+power_bloc_leader_lawgroup_land_reform_variable_3 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -3
+}
+power_bloc_leader_lawgroup_land_reform_variable_4 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -4
+}
+power_bloc_leader_lawgroup_land_reform_variable_5 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -5
+}
+power_bloc_leader_lawgroup_land_reform_variable_6 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -6
+}
+power_bloc_leader_lawgroup_land_reform_variable_7 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -7
+}
+power_bloc_leader_lawgroup_land_reform_variable_8 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -8
+}
+power_bloc_leader_lawgroup_land_reform_variable_9 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -9
+}
+power_bloc_leader_lawgroup_land_reform_variable_10 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -10
+}
+power_bloc_leader_lawgroup_land_reform_variable_11 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -11
+}
+power_bloc_leader_lawgroup_land_reform_variable_12 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -12
+}
+power_bloc_leader_lawgroup_land_reform_law_changed = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -12
+}
+
+# Free Speech Modifiers
+power_bloc_leader_lawgroup_free_speech_variable_0 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+}
+power_bloc_leader_lawgroup_free_speech_variable_1 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -1
+}
+power_bloc_leader_lawgroup_free_speech_variable_2 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -2
+}
+power_bloc_leader_lawgroup_free_speech_variable_3 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -3
+}
+power_bloc_leader_lawgroup_free_speech_variable_4 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -4
+}
+power_bloc_leader_lawgroup_free_speech_variable_5 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -5
+}
+power_bloc_leader_lawgroup_free_speech_variable_6 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -6
+}
+power_bloc_leader_lawgroup_free_speech_variable_7 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -7
+}
+power_bloc_leader_lawgroup_free_speech_variable_8 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -8
+}
+power_bloc_leader_lawgroup_free_speech_variable_9 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -9
+}
+power_bloc_leader_lawgroup_free_speech_variable_10 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -10
+}
+power_bloc_leader_lawgroup_free_speech_variable_11 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -11
+}
+power_bloc_leader_lawgroup_free_speech_variable_12 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -12
+}
+power_bloc_leader_lawgroup_free_speech_law_changed = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -12
+}
+
+# Slavery Modifiers
+power_bloc_leader_lawgroup_slavery_variable_0 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+}
+power_bloc_leader_lawgroup_slavery_variable_1 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -1
+}
+power_bloc_leader_lawgroup_slavery_variable_2 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -2
+}
+power_bloc_leader_lawgroup_slavery_variable_3 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -3
+}
+power_bloc_leader_lawgroup_slavery_variable_4 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -4
+}
+power_bloc_leader_lawgroup_slavery_variable_5 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -5
+}
+power_bloc_leader_lawgroup_slavery_variable_6 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -6
+}
+power_bloc_leader_lawgroup_slavery_variable_7 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -7
+}
+power_bloc_leader_lawgroup_slavery_variable_8 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -8
+}
+power_bloc_leader_lawgroup_slavery_variable_9 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -9
+}
+power_bloc_leader_lawgroup_slavery_variable_10 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -10
+}
+power_bloc_leader_lawgroup_slavery_variable_11 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -11
+}
+power_bloc_leader_lawgroup_slavery_variable_12 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -12
+}
+power_bloc_leader_lawgroup_slavery_law_changed = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_legitimacy_base_add = -12
+}
+
+###############################################################
+# Power Bloc Modifiers
+country_authority_per_subject = {
+	country_authority_mult = 0.01
+}
+
+#############################################################
+# Game Master Modifiers
+game_master_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+}
+
+game_master_prestige_add_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	country_prestige_add = 1
+}
+
+game_master_prestige_multiplier_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	country_prestige_mult = 0.01
+}
+
+game_master_authority_add_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	country_authority_add = 1
+}
+
+game_master_authority_multiplier_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	country_authority_mult = 0.01
+}
+
+game_master_influence_add_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	country_influence_add = 1
+}
+
+game_master_influence_multiplier_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	country_influence_mult = 0.01
+}
+
+#############################################################

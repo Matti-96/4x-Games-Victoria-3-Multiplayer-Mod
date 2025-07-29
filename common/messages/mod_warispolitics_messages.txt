@@ -1,0 +1,119 @@
+﻿warispolitics_ig_approves_aggression_minor = {
+	type = interest_group
+	texture = "gfx/interface/icons/notification_icons/interest_group.dds"
+
+	notification_type = feed
+	color = good
+}
+warispolitics_ig_approves_aggression_major = {
+	type = interest_group
+	texture = "gfx/interface/icons/notification_icons/interest_group.dds"
+
+	notification_type = feed
+	color = good
+}
+warispolitics_ig_disapproves_aggression_minor = {
+	type = interest_group
+	texture = "gfx/interface/icons/notification_icons/interest_group.dds"
+
+	notification_type = feed
+	color = bad
+}
+warispolitics_ig_disapproves_aggression_major = {
+	type = interest_group
+	texture = "gfx/interface/icons/notification_icons/interest_group.dds"
+
+	notification_type = feed
+	color = bad
+}
+warispolitics_ig_disapproves_aggression_socialist = {
+	type = interest_group
+	texture = "gfx/interface/icons/notification_icons/interest_group.dds"
+
+	notification_type = feed
+	color = bad
+}
+warispolitics_ig_approves_whitepeace = {
+	type = interest_group
+	texture = "gfx/interface/icons/notification_icons/interest_group.dds"
+
+	notification_type = feed
+	color = good
+}
+warispolitics_ig_disapproves_whitepeace = {
+	type = interest_group
+	texture = "gfx/interface/icons/notification_icons/interest_group.dds"
+
+	notification_type = feed
+	color = bad
+}
+warispolitics_ig_approves_subject_bully = {
+	type = interest_group
+	texture = "gfx/interface/icons/notification_icons/interest_group.dds"
+
+	notification_type = feed
+	color = good
+}
+warispolitics_ig_disapproves_subject_bully = {
+	type = interest_group
+	texture = "gfx/interface/icons/notification_icons/interest_group.dds"
+
+	notification_type = feed
+	color = bad
+}
+warispolitics_ig_approves_slavery_ban = {
+	type = interest_group
+	texture = "gfx/interface/icons/notification_icons/interest_group.dds"
+
+	notification_type = feed
+	color = good
+}
+warispolitics_ig_disapproves_slavery_ban = {
+	type = interest_group
+	texture = "gfx/interface/icons/notification_icons/interest_group.dds"
+
+	notification_type = feed
+	color = bad
+}
+warispolitics_ig_approves_colony = {
+	type = interest_group
+	texture = "gfx/interface/icons/notification_icons/interest_group.dds"
+
+	notification_type = feed
+	color = good
+}
+warispolitics_ig_disapproves_colony = {
+	type = interest_group
+	texture = "gfx/interface/icons/notification_icons/interest_group.dds"
+
+	notification_type = feed
+	color = bad
+}
+warispolitics_ig_approves_independence = {
+	type = interest_group
+	texture = "gfx/interface/icons/notification_icons/interest_group.dds"
+
+	notification_type = feed
+	color = good
+}
+warispolitics_ig_disapproves_independence = {
+	type = interest_group
+	texture = "gfx/interface/icons/notification_icons/interest_group.dds"
+
+	notification_type = feed
+	color = bad
+}
+warispolitics_pops_approve_independence = {
+	type = country
+	texture = "gfx/interface/icons/notification_icons/revolution.dds"
+
+	notification_type = feed
+	color = good
+}
+warispolitics_subjects_revolution = {
+	type = country
+	texture = "gfx/interface/icons/notification_icons/revolution.dds"
+
+	notification_type = feed
+	color = bad
+}

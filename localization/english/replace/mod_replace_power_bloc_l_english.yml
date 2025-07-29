@@ -1,0 +1,5 @@
+﻿l_english:
+############################################################
+# Power Bloc Principles
+  principle_group_internal_trade: "Internal Development"
+  principle_group_internal_trade_desc: "[Concept('concept_power_bloc_member', '$concept_power_bloc_members_short$')] agree to focus on internal development within the $concept_power_bloc$."

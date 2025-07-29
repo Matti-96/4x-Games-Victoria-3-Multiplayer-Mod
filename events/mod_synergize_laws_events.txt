@@ -1,0 +1,282 @@
+﻿namespace = power_bloc_synergize_laws_events
+
+power_bloc_synergize_laws_events.1 = {
+	type = country_event
+
+	title = power_bloc_synergize_laws_events.1.title
+	desc = power_bloc_synergize_laws_events.1.desc
+	flavor = power_bloc_synergize_laws_events.1.flavor
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/southamerica/aristocrats"
+
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	duration = 1
+
+	trigger = {
+		# Triggered by the Power Bloc Synergize Laws Journal Entry
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				is_power_bloc_leader = no
+				is_in_power_bloc = yes
+				power_bloc ?= { has_identity = identity:identity_ideological_union }
+			}
+			power_bloc.power_bloc_leader = {
+				save_scope_as = power_bloc_leader_scope
+			}
+		}
+		
+		scope:power_bloc_leader_scope.active_law:lawgroup_governance_principles.type = {
+			save_scope_as = power_bloc_leader_governance_principle_law
+		}
+	}
+
+	option = {
+		name = power_bloc_synergize_laws_events.1.a
+
+		default_option = yes
+
+		activate_law = scope:power_bloc_leader_governance_principle_law
+
+		remove_modifier = power_bloc_leader_lawgroup_governance_principles_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_governance_principles_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+}
+
+power_bloc_synergize_laws_events.2 = {
+	type = country_event
+
+	title = power_bloc_synergize_laws_events.2.title
+	desc = power_bloc_synergize_laws_events.2.desc
+	flavor = power_bloc_synergize_laws_events.2.flavor
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/southamerica/aristocrats"
+
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	duration = 1
+
+	trigger = {
+		# Triggered by the Power Bloc Synergize Laws Journal Entry
+	}
+
+	immediate = {
+		power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = {
+			save_scope_as = power_bloc_leader_distribution_of_power_law
+		}
+	}
+
+	option = {
+		name = power_bloc_synergize_laws_events.2.a
+
+		default_option = yes
+
+		activate_law = scope:power_bloc_leader_distribution_of_power_law
+
+		remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_distribution_of_power_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+}
+
+power_bloc_synergize_laws_events.3 = {
+	type = country_event
+
+	title = power_bloc_synergize_laws_events.3.title
+	desc = power_bloc_synergize_laws_events.3.desc
+	flavor = power_bloc_synergize_laws_events.3.flavor
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/southamerica/aristocrats"
+
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	duration = 1
+
+	trigger = {
+		# Triggered by the Power Bloc Synergize Laws Journal Entry
+	}
+
+	immediate = {
+		power_bloc.power_bloc_leader.active_law:lawgroup_economic_system.type = {
+			save_scope_as = power_bloc_leader_economic_system_law
+		}
+	}
+
+	option = {
+		name = power_bloc_synergize_laws_events.3.a
+
+		default_option = yes
+
+		activate_law = scope:power_bloc_leader_economic_system_law
+
+		remove_modifier = power_bloc_leader_lawgroup_economic_system_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_economic_system_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+}
+
+power_bloc_synergize_laws_events.4 = {
+	type = country_event
+
+	title = power_bloc_synergize_laws_events.4.title
+	desc = power_bloc_synergize_laws_events.4.desc
+	flavor = power_bloc_synergize_laws_events.4.flavor
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/southamerica/aristocrats"
+
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	duration = 1
+
+	trigger = {
+		# Triggered by the Power Bloc Synergize Laws Journal Entry
+	}
+
+	immediate = {
+		power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = {
+			save_scope_as = power_bloc_leader_land_reform_law
+		}
+	}
+
+	option = {
+		name = power_bloc_synergize_laws_events.4.a
+
+		default_option = yes
+
+		activate_law = scope:power_bloc_leader_land_reform_law
+
+		remove_modifier = power_bloc_leader_lawgroup_land_reform_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_land_reform_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+}
+
+power_bloc_synergize_laws_events.5 = {
+	type = country_event
+
+	title = power_bloc_synergize_laws_events.5.title
+	desc = power_bloc_synergize_laws_events.5.desc
+	flavor = power_bloc_synergize_laws_events.5.flavor
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/southamerica/aristocrats"
+
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	duration = 1
+
+	trigger = {
+		# Triggered by the Power Bloc Synergize Laws Journal Entry
+	}
+
+	immediate = {
+		power_bloc.power_bloc_leader.active_law:lawgroup_free_speech.type = {
+			save_scope_as = power_bloc_leader_free_speech_law
+		}
+	}
+
+	option = {
+		name = power_bloc_synergize_laws_events.5.a
+
+		default_option = yes
+
+		activate_law = scope:power_bloc_leader_free_speech_law
+
+		remove_modifier = power_bloc_leader_lawgroup_free_speech_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_free_speech_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+}
+
+power_bloc_synergize_laws_events.6 = {
+	type = country_event
+
+	title = power_bloc_synergize_laws_events.6.title
+	desc = power_bloc_synergize_laws_events.6.desc
+	flavor = power_bloc_synergize_laws_events.6.flavor
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/southamerica/aristocrats"
+
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	duration = 1
+
+	trigger = {
+		# Triggered by the Power Bloc Synergize Laws Journal Entry
+	}
+
+	immediate = {
+		power_bloc.power_bloc_leader.active_law:lawgroup_slavery.type = {
+			save_scope_as = power_bloc_leader_slavery_law
+		}
+	}
+
+	option = {
+		name = power_bloc_synergize_laws_events.6.a
+
+		default_option = yes
+
+		activate_law = scope:power_bloc_leader_slavery_law
+
+		remove_modifier = power_bloc_leader_lawgroup_slavery_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_slavery_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+}

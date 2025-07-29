@@ -1,4 +1,60 @@
-﻿# Qing Scholar Gentry Ideology (Landowner Ideology)
+﻿ideology_paternalistic = {
+	icon = "gfx/interface/icons/ideology_icons/paternalistic.dds"
+
+	lawgroup_governance_principles = {
+		law_monarchy = strongly_approve
+		law_theocracy = approve
+		law_presidential_republic = neutral
+		law_parliamentary_republic = neutral
+		law_corporate_state = neutral
+		law_council_republic = strongly_disapprove
+	}
+
+	lawgroup_distribution_of_power = {
+		law_single_party_state = neutral
+		law_landed_voting = strongly_approve
+		law_autocracy = strongly_approve
+		law_oligarchy = approve
+		law_wealth_voting = neutral
+		law_census_voting = disapprove
+		law_universal_suffrage = strongly_disapprove
+		law_anarchy = strongly_disapprove
+		law_technocracy = strongly_disapprove
+	}
+
+	lawgroup_bureaucracy = {
+		law_hereditary_bureaucrats = approve
+		law_appointed_bureaucrats = neutral
+		law_elected_bureaucrats = disapprove
+	}
+
+	lawgroup_policing = {
+		law_local_police = approve
+		law_dedicated_police = neutral
+		law_militarized_police = neutral
+		law_no_police = disapprove
+	}
+
+	lawgroup_economic_system = {
+		law_traditionalism = strongly_approve
+		law_agrarianism = disapprove
+		law_interventionism = disapprove
+		law_industry_banned = disapprove
+		law_laissez_faire = strongly_disapprove
+		law_cooperative_ownership = strongly_disapprove
+		law_command_economy = strongly_disapprove
+		law_extraction_economy = disapprove
+	}
+
+	lawgroup_trade_policy = {
+		law_isolationism = approve
+		law_mercantilism = approve
+		law_protectionism = neutral
+		law_free_trade = disapprove
+	}
+}
+
+# Qing Scholar Gentry Ideology (Landowner Ideology)
 ideology_scholar_paternalistic = {
 	icon = "gfx/interface/icons/ideology_icons/scholar_paternalistic.dds"
 	
@@ -33,7 +89,7 @@ ideology_scholar_paternalistic = {
 		law_agrarianism = approve
 		law_industry_banned = disapprove
 		law_traditionalism = strongly_approve
-		law_interventionism = neutral
+		law_interventionism = disapprove
 		law_cooperative_ownership = strongly_disapprove
 		law_laissez_faire = strongly_disapprove
 		law_command_economy = strongly_disapprove
@@ -46,24 +102,6 @@ ideology_scholar_paternalistic = {
 		law_militarized_police = neutral
 		law_no_police = disapprove
 	}
-}
-
-ideology_pious = {
-	icon = "gfx/interface/icons/ideology_icons/pious.dds"
-
-	lawgroup_health_system = {
-		law_charitable_health_system = approve
-		law_public_health_insurance = disapprove
-		law_no_health_system = disapprove
-		law_private_health_insurance = strongly_disapprove
-	}
-	
-	lawgroup_education_system = {
-		law_religious_schools = approve
-		law_no_schools = disapprove
-		law_public_schools = disapprove
-		law_private_schools = disapprove		
-	}	
 }
 
 ideology_traditionalist = {
@@ -96,7 +134,7 @@ ideology_traditionalist = {
 		law_agrarianism = neutral
 		law_industry_banned = disapprove
 		law_traditionalism = strongly_approve
-		law_interventionism = oppose
+		law_interventionism = disapprove
 		law_cooperative_ownership = strongly_disapprove
 		law_laissez_faire = strongly_disapprove
 		law_command_economy = strongly_disapprove
@@ -112,7 +150,7 @@ ideology_traditionalist = {
 	interest_group_leader_trigger = {
 		ideology_traditionalist_valid_trigger = yes
 	}
-	
+
 	non_interest_group_leader_trigger = {
 		# Agitators should have an ideology at odds with current laws
 		NAND = {
@@ -127,7 +165,7 @@ ideology_traditionalist = {
 			ideology_traditionalist_valid_trigger = yes
 		}
 	}
-	
+
 	interest_group_leader_weight = {
 		value = 100
 
@@ -138,7 +176,7 @@ ideology_traditionalist = {
 			}
 			add = 50
 		}
-		
+
 		# More likely under Alexander III
 		if = {
 			limit = {
@@ -163,12 +201,12 @@ ideology_traditionalist = {
 				}
 			}
 			multiply = 0.1
-		}	
+		}
 	}
-	
+
 	non_interest_group_leader_weight = {
 		value = 100
-		
+
 		# More likely under Alexander III
 		if = {
 			limit = {
@@ -180,7 +218,7 @@ ideology_traditionalist = {
 				}
 			}
 			add = 75
-		}	
+		}
 
 		if = {
 			limit = {
@@ -196,6 +234,6 @@ ideology_traditionalist = {
 				}
 			}
 			multiply = 0.1
-		}	
+		}
 	}
 }

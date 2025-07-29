@@ -1,0 +1,103 @@
+﻿############################################################
+# Competition Laws Principles
+principle_competition_laws_1 = {
+	icon = "gfx/interface/icons/principles_icons/companies.dds"
+	background = "gfx/interface/icons/principles_icons/principle_tier_1.dds"
+
+	visible = {
+		has_dlc_feature = mp1_charter_companies
+	}
+
+	# Members can always invest in power bloc coutries of lower rank
+	# Does not generate a tooltip, so a dummy modifier is required to show this effect
+	allows_foreign_investment_in_lower_rank = yes
+
+	power_bloc_modifier = {
+		# This modifier has no effects and is only here to generate a tooltip
+		power_bloc_allow_foreign_investment_lower_rank_bool = yes
+	}
+
+	ai_weight = {
+		value = 100
+	}
+}
+
+principle_competition_laws_2 = {
+	icon = "gfx/interface/icons/principles_icons/companies.dds"
+	background = "gfx/interface/icons/principles_icons/principle_tier_2.dds"
+
+	visible = {
+		has_dlc_feature = mp1_charter_companies
+	}
+
+	# Members can always invest in power bloc coutries of lower rank
+	# Does not generate a tooltip, so a dummy modifier is required to show this effect
+	allows_foreign_investment_in_lower_rank = yes
+
+	power_bloc_modifier = {
+		# This modifier has no effects and is only here to generate a tooltip
+		power_bloc_allow_foreign_investment_lower_rank_bool = yes
+	}
+
+	member_modifier = {
+		# 15% Shopkeepers Investment Pool Efficiency for power bloc members
+		state_shopkeepers_investment_pool_efficiency_mult = 0.15
+
+		# Monopolies are banned for power bloc members
+		country_forbid_monopoly_bool = yes
+
+		# +15% Shopkeepers Political Strength for power bloc members
+		country_shopkeepers_pol_str_mult = 0.15
+	}
+
+	ai_weight = {
+		value = 1000 # AI prefers upgrading groups it has already picked to unlocking new ones
+	}
+}
+
+principle_competition_laws_3 = {
+	icon = "gfx/interface/icons/principles_icons/companies.dds"
+	background = "gfx/interface/icons/principles_icons/principle_tier_3.dds"
+
+	visible = {
+		has_dlc_feature = mp1_charter_companies
+	}
+
+	# Members can always invest in power bloc coutries of lower rank
+	# Does not generate a tooltip, so a dummy modifier is required to show this effect
+	allows_foreign_investment_in_lower_rank = yes
+
+	power_bloc_modifier = {
+		# This modifier has no effects and is only here to generate a tooltip
+		power_bloc_allow_foreign_investment_lower_rank_bool = yes
+	}
+
+	leader_modifier = {
+		# Power bloc leader gets an extra company slot
+		country_max_companies_add = 1
+
+		# Power bloc leader companies get a -5% company throughput debuff
+		country_company_throughput_bonus_add = -0.05
+	}
+
+	member_modifier = {
+		# 30% Shopkeepers Investment Pool Efficiency for power bloc members
+		state_shopkeepers_investment_pool_efficiency_mult = 0.15
+
+		# Monopolies are banned for power bloc members
+		country_forbid_monopoly_bool = yes
+
+		# +30% Shopkeepers Political Strength for power bloc members
+		country_shopkeepers_pol_str_mult = 0.15
+
+		# Power bloc members get one less free company charter
+		country_free_charters_add = -1
+
+		# Power bloc member companies get a -5% company throughput penalty
+		country_company_throughput_bonus_add = -0.05
+	}
+
+	ai_weight = {
+		value = 1000 # AI prefers upgrading groups it has already picked to unlocking new ones
+	}
+}

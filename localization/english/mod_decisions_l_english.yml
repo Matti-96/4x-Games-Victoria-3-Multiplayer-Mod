@@ -1,0 +1,12 @@
+﻿l_english:
+############################################################
+# Unincorporate State Decision
+  unincorporate_state_decision: "Unincorporate State"
+  unincorporate_state_decision_desc: "Unincorporate the targetted state. This will remove the state's incorporation status."
+
+############################################################
+# Game Master Decisions
+  game_master_decision: "Become the Game Master"
+  game_master_decision_desc: "This decision allows you to take on the role of the Game Master and manage the game world."
+  game_master_self_action_decision: "Self-Action as Game Master"
+  game_master_self_action_decision_desc: "As the Game Master, take action that targets yourself."

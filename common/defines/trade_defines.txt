@@ -1,7 +1,0 @@
-﻿NEconomy = {
-	TRADE_ROUTE_AUTO_INCREASE_EMPLOYMENT_THRESHOLD = 0.5 						# Was 0.9 - If trade route has this much of its max staffing level employed, it can automatically increase its level
-	TRADE_ROUTE_AUTO_INCREASE_VERY_LOW_PRODUCTIVITY_THRESHOLD = 2.9				# Was 3 - If trade route's productivity is below this, always automatically decrease its level (regardless of total revenue)
-	TRADE_ROUTE_AUTO_INCREASE_LOW_PRODUCTIVITY_THRESHOLD = 3					# Was 6 - If trade route's productivity would drop below this, don't automatically increase its level (regardless of total revenue)
-	TRADE_ROUTE_AUTO_INCREASE_HIGH_PRODUCTIVITY_THRESHOLD = 3.1					# Was 10 - If trade route's productivity is above this, it's always fine to automatically increase its level (regardless of total revenue)
-	TRADE_ROUTE_AUTO_REDUCTION_EMPLOYMENT_THRESHOLD = 0.1						# Was 0.75 - If trade route has less than this of its max staffing level employed and could not hire anyone last week, it can automatically decrease its level
-}

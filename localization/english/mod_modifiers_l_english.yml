@@ -1,0 +1,173 @@
+﻿l_english:
+############################################################
+# Americas Migration
+  sa_migration_cost_money:0 "Financial cost of attracting European migrants"
+
+############################################################
+# Technology Spread Modifiers
+
+# Production Technology Spread Modifiers
+  mod_technology_production_era_1:0 "Era 1 Production Technologies Researched"
+  mod_technology_production_era_2:0 "Era 2 Production Technologies Researched"
+  mod_technology_production_era_3:0 "Era 3 Production Technologies Researched"
+  mod_technology_production_era_4:0 "Era 4 Production Technologies Researched"
+
+# Military Technology Spread Modifiers
+  mod_technology_military_era_1:0 "Era 1 Military Technologies Researched"
+  mod_technology_military_era_2:0 "Era 2 Military Technologies Researched"
+  mod_technology_military_era_3:0 "Era 3 Military Technologies Researched"
+  mod_technology_military_era_4:0 "Era 4 Military Technologies Researched"
+
+# Social Technology Spread Modifiers
+  mod_technology_society_era_1:0 "Era 1 Society Technologies Researched"
+  mod_technology_society_era_2:0 "Era 2 Society Technologies Researched"
+  mod_technology_society_era_3:0 "Era 3 Society Technologies Researched"
+  mod_technology_society_era_4:0 "Era 4 Society Technologies Researched"
+
+############################################################
+# War Is Politics Modifiers
+  warispolitics_lost_war: "War Defeat"
+  warispolitics_won_war: "War Victory"
+  warispolitics_backed_down: "Backed Down"
+
+  warispolitics_aggression_positive_minor: "Attacked Weaker Foe"
+  warispolitics_aggression_positive_major: "Attacked Significant Foe"
+  warispolitics_aggression_negative_minor: "Attacked Weaker Country"
+  warispolitics_aggression_negative_major: "Attacked Peer Country"
+  warispolitics_aggression_negative_socialist: "Attacked Council Republic"
+  warispolitics_whitepeace_positive: "Signed Negotiated Peace"
+  warispolitics_whitepeace_negative: "Accepted Negotiated Peace"
+  warispolitics_subject_bully_positive: "Asserted Authority Over Subject"
+  warispolitics_subject_bully_negative: "Imposed Control on Subject"
+  warispolitics_overlord_positive: "Many Subjects"
+  warispolitics_colony_positive: "Founded Colony"
+  warispolitics_colony_negative: "Founded Colony"
+  warispolitics_independence_positive: "Declared Independence"
+  warispolitics_independence_negative: "Rebellion"
+  warispolitics_character_lost_war: "Lost Us the War"
+  warispolitics_character_won_war: "Lead through Victory"
+  warispolitics_ig_war_loser: "Lost Us the War"
+  warispolitics_ig_war_winner: "Lead through Victory"
+  warispolitics_slavery_ban_positive: "Enforced Slavery Ban"
+  warispolitics_slavery_ban_negative: "Enforced Slavery Ban"
+
+############################################################
+# Power Bloc Modifiers
+  power_bloc_synergize_laws_bool: "Synergize Laws with Power Bloc Leader"
+  power_bloc_synergize_laws_bool_desc: "If enabled, the laws of the non-leader members will be synergized with the laws of the leader, allowing for a more cohesive political structure within the Power Bloc."
+
+  country_can_impose_same_lawgroup_trade_policy_in_power_bloc_bool: "#b Impose#! same [GetLawGroup('lawgroup_trade_policy').GetName] [concept_law] on $concept_power_bloc_members_short$"
+  country_can_impose_same_lawgroup_trade_policy_in_power_bloc_bool_desc: "Allowed to #b Impose#! the same [concept_law] as their own in the [GetLawGroup('lawgroup_trade_policy').GetName] group on other [Concept('concept_power_bloc_member','$concept_power_bloc_members_short$')]"
+
+# Governance Principles Modifiers
+  power_bloc_leader_lawgroup_governance_principles_variable_0: "Governance Principles Synergization Process: 0/12"
+  power_bloc_leader_lawgroup_governance_principles_variable_1: "Governance Principles Synergization Process: 1/12"
+  power_bloc_leader_lawgroup_governance_principles_variable_2: "Governance Principles Synergization Process: 2/12"
+  power_bloc_leader_lawgroup_governance_principles_variable_3: "Governance Principles Synergization Process: 3/12"
+  power_bloc_leader_lawgroup_governance_principles_variable_4: "Governance Principles Synergization Process: 4/12"
+  power_bloc_leader_lawgroup_governance_principles_variable_5: "Governance Principles Synergization Process: 5/12"
+  power_bloc_leader_lawgroup_governance_principles_variable_6: "Governance Principles Synergization Process: 6/12"
+  power_bloc_leader_lawgroup_governance_principles_variable_7: "Governance Principles Synergization Process: 7/12"
+  power_bloc_leader_lawgroup_governance_principles_variable_8: "Governance Principles Synergization Process: 8/12"
+  power_bloc_leader_lawgroup_governance_principles_variable_9: "Governance Principles Synergization Process: 9/12"
+  power_bloc_leader_lawgroup_governance_principles_variable_10: "Governance Principles Synergization Process: 10/12"
+  power_bloc_leader_lawgroup_governance_principles_variable_11: "Governance Principles Synergization Process: 11/12"
+  power_bloc_leader_lawgroup_governance_principles_variable_12: "Governance Principles Synergization Process: 12/12"
+  power_bloc_leader_lawgroup_governance_principles_law_changed: "Governance Principles Law Forcibly Changed"
+
+# Distribution of Power Modifiers
+  power_bloc_leader_lawgroup_distribution_of_power_variable_0: "Distribution of Power Synergization Process: 0/12"
+  power_bloc_leader_lawgroup_distribution_of_power_variable_1: "Distribution of Power Synergization Process: 1/12"
+  power_bloc_leader_lawgroup_distribution_of_power_variable_2: "Distribution of Power Synergization Process: 2/12"
+  power_bloc_leader_lawgroup_distribution_of_power_variable_3: "Distribution of Power Synergization Process: 3/12"
+  power_bloc_leader_lawgroup_distribution_of_power_variable_4: "Distribution of Power Synergization Process: 4/12"
+  power_bloc_leader_lawgroup_distribution_of_power_variable_5: "Distribution of Power Synergization Process: 5/12"
+  power_bloc_leader_lawgroup_distribution_of_power_variable_6: "Distribution of Power Synergization Process: 6/12"
+  power_bloc_leader_lawgroup_distribution_of_power_variable_7: "Distribution of Power Synergization Process: 7/12"
+  power_bloc_leader_lawgroup_distribution_of_power_variable_8: "Distribution of Power Synergization Process: 8/12"
+  power_bloc_leader_lawgroup_distribution_of_power_variable_9: "Distribution of Power Synergization Process: 9/12"
+  power_bloc_leader_lawgroup_distribution_of_power_variable_10: "Distribution of Power Synergization Process: 10/12"
+  power_bloc_leader_lawgroup_distribution_of_power_variable_11: "Distribution of Power Synergization Process: 11/12"
+  power_bloc_leader_lawgroup_distribution_of_power_variable_12: "Distribution of Power Synergization Process: 12/12"
+  power_bloc_leader_lawgroup_distribution_of_power_law_changed: "Distribution of Power Law Forcibly Changed"
+
+# Economic System Modifiers
+  power_bloc_leader_lawgroup_economic_system_variable_0: "Economic System Synergization Process: 0/12"
+  power_bloc_leader_lawgroup_economic_system_variable_1: "Economic System Synergization Process: 1/12"
+  power_bloc_leader_lawgroup_economic_system_variable_2: "Economic System Synergization Process: 2/12"
+  power_bloc_leader_lawgroup_economic_system_variable_3: "Economic System Synergization Process: 3/12"
+  power_bloc_leader_lawgroup_economic_system_variable_4: "Economic System Synergization Process: 4/12"
+  power_bloc_leader_lawgroup_economic_system_variable_5: "Economic System Synergization Process: 5/12"
+  power_bloc_leader_lawgroup_economic_system_variable_6: "Economic System Synergization Process: 6/12"
+  power_bloc_leader_lawgroup_economic_system_variable_7: "Economic System Synergization Process: 7/12"
+  power_bloc_leader_lawgroup_economic_system_variable_8: "Economic System Synergization Process: 8/12"
+  power_bloc_leader_lawgroup_economic_system_variable_9: "Economic System Synergization Process: 9/12"
+  power_bloc_leader_lawgroup_economic_system_variable_10: "Economic System Synergization Process: 10/12"
+  power_bloc_leader_lawgroup_economic_system_variable_11: "Economic System Synergization Process: 11/12"
+  power_bloc_leader_lawgroup_economic_system_variable_12: "Economic System Synergization Process: 12/12"
+  power_bloc_leader_lawgroup_economic_system_law_changed: "Economic System Law Forcibly Changed"
+
+# Land Reform Modifiers
+  power_bloc_leader_lawgroup_land_reform_variable_0: "Land Reform Synergization Process: 0/12"
+  power_bloc_leader_lawgroup_land_reform_variable_1: "Land Reform Synergization Process: 1/12"
+  power_bloc_leader_lawgroup_land_reform_variable_2: "Land Reform Synergization Process: 2/12"
+  power_bloc_leader_lawgroup_land_reform_variable_3: "Land Reform Synergization Process: 3/12"
+  power_bloc_leader_lawgroup_land_reform_variable_4: "Land Reform Synergization Process: 4/12"
+  power_bloc_leader_lawgroup_land_reform_variable_5: "Land Reform Synergization Process: 5/12"
+  power_bloc_leader_lawgroup_land_reform_variable_6: "Land Reform Synergization Process: 6/12"
+  power_bloc_leader_lawgroup_land_reform_variable_7: "Land Reform Synergization Process: 7/12"
+  power_bloc_leader_lawgroup_land_reform_variable_8: "Land Reform Synergization Process: 8/12"
+  power_bloc_leader_lawgroup_land_reform_variable_9: "Land Reform Synergization Process: 9/12"
+  power_bloc_leader_lawgroup_land_reform_variable_10: "Land Reform Synergization Process: 10/12"
+  power_bloc_leader_lawgroup_land_reform_variable_11: "Land Reform Synergization Process: 11/12"
+  power_bloc_leader_lawgroup_land_reform_variable_12: "Land Reform Synergization Process: 12/12"
+  power_bloc_leader_lawgroup_land_reform_law_changed: "Land Reform Law Forcibly Changed"
+
+# Free Speech Modifiers
+  power_bloc_leader_lawgroup_free_speech_variable_0: "Free Speech Synergization Process: 0/12"
+  power_bloc_leader_lawgroup_free_speech_variable_1: "Free Speech Synergization Process: 1/12"
+  power_bloc_leader_lawgroup_free_speech_variable_2: "Free Speech Synergization Process: 2/12"
+  power_bloc_leader_lawgroup_free_speech_variable_3: "Free Speech Synergization Process: 3/12"
+  power_bloc_leader_lawgroup_free_speech_variable_4: "Free Speech Synergization Process: 4/12"
+  power_bloc_leader_lawgroup_free_speech_variable_5: "Free Speech Synergization Process: 5/12"
+  power_bloc_leader_lawgroup_free_speech_variable_6: "Free Speech Synergization Process: 6/12"
+  power_bloc_leader_lawgroup_free_speech_variable_7: "Free Speech Synergization Process: 7/12"
+  power_bloc_leader_lawgroup_free_speech_variable_8: "Free Speech Synergization Process: 8/12"
+  power_bloc_leader_lawgroup_free_speech_variable_9: "Free Speech Synergization Process: 9/12"
+  power_bloc_leader_lawgroup_free_speech_variable_10: "Free Speech Synergization Process: 10/12"
+  power_bloc_leader_lawgroup_free_speech_variable_11: "Free Speech Synergization Process: 11/12"
+  power_bloc_leader_lawgroup_free_speech_variable_12: "Free Speech Synergization Process: 12/12"
+  power_bloc_leader_lawgroup_free_speech_law_changed: "Free Speech Law Forcibly Changed"
+
+# Slavery Modifiers
+  power_bloc_leader_lawgroup_slavery_variable_0: "Slavery Synergization Process: 0/12"
+  power_bloc_leader_lawgroup_slavery_variable_1: "Slavery Synergization Process: 1/12"
+  power_bloc_leader_lawgroup_slavery_variable_2: "Slavery Synergization Process: 2/12"
+  power_bloc_leader_lawgroup_slavery_variable_3: "Slavery Synergization Process: 3/12"
+  power_bloc_leader_lawgroup_slavery_variable_4: "Slavery Synergization Process: 4/12"
+  power_bloc_leader_lawgroup_slavery_variable_5: "Slavery Synergization Process: 5/12"
+  power_bloc_leader_lawgroup_slavery_variable_6: "Slavery Synergization Process: 6/12"
+  power_bloc_leader_lawgroup_slavery_variable_7: "Slavery Synergization Process: 7/12"
+  power_bloc_leader_lawgroup_slavery_variable_8: "Slavery Synergization Process: 8/12"
+  power_bloc_leader_lawgroup_slavery_variable_9: "Slavery Synergization Process: 9/12"
+  power_bloc_leader_lawgroup_slavery_variable_10: "Slavery Synergization Process: 10/12"
+  power_bloc_leader_lawgroup_slavery_variable_11: "Slavery Synergization Process: 11/12"
+  power_bloc_leader_lawgroup_slavery_variable_12: "Slavery Synergization Process: 12/12"
+  power_bloc_leader_lawgroup_slavery_law_changed: "Slavery Law Forcibly Changed"
+
+############################################################
+# Game Master Modifiers
+  game_master_modifier:0 "Game Master"
+
+  game_master_prestige_add_modifier:0 "Game Master Prestige Add Action"
+  game_master_prestige_multiplier_modifier:0 "Game Master Prestige Multiplier Modifier"
+
+  game_master_authority_add_modifier:0 "Game Master Authority Add Action"
+  game_master_authority_multiplier_modifier:0 "Game Master Authority Multiplier Modifier"
+
+  game_master_influence_add_modifier:0 "Game Master Influence Add Action"
+  game_master_influence_multiplier_modifier:0 "Game Master Influence Multiplier Modifier"
+
+################################################################
+# Winning a Humilation War
+  national_pride_military_triumph:0 "Military Triumph"

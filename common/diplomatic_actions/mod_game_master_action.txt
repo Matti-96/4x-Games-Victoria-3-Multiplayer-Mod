@@ -1,0 +1,46 @@
+﻿game_master_diplo = {
+	groups = {
+		general
+	}
+
+	requires_approval = no
+	should_notify_third_parties = yes
+	show_effect_in_tooltip = no
+	can_use_obligations = no
+
+	potential = {
+		has_modifier = game_master_modifier
+	}
+
+	possible = {
+		custom_tooltip = {
+			text = game_master_diplo.tt
+			NOT = { has_global_variable = game_master_taking_action }
+		}
+		has_modifier = game_master_modifier
+	}
+
+	accept_effect = {
+		set_global_variable = {
+			name = game_master_taking_action
+			days = 31
+		}
+		scope:target_country = {
+			set_variable = {
+				name = game_master_action_target
+				days = 95
+			}
+		}
+		trigger_event = {
+			id = game_master_events.1
+			days = 0
+			popup = yes
+		}
+	}
+
+	ai = {
+		will_propose = {
+			always = no
+		}
+	}
+}
