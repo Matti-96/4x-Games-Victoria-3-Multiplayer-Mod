@@ -6,8 +6,6 @@ NDiplomacy = {
 	DIPLOMATIC_PLAY_ABANDON_SUPPORT_RELATIONS_IMPACT = 20	# Decreased from 50 to 20 to make it easier to abandon support for relations in multiplayer games.
 
 	DEFAULT_WAR_GOAL_IS_HUMILIATION = false # If this is false, default war goal is instead money transfer
-
-	WAR_GOAL_INFAMY_PEACE_REFUND = 0.0 				    # GVFH: Set the value to 0 as WAR_GOAL_INFAMY_DIPLO_PLAY_BACKER_REFUND already refund it all # Refund of infamy for war goals that are dropped due to a country capitulating or negotating peace without enforcing their wargoal
 }
 
 NEconomy = {
