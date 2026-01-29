@@ -1,34 +1,12 @@
-﻿pan-nationalism = {
-	# Permits for the formation of a number of pan-nationalist countries
-	# Permits the Unify Germany and Unify Italy Diplomatic Plays
-	era = era_3
-	texture = "gfx/interface/icons/invention_icons/pan_nationalism.dds"
-	category = society
-	
-	modifier = {
-		country_authority_mult = 0.1
-	}
-	
+﻿INJECT:pan-nationalism = {
 	unlocking_technologies = {
-		nationalism
 		identification_documents
 	}
-	
-	ai_weight = {
-		value = 2 # Important in general
-		
-		# Extra-important for major unifications
-		if = {
-			limit = { 
-				OR = {
-					country_has_primary_culture = cu:north_german
-					country_has_primary_culture = cu:south_german
-					country_has_primary_culture = cu:north_italian
-					country_has_primary_culture = cu:south_italian
-				}				
-			}
-			add = 2
-		}	
+}
+
+INJECT:multilateral_alliances = {
+	modifier = {
+		country_diplomatic_play_maneuvers_add = 200
 	}
 }
 
@@ -42,7 +20,7 @@ great_war_diplomacy = {
 	}
 
 	modifier = {
-		country_diplomatic_play_maneuvers_add = 1375
+		country_diplomatic_play_maneuvers_add = 1000
 	}
 
 	ai_weight = {

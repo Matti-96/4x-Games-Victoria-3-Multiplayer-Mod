@@ -1,0 +1,112 @@
+﻿# This is a special strategy that sets the default values for different AI scores
+# All AIs always load data from this strategy, which can then be either added to or overridden by data from its other strategies
+
+INJECT:ai_strategy_default = {
+	# How much construction output should the AI aim for
+	# Using this value in other strategies will function additively
+	wanted_construction_output = {
+		# Accounts for the 2-10 free construction from base modifiers
+		if = {
+			limit = {
+				OR = {
+					has_game_rule = free_construction_unscaled
+					AND = { # for when AI is enabled for player country via console
+						is_ai = no
+						has_game_rule = free_construction_scaled_player_exemption
+					}
+				}
+			}
+			add = 10
+		}
+
+		# GVFH: Add construction based on cashflow when tax are at medium or lower when cashflow is positive only
+		if = {
+			limit = {
+				tax_level <= medium
+				net_fixed_income > 0
+			}
+			add = {
+				value = net_fixed_income
+				divide = 2000 # 1 construction output per this much income, ratio 1:2 to avoid overshooting
+			}
+		}
+
+		add = {
+			# GVFH: Minimum is what investment pool can tank alone, ratio 1:1
+			value = investment_pool_income
+			divide = 1000
+		}
+
+
+		# GVFH: Increase construction budget scaled on gold reserves, 7.5% at 50% reserves, 10% at 100%, 12.5% at 150%
+		if = {
+			limit = {
+				gold_reserves >= {
+					value = gold_reserves_limit
+					multiply = 0.5
+				}
+			}
+			add = {
+				value = income
+				divide = 40000
+				multiply = scaled_gold_reserves
+			}
+		}
+
+
+		# GVFH: Aggressivily add excessive construction sectors if close to gold reserves limit
+		# Negatively impact construction sectors if in debt
+		if = {
+			limit = {
+				country_rank >= rank_value:insignificant_power
+			}
+
+			multiply= { # multiply by: 1+(ratio of gold reserve)² => x2 if gold reserve are full then go exponential
+				value = 1
+				add = {
+					value=scaled_gold_reserves
+					multiply=scaled_gold_reserves
+				}
+			}
+			
+			# add = {
+			# 	value = gold_reserves
+			# 	divide = 500000 # GVFH: at least 1 construction output per 500k in gold reserves
+			# 	multiply= { # multiply by: (ratio of gold reserve)²
+			# 		value=scaled_gold_reserves
+			# 		multiply=scaled_gold_reserves
+			# 	}
+			# }
+		}
+
+		# GVFH: Add construction sectors based on scaled gold reserves and scaled investment pool reserves
+		if = {
+			limit = {
+				country_rank >= rank_value:minor_power
+				gold_reserves_limit >= 250000 # GVFH: Decent economy should consider investing more
+			}
+			
+			add = {
+				value = gold_reserves
+				add = investment_pool
+				divide = 500000 # GVFH: at least 1 construction output per 500k in reserves
+				multiply= { # multiply by: ((ratio of gold reserve)² + (ratio of investments reserve))²
+					value=scaled_gold_reserves
+					multiply=scaled_gold_reserves
+					add= { 
+						value= { # scaled_investment_reserves
+							value = investment_pool
+							divide = gold_reserves_limit
+						}
+						multiply= { # scaled_investment_reserves
+							value = investment_pool
+							divide = gold_reserves_limit
+						}
+					}
+				}
+			}
+		}
+
+		min = 2
+	}
+}

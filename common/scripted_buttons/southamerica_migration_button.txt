@@ -22,7 +22,7 @@
 			any_country = {
 				custom_tooltip = {
 					text = is_in_europe_tt
-					country_is_in_europe = yes
+					is_in_geographic_region = geographic_region_europe
 				}
 				custom_tooltip = {
 					text = same_state_religion
@@ -40,7 +40,7 @@
 					is_incorporated = yes
 					custom_tooltip = {
 						text = is_in_europe_tt
-						state_is_in_europe = yes
+						is_in_geographic_region = geographic_region_europe
 					}
 				}
 			}
@@ -50,11 +50,11 @@
 			any_country = {
 				custom_tooltip = {
 					text = is_in_europe_tt
-					country_is_in_europe = yes
+					is_in_geographic_region = geographic_region_europe
 				}
 				custom_tooltip = {
 					text = same_religious_group
-					religion = { has_discrimination_trait = christian }
+					religion = { has_discrimination_trait = heritage_christian }
 				}
 				custom_tooltip = {
 					text = average_sol_below_root_tt
@@ -68,7 +68,7 @@
 					is_incorporated = yes
 					custom_tooltip = {
 						text = is_in_europe_tt
-						state_is_in_europe = yes
+						is_in_geographic_region = geographic_region_europe
 					}
 				}
 			}
@@ -78,7 +78,7 @@
 			any_country = {
 				custom_tooltip = {
 					text = is_in_europe_tt
-					country_is_in_europe = yes
+					is_in_geographic_region = geographic_region_europe
 				}
 				custom_tooltip = {
 					text = average_sol_below_root_tt
@@ -92,7 +92,7 @@
 					is_incorporated = yes
 					custom_tooltip = {
 						text = is_in_europe_tt
-						state_is_in_europe = yes
+						is_in_geographic_region = geographic_region_europe
 					}
 				}
 			}
@@ -104,7 +104,7 @@
 				}
 				custom_tooltip = {
 					text = is_in_sa_tt
-					state_is_in_south_america = yes
+					is_in_geographic_region = geographic_region_south_america
 				}
 			}
 			trigger_else_if = {
@@ -151,7 +151,7 @@
 			add_modifier = {
 				name = sa_migration_cost_money
 				multiplier = money_amount_multiplier_small
-				months = normal_modifier_time
+				days = normal_modifier_time
 			}
 		}
 	}

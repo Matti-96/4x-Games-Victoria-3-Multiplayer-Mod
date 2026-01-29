@@ -8927,3 +8927,89 @@ game_master_events.70 = {
 		remove_global_variable = game_master_taking_action
 	}
 }
+
+############################################################
+# Game Master - Player is a Pariah
+game_master_events.80 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.80.title
+	desc = game_master_events.80.desc
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	duration = 3
+
+	immediate = {
+		every_country = {
+			limit = {
+				infamy >= infamy_threshold:pariah
+				is_player = yes
+				has_variable = player_country_is_pariah
+			}
+			save_scope_as = pariah_country
+		}
+	}
+
+	option = {	# Call a conference
+		name = game_master_events.80.a
+
+		scope:pariah_country = { 
+			set_variable = { name = pariah_country_conference_called  months = 3 }
+			set_variable = { name = pariah_country_done }
+			remove_variable = player_country_is_pariah
+		}
+
+		every_country = {
+			limit = { is_player = yes }
+			trigger_event = {
+				id = game_master_events.81
+				days = 0
+				popup = yes
+			}
+		}
+	}
+
+	option = {	# Don't call a conference
+		name = game_master_events.80.b
+
+		default_option = yes
+
+		scope:pariah_country = {
+			set_variable = { name = pariah_country_done }
+			remove_variable = player_country_is_pariah
+		}
+	}
+}
+
+game_master_events.81 = {
+	type = country_event
+	placement = ROOT
+
+	title = game_master_events.81.title
+	desc = game_master_events.81.desc
+	flavor = game_master_events.81.flavor
+
+	event_image = { video = "unspecific_signed_contract" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	immediate = {
+		every_country = {
+			limit = {
+				infamy >= infamy_threshold:pariah
+				is_player = yes
+				has_variable = player_country_is_pariah
+			}
+			save_scope_as = pariah_country
+		}
+	}
+
+	option = {
+		name = game_master_events.81.a
+		default_option = yes
+	}
+}

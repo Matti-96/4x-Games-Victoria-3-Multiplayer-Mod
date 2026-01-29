@@ -1,0 +1,7 @@
+﻿# For on_actions launched by the code itself.
+
+on_yearly_pulse_country = {
+	events = {
+		gvfh_critical_trade_center_event.1 # GVFH: Add one trade center in capital or treaty port if country has none		
+	}
+}

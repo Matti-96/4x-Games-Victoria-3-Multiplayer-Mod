@@ -1,0 +1,69 @@
+﻿namespace = gvfh_critical_trade_center_event
+
+# GVFH: This script add one trade in capital or treaty port if country don't get one
+gvfh_critical_trade_center_event.1 = {
+	type = country_event
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = {
+				is_ai = yes
+			}
+			if = {
+				limit = {
+					NOR = {
+						has_law = law_type:law_isolationism
+						any_scope_building = {
+							is_building_type = building_trade_center
+							level >= 1
+						}
+						any_scope_building = {
+							is_building_type = building_trade_center
+							is_under_construction = yes
+						}
+					}
+				}
+				random_scope_state = {
+					limit = {
+						is_capital = yes
+					}
+					start_building_construction = building_trade_center
+				}
+			}
+			if = {
+				limit = {
+					any_scope_state = {
+						NOR = {
+							any_scope_building = {
+								is_building_type = building_trade_center
+								level >= 1
+							}
+							any_scope_building = {
+								is_building_type = building_trade_center
+								is_under_construction = yes
+							}
+						}
+						is_treaty_port = yes
+					}
+				}
+				random_scope_state = {
+					limit = {
+						NOR = {
+							any_scope_building = {
+								is_building_type = building_trade_center
+								level >= 1
+							}
+							any_scope_building = {
+								is_building_type = building_trade_center
+								is_under_construction = yes
+							}
+						}
+						is_treaty_port = yes
+					}
+					start_building_construction = building_trade_center
+				}
+			}
+		}
+	}
+}

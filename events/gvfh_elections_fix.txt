@@ -1,0 +1,1 @@
+﻿# GVFH: Keep this file to avoid unsyc issue as steam is bad at clearing folder, TOREMOVE

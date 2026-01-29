@@ -1,4 +1,5 @@
 ﻿power_bloc_synergize_laws_bool={
+	script_only = yes
 	color = good
 	boolean = yes
 }
@@ -8,18 +9,9 @@ country_can_impose_same_lawgroup_trade_policy_in_power_bloc_bool = {
 	boolean=yes
 }
 
-country_authority_per_subject_add={
+REPLACE:country_authority_per_subject_add={
 	decimals=2
 	color=good
-	game_data={
-		ai_value=0
-	}
-}
-
-country_shopkeepers_pol_str_mult={
-	decimals=0
-	color=neutral
-	percent=yes
 	game_data={
 		ai_value=0
 	}

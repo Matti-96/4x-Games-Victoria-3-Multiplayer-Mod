@@ -286,8 +286,10 @@ warispolitics_diplo_play_independence = {
 					limit = {
 						has_technology_researched = nationalism
 					 }
-					random_primary_culture = {
+					ordered_primary_culture = {
 						save_scope_as = primary_culture_scope
+						order_by = culture_current_fervor
+						add_fervor = 5
 					}
 					add_loyalists = {
 						culture = scope:primary_culture_scope

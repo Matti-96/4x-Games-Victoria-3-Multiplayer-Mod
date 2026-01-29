@@ -1,6 +1,6 @@
 ﻿############################################################
 # Modified Allowed Rival Logic
-countries_are_valid_rivals = {
+REPLACE:countries_are_valid_rivals = {
 	has_overlapping_interests = scope:target_country
 
 	trigger_if = {

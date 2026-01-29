@@ -208,9 +208,9 @@ je_great_game_control = {
 					power_bloc ?= {
 						power_bloc_leader = {
 							OR = {
-								country_is_in_europe = yes
+								is_in_geographic_region = geographic_region_europe
 								any_primary_culture = {
-									has_discrimination_trait = european_heritage
+									has_discrimination_trait_group = heritage_group_european
 								}
 							}
 						}

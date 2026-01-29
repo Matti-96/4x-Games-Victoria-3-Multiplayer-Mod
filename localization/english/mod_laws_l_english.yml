@@ -1,0 +1,5 @@
+﻿l_english:
+############################################################
+# Add Wargoals During War Game Rules
+  law_migration_controls_subject: "Migration Controls (Subject)"
+  law_migration_controls_subject_desc: "Locals are not allowed to leave the country, while citizens of the ruling Empire can migrate to and from this country as they wish."

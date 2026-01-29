@@ -402,12 +402,12 @@ mod_switch_subject_type_action = {
 	effect = {
 		set_variable = {
 			name = just_released_country_as_subject
-			days = 14
+			days = 30
 		}
 		scope:target = {
 			set_variable = {
 				name = just_released_as_subject_by_overlord
-				days = 14
+				days = 30
 			}
 		}
 	}
@@ -436,6 +436,37 @@ mod_game_master_on_action = {
 				remove_modifier = game_master_modifier
 				remove_global_variable = game_master_decision_taken
 			}
+		}
+
+		if = {
+			limit = {
+				infamy >= infamy_threshold:pariah
+				is_player = yes
+				NOR = { 
+					has_variable = player_country_is_pariah
+					has_variable = pariah_country_done
+					has_variable = pariah_country_conference_called
+				}
+			}
+			set_variable = player_country_is_pariah
+
+			random_country = {
+				limit = { has_modifier = game_master_modifier }
+				trigger_event = {
+					id = game_master_events.80
+					days = 0
+					popup = yes
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				infamy < infamy_threshold:pariah
+				has_variable = pariah_country_done
+			}
+
+			remove_variable = pariah_country_done
 		}
 	}
 }

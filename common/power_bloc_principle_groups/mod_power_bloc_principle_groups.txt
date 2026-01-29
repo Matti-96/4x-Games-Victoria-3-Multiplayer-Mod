@@ -193,3 +193,14 @@ principle_group_competition_laws = {
 		principle_competition_laws_3
 	}
 }
+
+principle_group_shared_canon = {
+	primary_for_identity = identity_cultural
+	unlocking_identity = identity_cultural
+
+	levels = {
+		principle_shared_canon_1
+		principle_shared_canon_2
+		principle_shared_canon_3
+	}
+}

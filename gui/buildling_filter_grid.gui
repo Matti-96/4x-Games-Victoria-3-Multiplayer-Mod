@@ -1,0 +1,215 @@
+types company_building_filter_menu_types
+{
+    type building_filter_grid = flowcontainer {
+        direction = vertical
+        parentanchor = hcenter
+        spacing = 5
+
+        ## building buttons
+        # Farms
+        flowcontainer = {
+            spacing = 3
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_rye_farm')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_wheat_farm')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_rice_farm')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_maize_farm')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_millet_farm')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_livestock_ranch')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_vineyard')]"
+            }
+        }
+
+        # Plantations
+        flowcontainer = {
+            spacing = 3
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_coffee_plantation')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_cotton_plantation')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_dye_plantation')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_opium_plantation')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_tea_plantation')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_tobacco_plantation')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_sugar_plantation')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_banana_plantation')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_silk_plantation')]"
+            }
+        }
+
+        widget = {
+            size = { 0 7 }
+        }
+
+        # Extraction
+        flowcontainer = {
+            spacing = 3
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_logging_camp')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_iron_mine')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_coal_mine')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_lead_mine')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_sulfur_mine')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_gold_mine')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_rubber_plantation')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_fishing_wharf')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_whaling_station')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_oil_rig')]"
+            }
+        }
+
+        widget = {
+            size = { 0 7 }
+        }
+
+        # Light
+        flowcontainer = {
+            spacing = 3
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_food_industry')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_textile_mill')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_furniture_manufactory')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_glassworks')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_tooling_workshop')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_paper_mill')]"
+            }
+        }
+
+        # Heavy
+        flowcontainer = {
+            spacing = 3
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_shipyard')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_chemical_plant')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_explosives_factory')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_synthetics_plant')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_steel_mill')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_motor_industry')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_automotive_industry')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_electrics_industry')]"
+            }
+        }
+
+        widget = {
+            size = { 0 5 }
+        }
+
+        # Military
+        flowcontainer = {
+            spacing = 3
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_arms_industry')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_artillery_foundry')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_munition_plant')]"
+            }
+            building_filter_grid_option = {
+                datacontext = "[GetBuildingType('building_military_shipyard')]"
+            }
+            widget = {
+                size = { 10 0 }
+            }
+            # Other
+            flowcontainer = {
+                spacing = 3
+                building_filter_grid_option = {
+                    datacontext = "[GetBuildingType('building_port')]"
+                }
+                building_filter_grid_option = {
+                    datacontext = "[GetBuildingType('building_railway')]"
+                }
+                building_filter_grid_option = {
+                    datacontext = "[GetBuildingType('building_power_plant')]"
+                }
+                building_filter_grid_option = {
+                    datacontext = "[GetBuildingType('building_art_academy')]"
+                }
+            }
+        }
+    }
+
+    type building_filter_grid_option = button {
+        size = { 40 40 }
+        texture = "[BuildingType.GetIcon]"
+        tooltip = "[BuildingType.GetName]"
+        onclick = "[GetVariableSystem.Set('building_filter_type', Select_CString(EqualTo_string(GetVariableSystem.Get('building_filter_type'), BuildingType.GetName) , 'None', BuildingType.GetName))]"
+
+        icon = {
+            visible = "[EqualTo_string(GetVariableSystem.Get('building_filter_type'), BuildingType.GetName)]"
+            using = highlighted_square_selection
+            alpha = 0.7
+        }
+    }
+}

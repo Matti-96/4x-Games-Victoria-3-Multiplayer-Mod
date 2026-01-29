@@ -2,7 +2,6 @@
 
 # Integrated Mods:
 - GDP Ownership Display - https://steamcommunity.com/sharedfiles/filedetails/?id=3290552216
-- Join Ongoing Wars - https://steamcommunity.com/sharedfiles/filedetails/?id=3015811655
 - War is Politics - https://steamcommunity.com/sharedfiles/filedetails/?id=3124519140
 - Improved Company list - https://steamcommunity.com/sharedfiles/filedetails/?id=3527702083
 
@@ -10,13 +9,14 @@
 - The Interest Group opinion penalty for firing generals/admirals has been tripled for each general/admiral rank
 
 # Combat Unit
-- The upkeep goods cost for all naval units that use the Ironclads good hase been tripled
+- The upkeep goods cost for all naval units that use the Ironclads good has been tripled
 - All land units within their respective groups can be upgraded to any other land unit within the same group
 - All naval units within their respective groups can be upgraded to any other naval unit within the same group
 
 # Country Formations
-- The major formable countries (Germany, Italy, Scandinavia, Federation of the Andes) requires that the country forming it must either be a power bloc leader or not in a power bloc
-- The major formable countries (Germany, Italy, Scandinavia, Federation of the Andes) can only be formed by countries that are a Major Power or Great Power
+- The major formable countries (Germany, Italy, Scandinavia, Federation of the Andes, Yugoslavia) requires that the country forming it must either be a power bloc leader or not in a power bloc
+- The major formable countries (Germany, Italy, Scandinavia, Federation of the Andes, Yugoslavia) can only be formed by countries that are a Major Power or Great Power
+- The major formable countries (Germany, Italy, Scandinavia, Federation of the Andes, Yugoslavia) will only absorb supporting countries if those countries are either independent or in the same power bloc as the unifying country
 
 # Country Rank
 - All country ranks have had their migration attraction modifier buffs/debuffs removed
@@ -34,8 +34,6 @@
 - The default war goal has been changed back to money transfer instead of humiliation
 - The migration minimum state pops has been increased from 20,000 to 50,000 to increase the number of pops a state can have before they can start emigrating away in multiplayer games
 - The migration state population threshold has been increased from 100,000 to 250,000 to increase the number of pops a state can have with reduced emigration in multiplayer games
-- The reinvestment efficiency maximum has been decreased from 3.0 to 2.0 to reduce the effectiveness of reinvestment of small countries in multiplayer games
-- The reinvestment base efficiency threshold has been decreased from 50,000,000 to 7,500,000 to reduce the effectiveness of reinvestment of small countries in multiplayer games
 - The military formation weekly maximum unit upgrades for army has been decreased from 0.1 to 0.02 to reduce the rate of unit upgrades in multiplayer games, meaning it should take 50 weeks to fully upgrade an army instead of 10 weeks
 - The military formation weekly maximum unit upgrades for fleet has been decreased from 0.05 to 0.01 to reduce the rate of unit upgrades in multiplayer games, meaning it should take 100 weeks to fully upgrade a fleet instead of 20 weeks
 - The devastation increase rate has been decreased from 0.1 to 0.02 to make daily occupation of a state less devastating, scaling with level of occupation
@@ -45,18 +43,6 @@
 # Diplomatic Actions
 - When a country joins a Sovereign Empire type power bloc, they will automatically become a subject of the power bloc leader; either as a tributary or protectorate depending on whether the country is recognized or unrecognized
 - A game master diplomatic action has been added as part of the game master game mechanic. More details can be found in the new game mechanics section of the changelog
-- Countries will now be able to intervene in an ongoing war that they are not a participant in, provided they meet the following conditions:
-	- They are not a decentralized country
-	- The war is not a revolutionary or secessionist war
-	- The country is allowed to do independent diplomatic actions
-	- The country is not a war with the country whose side they want to join on
-	- The country can reach the country whose side they want to join on, by either of the following methods:
-		- Have direct access via bordering them
-		- Have access through an ally who is also at war with the country whose side they want to join on
-		- Have access through a subject
-		- Have access through an enemy third party
-	- Have diplomatic relations with the country whose side they want to join on
-	- Have cordial or higher relations with the country whose side they want to join on
 - A new diplomatic action has been added to allow a country to turn a newly released subject into a personal union, provided the country is a monarchy and the subject was just released by the overlord. More information can be found in the new game mechanics section of the changelog
 - Rivalries can only be formed between countries of either equal rank or against a country of a higher rank. Recognized countries can not rival unrecognized countries, and unrecognized countries can not rival recognized countries
 
@@ -64,8 +50,13 @@
 - The Humiliation war goal can only be used on countries that a country officially rivals
 
 # Game Mechanics
+- Colonization:
+	- The Malaria and Severe Malaria state traits now both have a -99% colonization speed modifier to better reflect historical colonization of Africa
+	- Countries can no longer buy ports for £100,000 when starting a new colony; the first port must be manualy built in the new colony.
 - Game Master:
 	- The game master can give/take money from a country's treasury, give/take a country infamy, give a buff/debuff to a country's prestige/authority/influence with a base increase modifier or a multiplier modifier. This is done by using the game master decision, and then using the game master diplomatic action on a country to perform a game master action or they can use a decision to perform a game master action on themselves
+- Infamy:
+	- If a country becomes a pariah (have infamy reach 100 or higher), the game master will be notified so that a conference can be called
 - Ideological Union Synergize Laws:
 	- When a country is a non-leader member of an Ideological Union power bloc, their laws will be synergized with the laws of the power bloc leader over time if any of their laws of the following law groups is different:
 		- Governance Principles
@@ -97,9 +88,10 @@
 - The Populating the Americas journal entry has had it's scripted button modifier. More details can be found in the scripted button section of the changelog
 - Lobbies now have a timeout of 10 years instead of 5 years to allow for more time to complete the journal entry
 - The Synergize Laws journal entry for Ideological Union power bloc members that have differing laws from the Power Bloc leader keeps track and runs the synergize law mechanic. More details can be found in the new game mechanics section of the changelog
+- The Divided Monarchists journal entry has had its fail condition changed; the journal entry only fails if either the capital is in revolt or there is a revolution type civil war forming which reaches 75% or higher
 
 # Laws
-- The Multicultural law can only be enacted by countries that have the Anarchy law
+- The Multicultural law can only be enacted by countries that have the Total Separation law
 - The Single Party State law can only be enacted by countries that don't have the Protected Speech law
 - Religious Schools can now expand the schools institution to level 5
 - Public Schools increase the bureaucracy cost of the schools institution by 40%
@@ -111,9 +103,13 @@
 - The Worker Protections law can not be enacted by countries that have the Laissez-Faire law
 - The Wage Subsidies law can not be enacted by countries that have the Laissez-Faire law
 - The Old Age Pension law can not be enacted by countries that have the Laissez-Faire law
+- The East India Company now starts with a unique migration law that increases its migration restrictiveness to 99, and is unremovable as long as it remains a subject
 
 # Mobilization Options
 - The new Main Guns mobilization option group has been added, which unlocks a new mobilization option for each of the rifling military technologies, which provides a bonus to infantry unit offense and defense
+
+# Modifier Changes
+- Obstinance now increases the effects of turmoil in a state by 20% at maximum obstinance
 
 # Power Bloc Identities
 - Sovereign Empires:
@@ -333,6 +329,9 @@
 		- Subjects pay 25% more income to their overlord
 - Freedom of Movement Principle:
 	- Removed from the game
+- Shared Canon Principle:
+	- Unique to the Cultural Power Bloc identity
+	- Allows migration within the power bloc
 
 # Production Methods
 - Production methods that use the transportation good are hidden until the transportation good is available in the state
@@ -362,7 +361,8 @@
 # Technologies
 - Society:
 	- Pan-Nationalisms is now unlocked by Identification Documents
-	- Great War Diplomacy is a new Era 5 technology that provides 1375 diplomatic play maneuvers to allow for an in-game Great War to be fought with the required high level of stakes.
+	- Multilateral Alliance technology now also provides 200 diplomatic play maneuvers
+	- Great War Diplomacy is a new Era 5 technology that provides 1000 diplomatic play maneuvers to allow for an in-game Great War to be fought with the required high level of stakes.
 
 # Treaty Articles
 - Alliance:

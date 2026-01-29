@@ -1,4 +1,4 @@
-﻿retire_commander = {
+﻿REPLACE:retire_commander = {
 	# icon = ""
 	clicksound = "event:/SFX/UI/Military/commander_retire"
 

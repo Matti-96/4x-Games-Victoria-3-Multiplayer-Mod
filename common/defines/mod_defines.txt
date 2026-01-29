@@ -6,16 +6,17 @@ NDiplomacy = {
 	DIPLOMATIC_PLAY_ABANDON_SUPPORT_RELATIONS_IMPACT = 20	# Decreased from 50 to 20 to make it easier to abandon support for relations in multiplayer games.
 
 	DEFAULT_WAR_GOAL_IS_HUMILIATION = false # If this is false, default war goal is instead money transfer
+
+	WAR_GOAL_INFAMY_PEACE_REFUND = 0.0 				    # GVFH: Set the value to 0 as WAR_GOAL_INFAMY_DIPLO_PLAY_BACKER_REFUND already refund it all # Refund of infamy for war goals that are dropped due to a country capitulating or negotating peace without enforcing their wargoal
+}
+
+NEconomy = {
+	ESTABLISH_COLONY_PROVIDE_PORT = NO				# If establishing a colony should build a port for coastal colonies in order to immediately connect them to the market.
 }
 
 NPops = {
 	MIGRATION_MIN_STATE_POPS = 50000	# Increased from 20000 to 50000 to increase the number of pops a state can have before they can start emigrating away in multiplayer games.
 	MIGRATION_STATE_POPULATION_THRESHOLD = 250000	# Increased from 100000 to 250000 to increase the number of pops a state can have with reduced emigration in multiplayer games.
-}
-
-NEconomy = {
-	REINVESTMENT_EFFICIENCY_MAX = 2.0	# Decreased from 3.0 to 2.0 to reduce the effectiveness of reinvestment of small countries in multiplayer games.
-	REINVESTMENT_BASE_EFFICIENCY_THRESHOLD = 7500000	# Decreased from 50000000 to 7500000 to reduce the effectiveness of reinvestment of small countries in multiplayer games.
 }
 
 NMilitary = {

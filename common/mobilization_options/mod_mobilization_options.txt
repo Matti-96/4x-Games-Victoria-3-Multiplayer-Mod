@@ -175,7 +175,7 @@ mobilization_option_bolt_action_rifles = {
 }
 
 # Chemical Weapons Reworked
-mobilization_option_chemical_weapons = {
+REPLACE:mobilization_option_chemical_weapons = {
 	texture = "gfx/interface/icons/mobilization_options/chemical_weapons.dds"
 
 	possible = {

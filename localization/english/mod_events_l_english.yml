@@ -533,3 +533,14 @@
   game_master_events.70.a: "Change Game Master"
   game_master_events.70.b: "Return to Game Master Main Menu"
   game_master_events.70.c: "Do nothing"
+
+# Pariah Nation Conference
+  game_master_events.80.title: "Pariah Player Nation Detected"
+  game_master_events.80.desc: "[SCOPE.sCountry('pariah_country').GetName], with an infamy of [SCOPE.sCountry('pariah_country').GetInfamy] has been acting as a Pariah Nation, engaging in activities that threaten the stability and security of the international community. As a result, we must decide whether a conference should be called to address this issue and determine the appropriate course of action."
+  game_master_events.80.a: "Announce a Conference"
+  game_master_events.80.b: "Do not announce a Conference"
+
+  game_master_events.81.title: "Conference Announced"
+  game_master_events.81.desc: "A conference has been announced to address the actions of [SCOPE.sCountry('pariah_country').GetName]. The international community will come together to discuss the situation and determine the appropriate response to this Pariah Nation."
+  game_master_events.81.flavor: "In response to the escalating actions of [SCOPE.sCountry('pariah_country').GetName], which have raised significant concerns within the international community, a conference has been convened to address the situation. This gathering of nations aims to deliberate on the implications of [SCOPE.sCountry('pariah_country').GetName]'s behavior and to formulate a collective response that upholds global stability and security. The conference will provide a platform for dialogue, negotiation, and decision-making, reflecting our shared commitment to maintaining order in the international arena."
+  game_master_events.81.a: "We will attend the conference."

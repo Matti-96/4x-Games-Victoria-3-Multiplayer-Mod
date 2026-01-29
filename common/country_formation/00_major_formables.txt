@@ -44,6 +44,20 @@
 			is_in_power_bloc = no
 		}
 	}
+
+	can_be_unification_target = {
+		NOR = {
+			has_government_type = gov_dual_monarchy
+			has_government_type = gov_triple_monarchy
+		}
+		OR = {
+			is_in_same_power_bloc = c:PRU
+			is_in_same_power_bloc = c:AUS
+			is_in_same_power_bloc = c:NGF
+			is_in_same_power_bloc = c:SGF
+			is_in_power_bloc = no
+		}
+	}
 }
 
 ITA = {
@@ -90,6 +104,22 @@ ITA = {
 				is_in_power_bloc = yes
 				is_power_bloc_leader = yes
 			}
+			is_in_power_bloc = no
+		}
+	}
+
+	can_be_unification_target = {
+		NAND = { # United States of Greater Austria
+			country_has_primary_culture = cu:north_italian
+			OR = {
+				has_journal_entry = je_danubian_federation
+				c:KUK ?= this
+          	  	c:HRE ?= this
+			}
+		}
+		OR = {
+			is_in_same_power_bloc = c:SAR
+			is_in_same_power_bloc = c:SIC
 			is_in_power_bloc = no
 		}
 	}
@@ -143,6 +173,13 @@ SCA = {
 				is_in_power_bloc = yes
 				is_power_bloc_leader = yes
 			}
+			is_in_power_bloc = no
+		}
+	}
+
+	can_be_unification_target = {
+		OR = {
+			is_in_same_power_bloc = c:SWE
 			is_in_power_bloc = no
 		}
 	}
@@ -204,6 +241,111 @@ FND = {
 				is_power_bloc_leader = yes
 			}
 			is_in_power_bloc = no
+		}
+	}
+
+	can_be_unification_target = {
+		OR = {
+			is_in_same_power_bloc = c:BOL
+			is_in_same_power_bloc = c:CLM
+			is_in_power_bloc = no
+		}
+	}
+}
+
+YUG = {
+	geographic_region = geographic_region_yugoslavia
+
+	is_major_formation = yes
+
+	unification_play = dp_unify_yugoslavia
+	leadership_play = dp_leadership_yugoslavia
+
+	required_states_fraction = 0.75
+
+	ai_will_do = { always = yes }
+	
+	potential = {
+        NOR = {
+            c:AUS ?= this
+            c:KUK ?= this
+        }
+		trigger_if = {
+			limit = {
+				c:BUL ?= this
+			}
+			has_variable = bul_pursued_greater_yugoslavism
+		}
+		trigger_else = {
+			always = yes
+		}
+	}
+
+	possible = {
+        NOR = { # Not Danubian State or HRE
+            c:AUS ?= this
+            c:KUK ?= this
+            c:HRE ?= this
+        }
+		has_technology_researched = pan-nationalism
+		trigger_if = {
+			limit = {
+				c:BUL ?= this
+			}
+			custom_tooltip = {
+				text = bulgaria_pursued_greater_yugoslavism_tt
+				has_variable = bul_pursued_greater_yugoslavism
+			}
+		}
+	}
+
+	max_num_formation_candidates = 3 # For the odd Croatia, Serbia and Bulgaria FFA
+	can_be_formation_candidate = {
+		country_rank >= rank_value:major_power
+        NOR = { # Not Danubian State or HRE
+            c:AUS ?= this
+            c:KUK ?= this
+            c:HRE ?= this
+        }
+		trigger_if = {
+			limit = {
+				c:BUL ?= this
+			}
+			custom_tooltip = {
+				text = bulgaria_pursued_greater_yugoslavism_tt
+				has_variable = bul_pursued_greater_yugoslavism
+			}
+		}
+	}
+
+	can_be_unification_target = {
+		NAND = { # United States of Greater Austria
+			OR = {
+				country_has_primary_culture = cu:slovene
+				country_has_primary_culture = cu:croat
+				country_has_primary_culture = cu:serb
+			}
+			OR = {  # Not Danubian State or HRE
+				has_journal_entry = je_danubian_federation
+				c:KUK ?= this
+            	c:HRE ?= this
+			}
+		}
+		OR = {
+			is_in_same_power_bloc = c:SER
+			is_in_power_bloc = no
+		}
+		trigger_if = {
+			limit = {
+				c:BUL ?= this
+			}
+			custom_tooltip = {
+				text = bulgaria_pursued_greater_yugoslavism_tt
+				has_variable = bul_pursued_greater_yugoslavism
+			}
+		}
+		trigger_else = {
+			always = yes
 		}
 	}
 }

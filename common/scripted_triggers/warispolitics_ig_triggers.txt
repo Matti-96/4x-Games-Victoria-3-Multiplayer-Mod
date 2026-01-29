@@ -3,7 +3,10 @@
 warispolitics_ig_approves_aggression = {
 	NOT = {
 		leader = {
-			has_ideology = ideology:ideology_pacifist
+			OR = {
+				has_ideology = ideology:ideology_pacifist
+				has_ideology = ideology:ideology_utopian
+			}
 		}
 	}
 	OR = {
@@ -22,7 +25,10 @@ warispolitics_ig_approves_aggression = {
 warispolitics_ig_disapproves_aggression = {
 	OR = {
 		leader = {
-			has_ideology = ideology:ideology_pacifist
+			OR = {
+				has_ideology = ideology:ideology_pacifist
+				has_ideology = ideology:ideology_utopian
+			}
 		}
 		has_ideology = ideology:ideology_pacifist #Doesn't normally exist outside of leader, but just in case
 		#Crusader Kings Moment: Peasants don't like being levied for offensive wars
@@ -59,12 +65,9 @@ warispolitics_ig_disapproves_bullying = {
 				has_ideology = ideology:ideology_pacifist
 				has_ideology = ideology:ideology_anarchist
 				has_ideology = ideology:ideology_humanitarian
+				has_ideology = ideology:ideology_utopian
 			}
 		}
-	#These don't normally exist outside of Leaders, but just in case.		
-		has_ideology = ideology:ideology_pacifist
-		has_ideology = ideology:ideology_anarchist
-		has_ideology = ideology:ideology_humanitarian
 	}
 }
 
@@ -75,13 +78,11 @@ warispolitics_ig_disapproves_attacking_council_republic = {
 			OR = {
 				has_ideology = ideology:ideology_communist
 				has_ideology = ideology:ideology_anarchist
+				has_ideology = ideology:ideology_utopian
 				#vanguardists don't care
 			}
 		}
 	}
-	#These don't normally exist outside of Leaders, but just in case.
-	has_ideology = ideology:ideology_communist
-	has_ideology = ideology:ideology_anarchist
 }
 
 #Approves of Ban Slavery plays
@@ -135,6 +136,7 @@ warispolitics_ig_loves_independence = {
 				has_ideology = ideology:ideology_anarchist
 				has_ideology = ideology:ideology_jingoist_leader
 				has_ideology = ideology:ideology_radical
+				has_ideology = ideology:ideology_sovereignist_leader
 			}
 		}
 		has_ideology = ideology:ideology_jingoist
@@ -142,6 +144,7 @@ warispolitics_ig_loves_independence = {
 		has_ideology = ideology:ideology_proletarian
 		is_interest_group_type = ig_armed_forces #I FUCKING LOVE WAR
 		is_interest_group_type = ig_intelligentsia #Intelligentsia national pride
+		has_ideology = ideology:ideology_sovereignist
 	}
 }
 

@@ -25,33 +25,6 @@
   mod_technology_society_era_4:0 "Era 4 Society Technologies Researched"
 
 ############################################################
-# War Is Politics Modifiers
-  warispolitics_lost_war: "War Defeat"
-  warispolitics_won_war: "War Victory"
-  warispolitics_backed_down: "Backed Down"
-
-  warispolitics_aggression_positive_minor: "Attacked Weaker Foe"
-  warispolitics_aggression_positive_major: "Attacked Significant Foe"
-  warispolitics_aggression_negative_minor: "Attacked Weaker Country"
-  warispolitics_aggression_negative_major: "Attacked Peer Country"
-  warispolitics_aggression_negative_socialist: "Attacked Council Republic"
-  warispolitics_whitepeace_positive: "Signed Negotiated Peace"
-  warispolitics_whitepeace_negative: "Accepted Negotiated Peace"
-  warispolitics_subject_bully_positive: "Asserted Authority Over Subject"
-  warispolitics_subject_bully_negative: "Imposed Control on Subject"
-  warispolitics_overlord_positive: "Many Subjects"
-  warispolitics_colony_positive: "Founded Colony"
-  warispolitics_colony_negative: "Founded Colony"
-  warispolitics_independence_positive: "Declared Independence"
-  warispolitics_independence_negative: "Rebellion"
-  warispolitics_character_lost_war: "Lost Us the War"
-  warispolitics_character_won_war: "Lead through Victory"
-  warispolitics_ig_war_loser: "Lost Us the War"
-  warispolitics_ig_war_winner: "Lead through Victory"
-  warispolitics_slavery_ban_positive: "Enforced Slavery Ban"
-  warispolitics_slavery_ban_negative: "Enforced Slavery Ban"
-
-############################################################
 # Power Bloc Modifiers
   power_bloc_synergize_laws_bool: "Synergize Laws with Power Bloc Leader"
   power_bloc_synergize_laws_bool_desc: "If enabled, the laws of the non-leader members will be synergized with the laws of the leader, allowing for a more cohesive political structure within the Power Bloc."
