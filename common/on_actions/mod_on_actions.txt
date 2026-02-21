@@ -465,7 +465,6 @@ mod_game_master_on_action = {
 				infamy < infamy_threshold:pariah
 				has_variable = pariah_country_done
 			}
-
 			remove_variable = pariah_country_done
 		}
 	}

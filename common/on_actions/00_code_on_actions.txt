@@ -4746,7 +4746,6 @@ on_law_activated = {
 				}
 			}
 		}
-		second_amendment_add_obsessions_effect = yes # Relevant if owner is Yankee or Dixie
 		upgrade_moderniser_movement_effect = yes # Relevant if owner has a moderniser movement
 		owner = {
 			if = { # If a currently enacting law is invalidated by an activated law, stop enacting it

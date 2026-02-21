@@ -5,3 +5,8 @@
   TOOLTIP_LOCKED_PRINCIPLE_SLOT_4_DURING_FORMATION: "Available when your [concept_power_bloc_rank] is #v ##3#! or better, or you have at least #v 10#! [Concept('concept_power_bloc_member', '$concept_power_bloc_members_short$')]"
 
 ############################################################
+# Pause
+  PAUSED_BY_PLAYER_MP:0 "Paused by #v [TimeKeeper.GetPausedBy]#!\nDO NOT TOUCH ANYTHING WHILE THE GAME IS PAUSED!"
+  PAUSED_BY_UNPAUSE_ONLY_ME:0 "Only you can unpause the game for [TimeKeeper.GetTimeAnyoneUnpause] more seconds.\nDO NOT TOUCH ANYTHING WHILE THE GAME IS PAUSED!"
+  PAUSED_BY_UNPAUSE_ONLY_PAUSED_BY:0 "Only #v [TimeKeeper.GetPausedBy]#! can unpause for [TimeKeeper.GetTimeAnyoneUnpause] more seconds\nDO NOT TOUCH ANYTHING WHILE THE GAME IS PAUSED!"
+  PAUSED_BY_UNPAUSE_ANYONE:0 "Anyone can unpause\nDO NOT TOUCH ANYTHING WHILE THE GAME IS PAUSED!"

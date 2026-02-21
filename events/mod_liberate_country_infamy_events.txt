@@ -108,9 +108,7 @@ liberate_country_infamy_events.2 = {
 				if = {
 					limit = {
 						any_country = {
-							NOT = {
-								this = scope:target_vassal
-							}
+							NOT = { scope:target_vassal = this}
 							has_variable = potential_overlord
 							var:potential_overlord = root
 						}

@@ -16,46 +16,54 @@
 		is_power_bloc_leader = no
 		power_bloc ?= { has_identity = identity:identity_ideological_union }
 		OR = {
-			custom_tooltip = {
-				text = power_bloc_synergize_governance_principle_trigger_tt
-				NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_governance_principles.type = ROOT.active_law:lawgroup_governance_principles.type }
-			}
-			custom_tooltip = {
-				text = power_bloc_synergize_distribution_of_power_trigger_tt
-				NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = ROOT.active_law:lawgroup_distribution_of_power.type }
-			}
-			custom_tooltip = {
-				text = power_bloc_synergize_economic_system_trigger_tt
-				NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_economic_system.type = ROOT.active_law:lawgroup_economic_system.type }
-			}
-			custom_tooltip = {
-				text = power_bloc_synergize_land_reform_trigger_tt
-				NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = ROOT.active_law:lawgroup_land_reform.type }
-			}
-			custom_tooltip = {
-				text = power_bloc_synergize_free_speech_trigger_tt
-				NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_free_speech.type = ROOT.active_law:lawgroup_free_speech.type }
-			}
-			custom_tooltip = {
-				text = power_bloc_synergize_slavery_trigger_tt
-				NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_slavery.type = ROOT.active_law:lawgroup_slavery.type }
-			}
+			NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_governance_principles.type = ROOT.active_law:lawgroup_governance_principles.type }
+			NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = ROOT.active_law:lawgroup_distribution_of_power.type }
+			NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_economic_system.type = ROOT.active_law:lawgroup_economic_system.type }
+			NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = ROOT.active_law:lawgroup_land_reform.type }
+			NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_free_speech.type = ROOT.active_law:lawgroup_free_speech.type }
+			NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_slavery.type = ROOT.active_law:lawgroup_slavery.type }
 		}
 	}
 
 	immediate = {
 		if = {
-			limit = { NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_governance_principles.type = ROOT.active_law:lawgroup_governance_principles.type } }
-			set_variable = {
-				name = power_bloc_leader_lawgroup_governance_principles_variable
-				value = 0
+			limit = {  NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_governance_principles.type = ROOT.active_law:lawgroup_governance_principles.type } }
+			if = {
+				limit = {	# Monarchies that have subjects (which can't have the monarchy law and instead have the colonial administration law) need special handling
+					power_bloc.power_bloc_leader.active_law:lawgroup_governance_principles.type = law_type:law_monarchy
+					NOT = { ROOT.active_law:lawgroup_governance_principles.type = law_type:law_colonial_administration }
+				}
+				set_variable = {
+					name = power_bloc_leader_lawgroup_governance_principles_variable
+					value = 0
+				}
 			}
 		}
 		if = {
 			limit = { NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = ROOT.active_law:lawgroup_distribution_of_power.type } }
-			set_variable = {
-				name = power_bloc_leader_lawgroup_distribution_of_power_variable
-				value = 0
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							OR = {
+								power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = law_type:law_neo_absolutism
+								power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = law_type:law_autocracy
+							}
+							NOT = { ROOT.active_law:lawgroup_distribution_of_power.type = law_type:law_autocracy }
+						}
+						AND = {
+							power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = law_type:law_oligarchy
+							NOR = { 
+								ROOT.active_law:lawgroup_distribution_of_power.type = law_type:law_oligarchy
+								ROOT.active_law:lawgroup_distribution_of_power.type = law_type:law_organic_regulation
+							}
+						}
+					}
+				}
+				set_variable = {
+					name = power_bloc_leader_lawgroup_distribution_of_power_variable
+					value = 0
+				}
 			}
 		}
 		if = {
@@ -67,9 +75,33 @@
 		}
 		if = {
 			limit = { NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = ROOT.active_law:lawgroup_land_reform.type } }
-			set_variable = {
-				name = power_bloc_leader_lawgroup_land_reform_variable
-				value = 0
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							OR = {
+								power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = law_type:law_serfdom
+								power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = law_type:law_manorialism
+							}
+							NOR = {
+								ROOT.active_law:lawgroup_land_reform.type = law_type:law_serfdom
+								ROOT.active_law:lawgroup_land_reform.type = law_type:law_manorialism
+							}
+						}
+						AND = {
+							OR = {
+								power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = law_type:law_tenant_farmers
+								power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = law_type:law_latifundias
+								power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = law_type:law_expanded_latifundias
+							}
+							NOT = { ROOT.active_law:lawgroup_land_reform.type = law_type:law_tenant_farmers }
+						}
+					}
+				}
+				set_variable = {
+					name = power_bloc_leader_lawgroup_land_reform_variable
+					value = 0
+				}
 			}
 		}
 		if = {
@@ -96,29 +128,10 @@
 	scripted_progress_bar = power_bloc_synergize_law_slavery_progress_bar
 
 	complete = {
-		custom_tooltip = {
-			text = power_bloc_synergize_governance_principles_complete_tt
-			power_bloc.power_bloc_leader.active_law:lawgroup_governance_principles.type = ROOT.active_law:lawgroup_governance_principles.type
-		}
-		custom_tooltip = {
-			text = power_bloc_synergize_distribution_of_power_complete_tt
-			power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = ROOT.active_law:lawgroup_distribution_of_power.type
-		}
-		custom_tooltip = {
-			text = power_bloc_synergize_economic_system_complete_tt
-			power_bloc.power_bloc_leader.active_law:lawgroup_economic_system.type = ROOT.active_law:lawgroup_economic_system.type
-		}
-		custom_tooltip = {
-			text = power_bloc_synergize_land_reform_complete_tt
-			power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = ROOT.active_law:lawgroup_land_reform.type
-		}
-		custom_tooltip = {
-			text = power_bloc_synergize_free_speech_complete_tt
-			power_bloc.power_bloc_leader.active_law:lawgroup_free_speech.type = ROOT.active_law:lawgroup_free_speech.type
-		}
-		custom_tooltip = {
-			text = power_bloc_synergize_slavery_complete_tt
-			power_bloc.power_bloc_leader.active_law:lawgroup_slavery.type = ROOT.active_law:lawgroup_slavery.type
+		OR = {
+			is_in_power_bloc = no
+			is_power_bloc_leader = yes
+			NOT = { power_bloc ?= { has_identity = identity:identity_ideological_union } }
 		}
 	}
 
@@ -167,6 +180,172 @@
 
 	on_weekly_pulse = {
 		effect = {
+			# Need to confirm everything is working first in case anything breaks
+			if = {	# Governance Principles - Only weird situation is the Monarchy/Colonial Administration law, where subjects can't switch to Monarchy if they have Colonial Administration
+				limit = {	# If the laws don't match but the variable doesn't exist, create it
+					NOT = { has_variable = power_bloc_leader_lawgroup_governance_principles_variable }
+					NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_governance_principles.type = ROOT.active_law:lawgroup_governance_principles.type }
+				}
+				if = {
+					limit = {	# Monarchies that have subjects (which can't have the monarchy law and instead have the colonial administration law) need special handling
+						power_bloc.power_bloc_leader.active_law:lawgroup_governance_principles.type = law_type:law_monarchy
+						NOT = { ROOT.active_law:lawgroup_governance_principles.type = law_type:law_colonial_administration }
+					}
+					set_variable = {
+						name = power_bloc_leader_lawgroup_governance_principles_variable
+						value = 0
+					}
+					je:je_power_bloc_synergize_laws = {
+						set_bar_progress = {
+							value = 0
+							name = power_bloc_synergize_law_governance_principles_progress_bar
+						}
+					}
+				}
+			}
+			if = {	# Distribution of Power - Need to deal with: Neo Absolutism, which is equivalent to Autocracy for non-Austrian Empire countries; Organic Regulation, which is equivalent to Oligarchy for non-Romanian countries;
+				limit = {	# If the laws don't match but the variable doesn't exist, create it
+					NOT = { has_variable = power_bloc_leader_lawgroup_distribution_of_power_variable }
+					NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = ROOT.active_law:lawgroup_distribution_of_power.type }
+				}
+				if = {
+					limit = {	# Neo Absolutism handling - Austrian replacement of Autocracy
+						OR = {
+							power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = law_type:law_neo_absolutism
+							power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = law_type:law_autocracy
+						}
+						NOT = { ROOT.active_law:lawgroup_distribution_of_power.type = law_type:law_autocracy }
+					}
+					set_variable = {
+						name = power_bloc_leader_lawgroup_distribution_of_power_variable
+						value = 0
+					}
+					je:je_power_bloc_synergize_laws = {
+						set_bar_progress = {
+							value = 0
+							name = power_bloc_synergize_law_distribution_of_power_progress_bar
+						}
+					}
+				}
+				if = {
+					limit = {	# Organic Regulation handling - Romanian replacement of Oligarchy
+						power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = law_type:law_oligarchy
+						NOR = { 
+							ROOT.active_law:lawgroup_distribution_of_power.type = law_type:law_oligarchy
+							ROOT.active_law:lawgroup_distribution_of_power.type = law_type:law_organic_regulation
+						}
+					}
+					set_variable = {
+						name = power_bloc_leader_lawgroup_distribution_of_power_variable
+						value = 0
+					}
+					je:je_power_bloc_synergize_laws = {
+						set_bar_progress = {
+							value = 0
+							name = power_bloc_synergize_law_distribution_of_power_progress_bar
+						}
+					}
+				}
+			}
+			if = {	# Economic System
+				limit = {
+					NOT = { has_variable = power_bloc_leader_lawgroup_economic_system_variable }
+					NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_economic_system.type = ROOT.active_law:lawgroup_economic_system.type }
+				}
+				set_variable = {
+					name = power_bloc_leader_lawgroup_economic_system_variable
+					value = 0
+				}
+				je:je_power_bloc_synergize_laws = {
+					set_bar_progress = {
+						value = 0
+						name = power_bloc_synergize_law_economic_system_progress_bar
+					}
+				}
+			}
+			if = {	# Land Reform - Need to deal with: Manorialism, which is equivalent to Serfdom for the Austrian Empire and its subjects; Latifundias, which is equivalent to Tenant Farmers for Iberia; Expanded Latifundias, which is equivalent to Tenant Farmers for Iberia
+				limit = {	# If the laws don't match but the variable doesn't exist, create it
+					NOT = { has_variable = power_bloc_leader_lawgroup_land_reform_variable }
+					NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = ROOT.active_law:lawgroup_land_reform.type }
+				}
+				if = {
+					limit = {	# Manorialism handling - Austrian & Austrian Subject replacement of Serdom
+						OR = {
+							power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = law_type:law_serfdom
+							power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = law_type:law_manorialism
+						}
+						NOR = {
+							ROOT.active_law:lawgroup_land_reform.type = law_type:law_serfdom
+							ROOT.active_law:lawgroup_land_reform.type = law_type:law_manorialism
+						}
+					}
+					set_variable = {
+						name = power_bloc_leader_lawgroup_land_reform_variable
+						value = 0
+					}
+					je:je_power_bloc_synergize_laws = {
+						set_bar_progress = {
+							value = 0
+							name = power_bloc_synergize_law_land_reform_progress_bar
+						}
+					}
+				}
+				if = {
+					limit = {	# Latifundias handling - Iberian replacement of Tenant Farmers
+						OR = {
+							power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = law_type:law_tenant_farmers
+							power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = law_type:law_latifundias
+							power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = law_type:law_expanded_latifundias
+						}
+						NOT = { ROOT.active_law:lawgroup_land_reform.type = law_type:law_tenant_farmers }
+					}
+					set_variable = {
+						name = power_bloc_leader_lawgroup_land_reform_variable
+						value = 0
+					}
+					je:je_power_bloc_synergize_laws = {
+						set_bar_progress = {
+							value = 0
+							name = power_bloc_synergize_law_land_reform_progress_bar
+						}
+					}
+				}
+			}
+			if = {	# Free Speech
+				limit = { 
+					NOT = { has_variable = power_bloc_leader_lawgroup_free_speech_variable }
+					NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_free_speech.type = ROOT.active_law:lawgroup_free_speech.type }
+				}
+				set_variable = {
+					name = power_bloc_leader_lawgroup_free_speech_variable
+					value = 0
+				}
+				je:je_power_bloc_synergize_laws = {
+					set_bar_progress = {
+						value = 0
+						name = power_bloc_synergize_law_free_speech_progress_bar
+					}
+				}
+
+			}
+			if = {	# Slavery
+				limit = {
+					NOT = { has_variable = power_bloc_leader_lawgroup_slavery_variable }
+					NOT = { power_bloc.power_bloc_leader.active_law:lawgroup_slavery.type = ROOT.active_law:lawgroup_slavery.type }
+				}
+				set_variable = {
+					name = power_bloc_leader_lawgroup_slavery_variable
+					value = 0
+				}
+				je:je_power_bloc_synergize_laws = {
+					set_bar_progress = {
+						value = 0
+						name = power_bloc_synergize_law_slavery_progress_bar
+					}
+				}
+			}
+			
+
 			if = {
 				limit = { has_variable = power_bloc_leader_lawgroup_governance_principles_variable }
 				custom_tooltip = {

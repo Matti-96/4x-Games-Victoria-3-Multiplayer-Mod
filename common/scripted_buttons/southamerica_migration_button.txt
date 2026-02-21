@@ -168,9 +168,10 @@ patagonia_button = {
 	visible = { always = yes }
 
 	possible = {
-		has_technology_researched = civilizing_mission
-		ig:ig_armed_forces = {
-			is_marginal = no
+		has_technology_researched = logistics
+		army_size >= 10
+		ig:ig_armed_forces ?= {
+			ig_counts_as_marginal = no
 		}
 		any_scope_state = {
 			OR = {
@@ -184,6 +185,7 @@ patagonia_button = {
 	}
 
 	effect = {
+		change_infamy = 15
 		add_modifier = {
 			name = patagonia_campaign
 			days = long_modifier_time

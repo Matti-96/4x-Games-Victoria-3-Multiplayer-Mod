@@ -1,6 +1,6 @@
 ﻿namespace = power_bloc_synergize_laws_events
 
-power_bloc_synergize_laws_events.1 = {
+power_bloc_synergize_laws_events.1 = {	# Governance Principles
 	type = country_event
 
 	title = power_bloc_synergize_laws_events.1.title
@@ -23,29 +23,126 @@ power_bloc_synergize_laws_events.1 = {
 	}
 
 	immediate = {
-		if = {
-			limit = {
-				is_power_bloc_leader = no
-				is_in_power_bloc = yes
-				power_bloc ?= { has_identity = identity:identity_ideological_union }
-			}
-			power_bloc.power_bloc_leader = {
-				save_scope_as = power_bloc_leader_scope
-			}
-		}
-		
-		scope:power_bloc_leader_scope.active_law:lawgroup_governance_principles.type = {
-			save_scope_as = power_bloc_leader_governance_principle_law
+		power_bloc.power_bloc_leader = {
+			save_scope_as = power_bloc_leader_scope
 		}
 	}
 
-	option = {
+	option = {	# Governance Principles - Monarchy
 		name = power_bloc_synergize_laws_events.1.a
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_governance_principles.type = law_type:law_monarchy
+			NOT = { is_subject_of = scope:power_bloc_leader_scope }
+		}
 
 		default_option = yes
 
-		activate_law = scope:power_bloc_leader_governance_principle_law
+		activate_law = law_type:law_monarchy
+		
+		remove_modifier = power_bloc_leader_lawgroup_governance_principles_variable_12
 
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_governance_principles_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Governance Principles - Colonial Administration
+		name = power_bloc_synergize_laws_events.1.b
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_governance_principles.type = law_type:law_monarchy
+			is_subject_of = scope:power_bloc_leader_scope
+		}
+
+		activate_law = law_type:law_colonial_administration
+		
+		remove_modifier = power_bloc_leader_lawgroup_governance_principles_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_governance_principles_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Governance Principles - Presidential Republic
+		name = power_bloc_synergize_laws_events.1.c
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_governance_principles.type = law_type:law_presidential_republic
+		}
+
+		activate_law = law_type:law_presidential_republic
+		
+		remove_modifier = power_bloc_leader_lawgroup_governance_principles_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_governance_principles_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Governance Principles - Parliamentary Republic
+		name = power_bloc_synergize_laws_events.1.d
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_governance_principles.type = law_type:law_parliamentary_republic
+		}
+
+		activate_law = law_type:law_parliamentary_republic
+		
+		remove_modifier = power_bloc_leader_lawgroup_governance_principles_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_governance_principles_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Governance Principles - Theorcracy
+		name = power_bloc_synergize_laws_events.1.e
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_governance_principles.type = law_type:law_theocracy
+		}
+
+		activate_law = law_type:law_theocracy
+		
+		remove_modifier = power_bloc_leader_lawgroup_governance_principles_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_governance_principles_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Governance Principles - Council Republic
+		name = power_bloc_synergize_laws_events.1.f
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_governance_principles.type = law_type:law_council_republic
+		}
+
+		activate_law = law_type:law_council_republic
+		
+		remove_modifier = power_bloc_leader_lawgroup_governance_principles_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_governance_principles_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Governance Principles - Corporate State
+		name = power_bloc_synergize_laws_events.1.g
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_governance_principles.type = law_type:law_corporate_state
+		}
+
+		activate_law = law_type:law_corporate_state
+		
 		remove_modifier = power_bloc_leader_lawgroup_governance_principles_variable_12
 
 		add_modifier = {
@@ -56,7 +153,7 @@ power_bloc_synergize_laws_events.1 = {
 	}
 }
 
-power_bloc_synergize_laws_events.2 = {
+power_bloc_synergize_laws_events.2 = {	# Distribution of Power
 	type = country_event
 
 	title = power_bloc_synergize_laws_events.2.title
@@ -78,18 +175,182 @@ power_bloc_synergize_laws_events.2 = {
 		# Triggered by the Power Bloc Synergize Laws Journal Entry
 	}
 
-	immediate = {
-		power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = {
-			save_scope_as = power_bloc_leader_distribution_of_power_law
-		}
-	}
+	immediate = {}
 
-	option = {
+	option = {	# Distribution of Power - Autocracy
 		name = power_bloc_synergize_laws_events.2.a
+
+		trigger ={
+			OR = {
+				power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = law_type:law_autocracy
+				power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = law_type:law_neo_absolutism
+			}
+		}
 
 		default_option = yes
 
-		activate_law = scope:power_bloc_leader_distribution_of_power_law
+		activate_law = law_type:law_autocracy
+
+		remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_distribution_of_power_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Distribution of Power - Technocracy
+		name = power_bloc_synergize_laws_events.2.b
+
+		trigger ={
+			power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = law_type:law_technocracy
+		}
+
+		activate_law = law_type:law_technocracy
+
+		remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_distribution_of_power_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Distribution of Power - Oligarchy
+		name = power_bloc_synergize_laws_events.2.c
+
+		trigger ={
+			power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = law_type:law_oligarchy
+			NAND = {
+				country_has_primary_culture = cu:romanian
+				is_subject = yes
+			}
+		}
+
+		activate_law = law_type:law_oligarchy
+
+		remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_distribution_of_power_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Distribution of Power - Organic Regulation
+		name = power_bloc_synergize_laws_events.2.d
+
+		trigger ={
+			power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = law_type:law_oligarchy
+			AND = {
+				country_has_primary_culture = cu:romanian
+				is_subject = yes
+			}
+		}
+
+		activate_law = law_type:law_organic_regulation
+
+		remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_distribution_of_power_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Distribution of Power - Landed Voting
+		name = power_bloc_synergize_laws_events.2.e
+
+		trigger ={
+			power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = law_type:law_landed_voting
+		}
+
+		activate_law = law_type:law_landed_voting
+
+		remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_distribution_of_power_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Distribution of Power - Wealth Voting
+		name = power_bloc_synergize_laws_events.2.f
+
+		trigger ={
+			power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = law_type:law_wealth_voting
+		}
+
+		activate_law = law_type:law_wealth_voting
+
+		remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_distribution_of_power_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Distribution of Power - Census Voting
+		name = power_bloc_synergize_laws_events.2.g
+
+		trigger ={
+			power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = law_type:law_census_voting
+		}
+
+		activate_law = law_type:law_census_voting
+
+		remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_distribution_of_power_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Distribution of Power - Universal Suffrage
+		name = power_bloc_synergize_laws_events.2.h
+
+		trigger ={
+			power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = law_type:law_universal_suffrage
+		}
+
+		activate_law = law_type:law_universal_suffrage
+
+		remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_distribution_of_power_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Distribution of Power - Anarchy
+		name = power_bloc_synergize_laws_events.2.i
+
+		trigger ={
+			power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = law_type:law_anarchy
+		}
+
+		activate_law = law_type:law_anarchy
+
+		remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_distribution_of_power_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Distribution of Power - Single Party State
+		name = power_bloc_synergize_laws_events.2.j
+
+		trigger ={
+			power_bloc.power_bloc_leader.active_law:lawgroup_distribution_of_power.type = law_type:law_single_party_state
+		}
+
+		activate_law = law_type:law_single_party_state
 
 		remove_modifier = power_bloc_leader_lawgroup_distribution_of_power_variable_12
 
@@ -101,7 +362,7 @@ power_bloc_synergize_laws_events.2 = {
 	}
 }
 
-power_bloc_synergize_laws_events.3 = {
+power_bloc_synergize_laws_events.3 = {	# Economic System
 	type = country_event
 
 	title = power_bloc_synergize_laws_events.3.title
@@ -123,18 +384,138 @@ power_bloc_synergize_laws_events.3 = {
 		# Triggered by the Power Bloc Synergize Laws Journal Entry
 	}
 
-	immediate = {
-		power_bloc.power_bloc_leader.active_law:lawgroup_economic_system.type = {
-			save_scope_as = power_bloc_leader_economic_system_law
-		}
-	}
+	immediate = {}
 
-	option = {
+	option = {	# Economic System - Traditionalism
 		name = power_bloc_synergize_laws_events.3.a
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_economic_system.type = law_type:law_traditionalism
+		}
 
 		default_option = yes
 
-		activate_law = scope:power_bloc_leader_economic_system_law
+		activate_law = law_type:law_traditionalism
+
+		remove_modifier = power_bloc_leader_lawgroup_economic_system_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_economic_system_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Economic System - Interventionism
+		name = power_bloc_synergize_laws_events.3.b
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_economic_system.type = law_type:law_interventionism
+		}
+
+		activate_law = law_type:law_interventionism
+
+		remove_modifier = power_bloc_leader_lawgroup_economic_system_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_economic_system_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Economic System - Agrarianism
+		name = power_bloc_synergize_laws_events.3.c
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_economic_system.type = law_type:law_agrarianism
+		}
+
+		activate_law = law_type:law_agrarianism
+
+		remove_modifier = power_bloc_leader_lawgroup_economic_system_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_economic_system_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Economic System - Industry Banned
+		name = power_bloc_synergize_laws_events.3.d
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_economic_system.type = law_type:law_industry_banned
+		}
+
+		activate_law = law_type:law_industry_banned
+
+		remove_modifier = power_bloc_leader_lawgroup_economic_system_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_economic_system_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Economic System - Extraction Economy
+		name = power_bloc_synergize_laws_events.3.e
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_economic_system.type = law_type:law_extraction_economy
+			is_subject = yes
+		}
+
+		activate_law = law_type:law_extraction_economy
+
+		remove_modifier = power_bloc_leader_lawgroup_economic_system_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_economic_system_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Economic System - Laissez-Faire
+		name = power_bloc_synergize_laws_events.3.f
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_economic_system.type = law_type:law_laissez_faire
+		}
+
+		activate_law = law_type:law_laissez_faire
+
+		remove_modifier = power_bloc_leader_lawgroup_economic_system_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_economic_system_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Economic System - Co-Operative Ownership
+		name = power_bloc_synergize_laws_events.3.g
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_economic_system.type = law_type:law_cooperative_ownership
+		}
+
+		activate_law = law_type:law_cooperative_ownership
+
+		remove_modifier = power_bloc_leader_lawgroup_economic_system_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_economic_system_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Economic System - Command Economy
+		name = power_bloc_synergize_laws_events.3.h
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_economic_system.type = law_type:law_command_economy
+		}
+
+		activate_law = law_type:law_command_economy
 
 		remove_modifier = power_bloc_leader_lawgroup_economic_system_variable_12
 
@@ -146,7 +527,7 @@ power_bloc_synergize_laws_events.3 = {
 	}
 }
 
-power_bloc_synergize_laws_events.4 = {
+power_bloc_synergize_laws_events.4 = {	# Land Reform
 	type = country_event
 
 	title = power_bloc_synergize_laws_events.4.title
@@ -168,18 +549,31 @@ power_bloc_synergize_laws_events.4 = {
 		# Triggered by the Power Bloc Synergize Laws Journal Entry
 	}
 
-	immediate = {
-		power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = {
-			save_scope_as = power_bloc_leader_land_reform_law
-		}
-	}
+	immediate = {}
 
-	option = {
+	option = {	# Land Reform - Serfdom
 		name = power_bloc_synergize_laws_events.4.a
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = law_type:law_serfdom
+			NOR = {
+				c:AUS ?= this # Austria and the Danubian Principalities have manorialism instead
+				AND = {
+					exists = c:AUS
+					is_subject_of = c:AUS
+					OR = {
+						is_subject_type = subject_type_crown_land
+						is_subject_type = subject_type_personal_union
+					}
+					c:AUS ?= { has_law = law_type:law_manorialism }
+				}
+				country_has_primary_culture = cu:romanian
+			}
+		}
 
 		default_option = yes
 
-		activate_law = scope:power_bloc_leader_land_reform_law
+		activate_law = law_type:law_serfdom
 
 		remove_modifier = power_bloc_leader_lawgroup_land_reform_variable_12
 
@@ -189,9 +583,126 @@ power_bloc_synergize_laws_events.4 = {
 			is_decaying = yes
 		}
 	}
+	option = {	# Land Reform - Manorialism
+		name = power_bloc_synergize_laws_events.4.b
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = law_type:law_manorialism
+			OR = {
+				AND = {
+					is_subject_of = c:AUS
+					OR = {
+						is_subject_type = subject_type_crown_land
+						is_subject_type = subject_type_personal_union
+					}
+				}
+				country_has_primary_culture = cu:romanian
+			}
+		}
+
+		activate_law = law_type:law_manorialism
+
+		remove_modifier = power_bloc_leader_lawgroup_land_reform_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_land_reform_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Land Reform - Tenant Farmers
+		name = power_bloc_synergize_laws_events.4.c
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = law_type:law_tenant_farmers
+			NOR = {
+				has_law = law_type:law_latifundias
+				has_law = law_type:law_expanded_latifundias
+			}
+		}
+
+		activate_law = law_type:law_tenant_farmers
+
+		remove_modifier = power_bloc_leader_lawgroup_land_reform_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_land_reform_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Land Reform - Commercialized Agriculture
+		name = power_bloc_synergize_laws_events.4.d
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = law_type:law_commercialized_agriculture
+		}
+
+		activate_law = law_type:law_commercialized_agriculture
+
+		remove_modifier = power_bloc_leader_lawgroup_land_reform_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_land_reform_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Land Reform - Homesteading
+		name = power_bloc_synergize_laws_events.4.e
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = law_type:law_homesteading
+		}
+
+		activate_law = law_type:law_homesteading
+
+		remove_modifier = power_bloc_leader_lawgroup_land_reform_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_land_reform_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Land Reform - Collectivized Agriculture
+		name = power_bloc_synergize_laws_events.4.f
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = law_type:law_collectivized_agriculture
+		}
+
+		activate_law = law_type:law_collectivized_agriculture
+
+		remove_modifier = power_bloc_leader_lawgroup_land_reform_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_land_reform_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Land Reform - Latifundias
+		name = power_bloc_synergize_laws_events.4.g
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = law_type:law_tenant_farmers
+			has_law = law_type:law_latifundias
+			NOT = { has_law = law_type:law_expanded_latifundias }
+		}
+	}
+	option = {	# Land Reform - Enhanced Latifundias
+		name = power_bloc_synergize_laws_events.4.h
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_land_reform.type = law_type:law_tenant_farmers
+			NOT = { has_law = law_type:law_latifundias }
+			has_law = law_type:law_expanded_latifundias
+		}
+	}
 }
 
-power_bloc_synergize_laws_events.5 = {
+power_bloc_synergize_laws_events.5 = {	# Free Speech
 	type = country_event
 
 	title = power_bloc_synergize_laws_events.5.title
@@ -213,18 +724,69 @@ power_bloc_synergize_laws_events.5 = {
 		# Triggered by the Power Bloc Synergize Laws Journal Entry
 	}
 
-	immediate = {
-		power_bloc.power_bloc_leader.active_law:lawgroup_free_speech.type = {
-			save_scope_as = power_bloc_leader_free_speech_law
-		}
-	}
+	immediate = {}
 
-	option = {
+	option = {	# Free Speech - Outlawed Dissent
 		name = power_bloc_synergize_laws_events.5.a
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_free_speech.type = law_type:law_outlawed_dissent
+		}
 
 		default_option = yes
 
-		activate_law = scope:power_bloc_leader_free_speech_law
+		activate_law = law_type:law_outlawed_dissent
+
+		remove_modifier = power_bloc_leader_lawgroup_free_speech_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_free_speech_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Free Speech - Censorship
+		name = power_bloc_synergize_laws_events.5.b
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_free_speech.type = law_type:law_censorship
+		}
+
+		activate_law = law_type:law_censorship
+
+		remove_modifier = power_bloc_leader_lawgroup_free_speech_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_free_speech_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Free Speech - Right of Assembly
+		name = power_bloc_synergize_laws_events.5.c
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_free_speech.type = law_type:law_right_of_assembly
+		}
+
+		activate_law = law_type:law_right_of_assembly
+
+		remove_modifier = power_bloc_leader_lawgroup_free_speech_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_free_speech_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Free Speech - Protected Speech
+		name = power_bloc_synergize_laws_events.5.d
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_free_speech.type = law_type:law_protected_speech
+		}
+
+		activate_law = law_type:law_protected_speech
 
 		remove_modifier = power_bloc_leader_lawgroup_free_speech_variable_12
 
@@ -236,7 +798,7 @@ power_bloc_synergize_laws_events.5 = {
 	}
 }
 
-power_bloc_synergize_laws_events.6 = {
+power_bloc_synergize_laws_events.6 = { 	# Slavery
 	type = country_event
 
 	title = power_bloc_synergize_laws_events.6.title
@@ -258,18 +820,86 @@ power_bloc_synergize_laws_events.6 = {
 		# Triggered by the Power Bloc Synergize Laws Journal Entry
 	}
 
-	immediate = {
-		power_bloc.power_bloc_leader.active_law:lawgroup_slavery.type = {
-			save_scope_as = power_bloc_leader_slavery_law
-		}
-	}
+	immediate = {}
 
-	option = {
+	option = {	# Slavery - Slavery Banned
 		name = power_bloc_synergize_laws_events.6.a
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_slavery.type = law_type:law_slavery_banned
+		}
 
 		default_option = yes
 
-		activate_law = scope:power_bloc_leader_slavery_law
+		activate_law = law_type:law_slavery_banned
+
+		remove_modifier = power_bloc_leader_lawgroup_slavery_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_slavery_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Slavery - Colonial Slavery
+		name = power_bloc_synergize_laws_events.6.b
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_slavery.type = law_type:law_colonial_slavery
+		}
+
+		activate_law = law_type:law_colonial_slavery
+
+		remove_modifier = power_bloc_leader_lawgroup_slavery_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_slavery_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Slavery - Debt Slavery
+		name = power_bloc_synergize_laws_events.6.c
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_slavery.type = law_type:law_debt_slavery
+		}
+
+		activate_law = law_type:law_debt_slavery
+
+		remove_modifier = power_bloc_leader_lawgroup_slavery_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_slavery_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Slavery - Slave Trade
+		name = power_bloc_synergize_laws_events.6.d
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_slavery.type = law_type:law_slave_trade
+		}
+
+		activate_law = law_type:law_slave_trade
+
+		remove_modifier = power_bloc_leader_lawgroup_slavery_variable_12
+
+		add_modifier = {
+			name = power_bloc_leader_lawgroup_slavery_law_changed
+			months = 120
+			is_decaying = yes
+		}
+	}
+	option = {	# Slavery - Legacy Slavery
+		name = power_bloc_synergize_laws_events.6.e
+
+		trigger = {
+			power_bloc.power_bloc_leader.active_law:lawgroup_slavery.type = law_type:law_legacy_slavery
+		}
+
+		activate_law = law_type:law_legacy_slavery
 
 		remove_modifier = power_bloc_leader_lawgroup_slavery_variable_12
 

@@ -17,36 +17,72 @@
   power_bloc_synergize_laws_events.1.desc: "As a member of the Power Bloc, we have synergized our governance principles with those of our Power Bloc leader."
   power_bloc_synergize_laws_events.1.flavor: "In a deliberate step toward deeper cohesion, our institutions have begun operating in closer concert with the political architecture of our Power Bloc leader. This synchronization, while subtle on the surface, marks a profound realignment beneath—the streamlining of legal frameworks, the harmonization of bureaucratic priorities, and the quiet adoption of governance norms that prioritize unity over divergence. Far from diminishing our sovereignty, this alignment reinforces our standing within the Bloc, ensuring that our voice resonates more clearly in collective decisions and that our future unfolds within a framework of shared purpose and strength."
   power_bloc_synergize_laws_events.1.a: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.1.b: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.1.c: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.1.d: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.1.e: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.1.f: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.1.g: "We are now aligned with our Power Bloc leader"
 
 # Distribution of Power
   power_bloc_synergize_laws_events.2.title: "Distribution of Power Synergized"
   power_bloc_synergize_laws_events.2.desc: "As a member of the Power Bloc, we have synergized how power is distributed in our country with those of our Power Bloc leader."
   power_bloc_synergize_laws_events.2.flavor: "In pursuit of deeper integration with the leader of our Power Bloc, our internal balance of authority has undergone a quiet yet significant recalibration. Decision-making channels have been streamlined, institutional hierarchies refined, and authority redistributed to mirror the proven model championed by our Power Bloc leader. This is not mere imitation—it is adaptation born of strategic insight, aligning our command structures and political rhythms with those that lead the Bloc. The result is a more unified governance dynamic, one that reduces friction, accelerates responsiveness, and ensures our national machinery moves in step with the Bloc’s broader ambitions."
   power_bloc_synergize_laws_events.2.a: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.2.b: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.2.c: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.2.d: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.2.e: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.2.f: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.2.g: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.2.h: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.2.i: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.2.j: "We are now aligned with our Power Bloc leader"
 
 # Economic Systempower_bloc_l
   power_bloc_synergize_laws_events.3.title: "Economic System Synergized"
   power_bloc_synergize_laws_events.3.desc: "As a member of the Power Bloc, we have synergized our economic system with that of our Power Bloc leader."
   power_bloc_synergize_laws_events.3.flavor: "In a strategic move to enhance our economic cohesion within the Power Bloc, we have aligned our economic system with that of our Power Bloc leader. This alignment is not merely a reflection of shared interests but a calculated step towards greater economic integration, ensuring that our markets, industries, and fiscal policies operate in harmony with the Bloc’s overarching economic framework. By adopting these synergized economic principles, we position ourselves to benefit from collective strength and stability.
   power_bloc_synergize_laws_events.3.a: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.3.b: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.3.c: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.3.d: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.3.e: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.3.f: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.3.g: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.3.h: "We are now aligned with our Power Bloc leader"
 
 # Land Reform
   power_bloc_synergize_laws_events.4.title: "Land Reform Synergized"
   power_bloc_synergize_laws_events.4.desc: "As a member of the Power Bloc, we have synergized our land reform policies with those of our Power Bloc leader."
   power_bloc_synergize_laws_events.4.flavor: "In a significant step towards agricultural modernization, we have aligned our land reform policies with those of our Power Bloc leader. This strategic move is designed to enhance agricultural productivity, promote equitable land distribution, and ensure that our rural economy thrives in harmony with the Bloc’s agricultural objectives. By adopting these synergized land reform principles, we aim to create a more resilient and prosperous agricultural sector that benefits all citizens."
   power_bloc_synergize_laws_events.4.a: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.4.b: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.4.c: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.4.d: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.4.e: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.4.f: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.4.g: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.4.h: "We are now aligned with our Power Bloc leader"
 
 # Free Speech
   power_bloc_synergize_laws_events.5.title: "Free Speech Synergized"
   power_bloc_synergize_laws_events.5.desc: "As a member of the Power Bloc, we have synergized our free speech policies with those of our Power Bloc leader."
   power_bloc_synergize_laws_events.5.flavor: "In a strategic move to enhance our political cohesion within the Power Bloc, we have aligned our free speech policies with those of our Power Bloc leader. This alignment is not merely a reflection of shared values but a calculated step towards greater political integration, ensuring that our discourse, media, and public expression operate in harmony with the Bloc’s overarching principles. By adopting these synergized free speech policies, we position ourselves to benefit from collective strength and stability."
   power_bloc_synergize_laws_events.5.a: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.5.b: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.5.c: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.5.d: "We are now aligned with our Power Bloc leader"
 
 # Slavery
   power_bloc_synergize_laws_events.6.title: "Slavery Synergized"
   power_bloc_synergize_laws_events.6.desc: "As a member of the Power Bloc, we have synergized our slavery policies with those of our Power Bloc leader."
   power_bloc_synergize_laws_events.6.flavor: "Following careful deliberation and in pursuit of greater cohesion within the Power Bloc, we have enacted sweeping reforms to align our systems of labor subjugation with those perfected by our Power Bloc leader. Classification protocols, control mechanisms, and labor allocation practices have been standardized to ensure consistency, efficiency, and ideological harmony across Bloc territories. This harmonization eliminates regional discrepancies, reinforces shared doctrines of order and productivity, and strengthens our contribution to the collective structure that sustains the Bloc’s dominance. In unity of method lies strength of purpose—and through this alignment, our role within the hierarchy is both affirmed and elevated."
   power_bloc_synergize_laws_events.6.a: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.6.b: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.6.c: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.6.d: "We are now aligned with our Power Bloc leader"
+  power_bloc_synergize_laws_events.6.e: "We are now aligned with our Power Bloc leader"
 
 ############################################################
 # Unincorporate State

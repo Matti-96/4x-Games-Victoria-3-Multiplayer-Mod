@@ -1,0 +1,7 @@
+﻿l_english:
+  # War Goal: Player War Lock
+  war_goal_player_war_lock_type_name: "Player War Lock"
+  war_goal_player_war_lock_type_desc: "Keep the players in the war until the players agree to a peace deal, unless the capital of the war leader player is captured."
+  war_goal_player_war_lock: "Player War Lock"
+  war_goal_player_war_lock_desc: "Keep the players in the war until the players agree to a peace deal, unless the capital of the war leader player is captured."
+  war_goal_player_war_lock_sway_desc: "Try to convince [WAR_GOAL_DRAFT.GetHolder.GetName] to join your side by ensuring they won't get peaced out of the war."
